@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::get('/test', function (){
     return 666;
 });
+
+Route::namespace('Test')->group(function (){
+    Route::get('swoole','TestController@Swoole')->name('swoole');
+});
