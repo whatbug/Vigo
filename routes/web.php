@@ -21,4 +21,5 @@ Route::get('/test', function (){
 
 Route::namespace('Test')->group(function (){
     Route::get('swoole','TestController@Swoole')->name('swoole');
+    Route::get('task','TestController@Task')->name('task');
 });
