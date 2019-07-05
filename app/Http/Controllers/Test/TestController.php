@@ -15,7 +15,7 @@ Class TestController extends Controller {
         $task = new TestTask('task data');
         // $task->delay(3);// 延迟3秒投放任务
         $ret = Task::deliver($task);
-        return $ret;
+        var_dump($ret);
     }
 
     public function postTest () {
