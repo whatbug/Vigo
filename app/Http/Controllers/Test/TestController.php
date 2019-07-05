@@ -11,10 +11,14 @@ Class TestController extends Controller {
         var_dump($swoole->stats());
     }
 
-    public function postTask (){
+    public function getTask (){
         $task = new TestTask('task data');
         // $task->delay(3);// 延迟3秒投放任务
         $ret = Task::deliver($task);
-        var_dump($ret);//判断是否投递成功
+        return $ret;
+    }
+
+    public function postTest () {
+        var_dump('1456666');
     }
 }
