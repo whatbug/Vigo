@@ -20,8 +20,8 @@ return [
     ],
     'event_handlers'           => [],
     'websocket'                => [
-        'enable' => false,
-        //'handler' => XxxWebSocketHandler::class,
+        'enable' => true,
+        'handler' => \App\Services\WebSocketService::class,
     ],
     'sockets'                  => [],
     'processes'                => [
@@ -80,6 +80,8 @@ return [
         'enable_reuse_port'  => true,
         'enable_coroutine'   => false,
         'http_compression'   => false,
+        'heartbeat_idle_time'      => 600,// 表示每60秒遍历一次，一个连接如果600秒内未向服务器发送任何数据，此连接将被强制关闭
+        'heartbeat_check_interval' => 60,
 
         // Slow log
         // 'request_slowlog_timeout' => 2,

@@ -6,6 +6,6 @@ Class TestController extends Controller {
 
     public function Swoole (){
         $swoole = app('swoole');
-        var_dump($swoole);exit();
+        var_dump($swoole->stats());exit();
     }
 }
