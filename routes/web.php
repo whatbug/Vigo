@@ -20,7 +20,7 @@ Route::get('/test', function (){
 });
 
 Route::namespace('Test')->group(function (){
-    Route::get('swoole','TestController@Swoole')->name('swoole');
+//    Route::get('swoole','TestController@Swoole')->name('swoole');
     Route::get('tasks','TestController@getTask')->name('task');
     Route::post('test1','TestController@postTest')->name('test1');
 });
