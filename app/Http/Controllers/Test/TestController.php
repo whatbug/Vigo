@@ -21,4 +21,16 @@ Class TestController extends Controller {
     public function postTest () {
         var_dump('1456666');
     }
+
+    public function pushTest () {
+        $connections = app('swoole')->connections;
+        foreach ($connections as $fd){
+             $data = [
+                 'data' => [
+                     'content' => 'Push Message'
+                 ]
+             ];
+        }
+        app('swoole')->push($fd,json_encode($data));
+    }
 }
