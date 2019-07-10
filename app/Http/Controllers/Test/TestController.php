@@ -24,14 +24,13 @@ Class TestController extends Controller {
 
     public function pushTest () {
         $connections = app('swoole')->connections;
-        dd($connections);
         foreach ($connections as $fd){
              $data = [
                  'data' => [
                      'content' => 'Push Message'
                  ]
              ];
+            app('swoole')->push($fd,json_encode($data));
         }
-        app('swoole')->push($fd,json_encode($data));
     }
 }
