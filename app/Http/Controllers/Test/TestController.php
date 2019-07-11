@@ -3,7 +3,6 @@
 use App\Http\Controllers\Controller;
 use App\Swoole\Task\TestTask;
 use Hhxsv5\LaravelS\Swoole\Task\Task;
-use Swoole\WebSocket\Server;
 
 Class TestController extends Controller {
 
@@ -24,24 +23,15 @@ Class TestController extends Controller {
     }
 
     public function pushTest () {
-        $server = new Server("127.0.0.0.1", 5200);
-
-        $server->on('open', function (Server $server, $request) {
-            echo "server: handshake success with fd{$request->fd}\n";
-            if ($server->isEstablished($request->fd)) {
-                $server->push($request->fd, 'Welcome to WebSocket Server built on LaravelS');
-            }
-        });
-
-        $server->on('message', function (Server $server, $frame) {
-            echo "receive from {$frame->fd}:{$frame->data},opcode:{$frame->opcode},fin:{$frame->finish}\n";
-            $server->push($frame->fd, "this is server");
-        });
-
-        $server->on('close', function ($ser, $fd) {
-            echo "client {$fd} closed\n";
-        });
-
-        $server->start();
+        $connections = app('swoole')->connections;
+        var_dump($connections);
+        foreach ($connections as $fd){
+             $data = [
+                 'data' => [
+                     'content' => 'Push Message'
+                 ]
+             ];
+            app('swoole')->push($fd,json_encode($data));
+        }
     }
 }
