@@ -24,7 +24,6 @@ Class TestController extends Controller {
 
     public function pushTest () {
         $connections = app('swoole')->connections;
-        return $connections;
         foreach ($connections as $fd){
              $data = [
                  'data' => [
