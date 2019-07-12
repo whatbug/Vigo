@@ -33,7 +33,11 @@ class WebSocketService implements WebSocketHandlerInterface
 //        $checkOnline = Cache::get('fd_'.$fdInfo->chatObj);
 //        Cache::put('fd_'.$frame->fd,$frame->fd,300);//更新在线机制
         // 调用 push 方法向发起客户端推送数据
-        $server->push($frame->fd, ['success'=>1]);
+        $infos = [
+            'success' => 1,
+            'msg'     => '发送成功'
+        ];
+        $server->push($frame->fd, $infos);
         // 调用 push 方法向接收客户端推送数据
 //        $server->push($fdInfo->chatObj, $fdInfo->content);
     }
