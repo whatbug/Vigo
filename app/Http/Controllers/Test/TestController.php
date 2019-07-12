@@ -36,7 +36,7 @@ Class TestController extends Controller {
         }
     }
 
-    public function getCache ($id) {
-        return Cache::get('fd_'.$id);
+    public function getCache () {
+        return Cache::get('fd_117');
     }
 }
