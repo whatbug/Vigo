@@ -21,7 +21,7 @@ class WebSocketService implements WebSocketHandlerInterface
         // 调用 push 方法向客户端推送数据，fd 是客户端连接标识字段
         Log::info('WebSocket 连接建立');
         if ($server->isEstablished($request->fd)) {
-            Cache::put('fd_'.$request->fd,$request->fd,300);
+            Cache::put('fd_'.$request->fd,$request->fd,60*60);
             $server->push($request->fd, 'hello,dear '.$request->fd.'!');
         }
     }
@@ -31,15 +31,20 @@ class WebSocketService implements WebSocketHandlerInterface
     {
         $fdInfo = json_decode($frame->data);
         if ($fdInfo) {
-            if ($fdInfo->chatObj == $frame) {
-                $server->push($frame->fd, json_encode(['success'=>false,'msg'=>'你玩呐？自己给自己发！']));
+            if ($fdInfo->chatObj == $frame->fd) {
+                $server->push($frame->fd, json_encode(['success'=>false,'msg'=>'你玩呐？自己给自己发！']));return;
             }
+            //收到消息就更新
+            Cache::put('fd_'.$frame->fd,$frame->fd,60*60);
             // 调用 push 方法向接收客户端推送数据
-            $result = $server->push($fdInfo->chatObj, $fdInfo->content);
+            $checkRev = Cache::get('fd_'.$fdInfo->chatObj);
+            if ($checkRev) {
+                $server->push($fdInfo->chatObj, $fdInfo->content);
+            }
             // 调用 push 方法向发起客户端推送数据
             $infos = [
-                'success' => ($result==1)?true:false,
-                'msg' => ($result==1)?'发送成功':'对方已经下线',
+                'success' => $checkRev?true:false,
+                'msg' => $checkRev?'发送成功':'对方已经下线',
             ];
             $server->push($frame->fd, json_encode($infos));
         } else {
@@ -51,7 +56,6 @@ class WebSocketService implements WebSocketHandlerInterface
     public function onClose(Server $server, $fd, $reactorId)
     {
         Cache::forget('fd_'.$fd);
-        $server->push($fd,'注销成功！bye！');
         Log::info('WebSocket 连接关闭');
     }
 }
