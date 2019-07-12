@@ -29,6 +29,7 @@ class WebSocketService implements WebSocketHandlerInterface
     // 收到消息时触发
     public function onMessage(Server $server, Frame $frame)
     {
+        \Log::info('Received message', [$frame->fd, $frame->data, $frame->opcode, $frame->finish]);
         $client = $server->getClientInfo($frame->fd);
         $fdInfo = json_decode($frame->get());
         // 调用 push 方法向客户端推送数据
