@@ -21,7 +21,7 @@ class WebSocketService implements WebSocketHandlerInterface
         // 调用 push 方法向客户端推送数据，fd 是客户端连接标识字段
         Log::info('WebSocket 连接建立');
         if ($server->isEstablished($request->fd)) {
-            Cache::put('fd_'.$request->fd,'在线',2);
+            Cache::put('fd_'.$request->fd,$request->fd,2);
             $server->push($request->fd, 'hello,dear '.$request->fd.'!');
         }
     }
@@ -31,12 +31,11 @@ class WebSocketService implements WebSocketHandlerInterface
     {
         $fdInfo = json_decode($frame->data);
         $checkOnline = Cache::get('fd_'.$fdInfo->chatObj);
-        Cache::put('fd_'.$frame->fd,'在线',2);//更新在线机制
-        $msg = $fdInfo->content;
+        Cache::put('fd_'.$frame->fd,$frame->fd,2);//更新在线机制
         // 调用 push 方法向发起客户端推送数据
-        $server->push($frame->fd, (object)['headerUrl'=>'http://baidu.com/1.png','userId'=>$frame->fd,'success'=>$checkOnline?true:false]);
+        $server->push($frame->fd, (object)['success'=>$checkOnline?true:false]);
         // 调用 push 方法向接收客户端推送数据
-        $server->push($fdInfo->chatObj, $msg);
+        $server->push($fdInfo->chatObj, $fdInfo->content);
     }
 
     // 关闭连接时触发
