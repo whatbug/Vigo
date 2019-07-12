@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use App\Swoole\Task\TestTask;
 use Hhxsv5\LaravelS\Swoole\Task\Task;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Input;
 
 Class TestController extends Controller {
 
@@ -37,6 +38,7 @@ Class TestController extends Controller {
     }
 
     public function getCache () {
-        return Cache::get('fd_117');
+        $id = Input::input('id');
+        return Cache::get('fd_'.$id);
     }
 }
