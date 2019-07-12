@@ -31,20 +31,16 @@ class WebSocketService implements WebSocketHandlerInterface
     {
         $fdInfo = json_decode($frame->data);
         if ($fdInfo) {
-            $checkOnline = Cache::get('fd_'.$fdInfo->chatObj);
-            Cache::put('fd_'.$frame->fd,$frame->fd,300);//更新在线机制
-            // 调用 push 方法向发起客户端推送数据
-            $infos = [
-                'success' => $checkOnline?true:false,
-                'msg' => $checkOnline?'发送成功':'对方已经下线',
-            ];
-            $server->push($frame->fd, json_encode($infos));
             // 调用 push 方法向接收客户端推送数据
             $result = $server->push($fdInfo->chatObj, $fdInfo->content);
-            $server->push($frame->fd, $result);
+            // 调用 push 方法向发起客户端推送数据
+            $infos = [
+                'success' => $result?true:false,
+                'msg' => $result?'发送成功':'对方已经下线',
+            ];
+            $server->push($frame->fd, json_encode($infos));
         } else {
             $server->push($frame->fd, '我们有缘无份哈哈哈');
-            Cache::put('fd_'.$frame->fd,$frame->fd,300);//更新在线机制
         }
     }
 
