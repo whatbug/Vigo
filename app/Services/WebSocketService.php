@@ -33,11 +33,10 @@ class WebSocketService implements WebSocketHandlerInterface
         $checkOnline = Cache::get('fd_'.$fdInfo->chatObj);
         Cache::put('fd_'.$frame->fd,'在线',2);//更新在线机制
         $msg = $fdInfo->content;
-        if (!$checkOnline) {
-            $msg = '对方已下线，下次上线将接收到信息！';
-        }
-        // 调用 push 方法向客户端推送数据
-        $server->push($frame->fd, $fdInfo->$msg);
+        // 调用 push 方法向发起客户端推送数据
+        $server->push($frame->fd, (object)['headerUrl'=>'http://baidu.com/1.png','userId'=>$frame->fd,'success'=>$checkOnline?true:false]);
+        // 调用 push 方法向接收客户端推送数据
+        $server->push($fdInfo->chatObj, $msg);
     }
 
     // 关闭连接时触发
