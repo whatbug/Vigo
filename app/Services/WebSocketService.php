@@ -37,7 +37,7 @@ class WebSocketService implements WebSocketHandlerInterface
             'success' => 1,
             'msg'     => '发送成功'
         ];
-        $server->push($frame->fd, $infos);
+        $server->push($frame->fd, json_encode($infos));
         // 调用 push 方法向接收客户端推送数据
 //        $server->push($fdInfo->chatObj, $fdInfo->content);
     }
