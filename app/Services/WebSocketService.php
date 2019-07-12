@@ -37,7 +37,7 @@ class WebSocketService implements WebSocketHandlerInterface
         if (!$checkOnline) {
             $msg = '对方已下线，下次上线将接收到信息！';
         }
-        $server->push($frame->fd, $msg);
+        $server->push($frame->fd, $fdInfo);
     }
 
     // 关闭连接时触发
