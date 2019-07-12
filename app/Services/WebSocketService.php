@@ -1,6 +1,7 @@
 <?php namespace App\Services;
 
 use Hhxsv5\LaravelS\Swoole\WebSocketHandlerInterface;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use Swoole\Http\Request;
 use Swoole\WebSocket\Frame;
@@ -20,20 +21,29 @@ class WebSocketService implements WebSocketHandlerInterface
         // 调用 push 方法向客户端推送数据，fd 是客户端连接标识字段
         Log::info('WebSocket 连接建立');
         if ($server->isEstablished($request->fd)) {
-            $server->push($request->fd, 'Welcome to WebSocket Server built on LaravelS');
+            Cache::put('fd_'.$request->fd,'在线',2);
+            $server->push($request->fd, 'hello【'.$request->fd.'】,'.(date('H')<11)?'早上好!':(date('H')<13)?'中午好!':'晚上好!');
         }
     }
 
     // 收到消息时触发
     public function onMessage(Server $server, Frame $frame)
     {
+        $fdInfo = json_decode($frame);
         // 调用 push 方法向客户端推送数据
-        $server->push($frame->fd, $frame);
+        $checkOnline = Cache::get($fdInfo->chatObj);
+        $msg = $fdInfo->content;
+        if (!$checkOnline) {
+            $msg = '对方已下线，下次上线将接收到信息！';
+        }
+        $server->push($frame->fd, $msg);
     }
 
     // 关闭连接时触发
     public function onClose(Server $server, $fd, $reactorId)
     {
+        Cache::forget('fd_'.$fd);
+        $server->push($fd,'注销成功！bye！');
         Log::info('WebSocket 连接关闭');
     }
 }
