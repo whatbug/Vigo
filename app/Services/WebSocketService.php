@@ -22,14 +22,14 @@ class WebSocketService implements WebSocketHandlerInterface
         Log::info('WebSocket 连接建立');
         if ($server->isEstablished($request->fd)) {
             Cache::put('fd_'.$request->fd,'在线',2);
-            $server->push($request->fd, 'hello【'.$request->fd.'】,'.(date('H')<11)?'早上好!':(date('H')<13)?'中午好!':'晚上好!');
+            $server->push($request->fd, 'hello,dear '.$request->fd.'!');
         }
     }
 
     // 收到消息时触发
     public function onMessage(Server $server, Frame $frame)
     {
-        $fdInfo = json_decode($frame);
+        $fdInfo = json_decode($frame->data);
         // 调用 push 方法向客户端推送数据
         $checkOnline = Cache::get($fdInfo->chatObj);
         Cache::put('fd_'.$frame->fd,'在线',2);//更新在线机制
