@@ -29,7 +29,8 @@ class WebSocketService implements WebSocketHandlerInterface
     // 收到消息时触发
     public function onMessage(Server $server, Frame $frame)
     {
-        $fdInfo = json_decode($frame->data);
+        $client = $server->getClientInfo($frame->fd);
+        $fdInfo = json_decode($frame->get());
         // 调用 push 方法向客户端推送数据
         $checkOnline = Cache::get($fdInfo->chatObj);
         Cache::put('fd_'.$frame->fd,'在线',2);//更新在线机制
@@ -37,7 +38,7 @@ class WebSocketService implements WebSocketHandlerInterface
         if (!$checkOnline) {
             $msg = '对方已下线，下次上线将接收到信息！';
         }
-        $server->push($frame->fd, $frame);
+        $server->push($frame->fd, $client);
     }
 
     // 关闭连接时触发
