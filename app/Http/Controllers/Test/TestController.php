@@ -3,6 +3,7 @@
 use App\Http\Controllers\Controller;
 use App\Swoole\Task\TestTask;
 use Hhxsv5\LaravelS\Swoole\Task\Task;
+use Illuminate\Support\Facades\Cache;
 
 Class TestController extends Controller {
 
@@ -33,5 +34,9 @@ Class TestController extends Controller {
              ];
             app('swoole')->push($fd,json_encode($data));
         }
+    }
+
+    public function getCache ($id) {
+        return Cache::get('fd_'.$id);
     }
 }
