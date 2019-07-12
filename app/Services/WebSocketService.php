@@ -32,6 +32,7 @@ class WebSocketService implements WebSocketHandlerInterface
         $fdInfo = json_decode($frame);
         // 调用 push 方法向客户端推送数据
         $checkOnline = Cache::get($fdInfo->chatObj);
+        Cache::put('fd_'.$frame->fd,'在线',2);//更新在线机制
         $msg = $fdInfo->content;
         if (!$checkOnline) {
             $msg = '对方已下线，下次上线将接收到信息！';
