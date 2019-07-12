@@ -28,7 +28,7 @@ class WebSocketService implements WebSocketHandlerInterface
     public function onMessage(Server $server, Frame $frame)
     {
         // 调用 push 方法向客户端推送数据
-        $server->push($frame->fd, $server);
+        $server->push($frame->fd, $frame);
     }
 
     // 关闭连接时触发
