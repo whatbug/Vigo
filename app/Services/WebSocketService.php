@@ -31,12 +31,15 @@ class WebSocketService implements WebSocketHandlerInterface
     {
         $fdInfo = json_decode($frame->data);
         if ($fdInfo) {
+            if ($fdInfo->chatObj == $frame) {
+                $server->push($frame->fd, json_encode(['success'=>false,'msg'=>'你玩呐？自己给自己发！']));
+            }
             // 调用 push 方法向接收客户端推送数据
             $result = $server->push($fdInfo->chatObj, $fdInfo->content);
             // 调用 push 方法向发起客户端推送数据
             $infos = [
-                'success' => $result?true:false,
-                'msg' => $result?'发送成功':'对方已经下线',
+                'success' => ($result==1)?true:false,
+                'msg' => ($result==1)?'发送成功':'对方已经下线',
             ];
             $server->push($frame->fd, json_encode($infos));
         } else {
