@@ -31,7 +31,8 @@ class WebSocketService implements WebSocketHandlerInterface
     {
         \Log::info('Received message', [$frame->fd, $frame->data, $frame->opcode, $frame->finish]);
         $client = $server->getClientInfo($frame->fd);
-        $fdInfo = json_decode($frame->get());
+        $fdInfo = json_decode($frame->data);
+        \Log::info($fdInfo);
         // 调用 push 方法向客户端推送数据
         $checkOnline = Cache::get($fdInfo->chatObj);
         Cache::put('fd_'.$frame->fd,'在线',2);//更新在线机制
