@@ -29,11 +29,11 @@ class WebSocketService implements WebSocketHandlerInterface
     // 收到消息时触发
     public function onMessage(Server $server, Frame $frame)
     {
-        $fdInfo = json_decode($frame->data);
+//        $fdInfo = json_decode($frame->data);
 //        $checkOnline = Cache::get('fd_'.$fdInfo->chatObj);
 //        Cache::put('fd_'.$frame->fd,$frame->fd,300);//更新在线机制
         // 调用 push 方法向发起客户端推送数据
-        $server->push($frame->fd, (object)['success'=>$fdInfo->chatObj]);
+        $server->push($frame->fd, ['success'=>1]);
         // 调用 push 方法向接收客户端推送数据
 //        $server->push($fdInfo->chatObj, $fdInfo->content);
     }
