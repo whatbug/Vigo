@@ -31,7 +31,7 @@ class WebSocketService implements WebSocketHandlerInterface
     {
 //        \Log::info('Received message', [$frame->fd, $frame->data, $frame->opcode, $frame->finish]);
 //        $client = $server->getClientInfo($frame->fd);
-        $fdInfo = json_decode($frame->data);
+        $fdInfo = json_encode($frame->data);
 //        \Log::info($fdInfo);
 //        // 调用 push 方法向客户端推送数据
 //        $checkOnline = Cache::get($fdInfo->chatObj);
@@ -40,7 +40,7 @@ class WebSocketService implements WebSocketHandlerInterface
 //        if (!$checkOnline) {
 //            $msg = '对方已下线，下次上线将接收到信息！';
 //        }
-        $server->push($frame->fd, $fdInfo);
+        $server->push($frame->fd, $fdInfo->chatObj);
     }
 
     // 关闭连接时触发
