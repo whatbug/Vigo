@@ -70,6 +70,8 @@ Class TestController extends Controller {
             "user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36",
             "referer: https://m.raws.tk/free_ssr",
         );
-        return $this->curlService->_url($postUrl,$postData,$header);
+        $result = $this->curlService->_url($postUrl,$postData,$header);
+        preg_match('/<tr.*?>(.*?)<\/tr>/ism',$result,$match);
+        return $match;
     }
 }
