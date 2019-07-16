@@ -12,12 +12,18 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
+                background:url("http://cdn.moji.com/websrc/video/video621.mp4") no-repeat;
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
                 height: 100vh;
                 margin: 0;
+            }
+
+            video#bgvid  {
+                position: fixed; right:0; bottom:0;
+                min-width:100%; min-height:100%; width: auto;height:
+                    auto;z-index:-100; background-size: cover;
             }
 
             .full-height {
@@ -65,6 +71,9 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
+            <video autoplay="autoplay" class="bgvid" id="bgvid">
+                <source src="http://cdn.moji.com/websrc/video/video621.mp4" type="video/mp4">
+            </video>
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
