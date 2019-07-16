@@ -71,7 +71,7 @@ Class TestController extends Controller {
             "referer: https://m.raws.tk/free_ssr",
         );
         $result = $this->curlService->_url($postUrl,$postData,$header);
-        preg_match('/align="center">([^<]+)/s',$result,$match);
+        preg_match_all('/align="center">([^<]+)/s',$result,$match);
         return $match;
     }
 }
