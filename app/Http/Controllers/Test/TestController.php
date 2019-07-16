@@ -77,11 +77,13 @@ Class TestController extends Controller {
              if ($key >= 7) {
                  if ($key % 7 == 0)$num = $i++;
                  $redData[] = [
-                     'IP'      => $match[1][7*$num],
-                     'Port'    => $match[1][7*$num + 1],
-                     'password'=> $match[1][7*$num + 2],
-                     'method'  => $match[1][7*$num + 3],
-                     'protocol'=> $match[1][7*$num + 4],
+                     'ssl'     => $match[1][7*$num],
+                     'IP'      => $match[1][7*$num + 1],
+                     'Port'    => $match[1][7*$num + 2],
+                     'password'=> $match[1][7*$num + 3],
+                     'method'  => $match[1][7*$num + 4],
+                     'protocol'=> $match[1][7*$num + 5],
+                     'origin'  => $match[1][7*$num + 6],
                  ];
              }
         }
