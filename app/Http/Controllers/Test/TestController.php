@@ -64,14 +64,14 @@ Class TestController extends Controller {
                 'success' => false,
             ]);
         }
-        $postUrl = "https://m.raws.tk/tool/api/free_ssr?page={$request->page}&limit=10";
+        $postUrl = "https://fanqiang.network/";
         $postData= [];
-//        $hasCookie = Cache::get('vpn_cookie');
-//        if (!$hasCookie) {
-            $hasCookie = $this->curlService->get_cookie('https://m.raws.tk/free_ssr');
-//        }
-//        return $this->curlService->_url('https://m.raws.tk/tool/api/checkValid',$postData,$hasCookie,1);
-//        return $this->curlService->_url($postUrl,$postData,$hasCookie);
-        return file_get_contents('https://fanqiang.network/');
+        $header  = array(
+            "user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36",
+            "upgrade-insecure-requests: 1",
+            "referer: https://m.raws.tk/free_ssr",
+            ":path: /tool/api/checkValid",
+        );
+        return $this->curlService->_url($postUrl,$postData,$header);
     }
 }
