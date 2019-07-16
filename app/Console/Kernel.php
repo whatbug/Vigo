@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\SSR\SsrService;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -13,7 +14,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        //SSR 服务
+        SsrService::class,
     ];
 
     /**
@@ -24,8 +26,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        //每6小时更新一次数据
+         $schedule->command('ssr:array')
+                  ->twiceDaily(3, 15);;
     }
 
     /**
