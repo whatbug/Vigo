@@ -28,8 +28,8 @@
                 height: auto;
                 width: auto;
                 /*加滤镜*/
-                /*-webkit-filter: grayscale(100%);*/
-                /*filter:grayscale(100%);*/
+                -webkit-filter: grayscale(50%);
+                filter:grayscale(50%);
             }
             source{
                 min-width: 100%;
@@ -85,7 +85,7 @@
     <body>
         <div class="flex-center position-ref full-height">
             <video width="811" height="969" style="position: absolute; margin-left: -405.5px; object-fit: fill;" loop="loop" autoplay="autoplay" muted="muted">
-                <source src="http://pan.cccyun.cc/down.php/b46ea98f95843ab88f9ab56944cc7b81.mp4" type="video/mp4">
+                <source src="https://pan.cccyun.cc/down.php/b46ea98f95843ab88f9ab56944cc7b81.mp4" type="video/mp4">
             </video>
             @if (Route::has('login'))
                 <div class="top-right links">
