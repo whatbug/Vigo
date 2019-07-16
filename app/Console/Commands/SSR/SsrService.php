@@ -31,19 +31,19 @@ Class SsrService extends Command {
         );
         $result = (new CurlService)->_url($postUrl,$postData,$header);
         preg_match_all('/align="center">([^<]+)/s',$result,$match);
-        $i = 0;$redData = [];
+        $i = 1;$redData = [];
         if (sizeof($match[1])) {
             foreach ($match[1] as $key => $Value) {
-                if ($key < 7 && preg_match("/^[A-Za-z0-9]+$/", $Value) == false) continue;
+                if ($key < 7 ) continue;
                 if ($key % 7 == 0) {
                     $num = $i++;
                     $redData[] = [
-                        'iP' => $match[1][6 * $num + 1],
-                        'port' => $match[1][6 * $num + 2],
+                        'iP'       => $match[1][6 * $num + 1],
+                        'port'     => $match[1][6 * $num + 2],
                         'password' => $match[1][6 * $num + 3],
-                        'method' => $match[1][6 * $num + 4],
+                        'method'   => $match[1][6 * $num + 4],
                         'protocol' => $match[1][6 * $num + 5],
-                        'origin' => $match[1][6 * $num + 6],
+                        'origin'   => $match[1][6 * $num + 6],
                     ];
                 }
             }
