@@ -72,6 +72,7 @@ Class TestController extends Controller {
         );
         $result = $this->curlService->_url($postUrl,$postData,$header);
         preg_match_all('/align="center">([^<]+)/s',$result,$match);
+        return $match[1];
         $i = 0;$num = 1;
         foreach ($match[1] as $key => $Value) {
              if ($key >= 7) {
