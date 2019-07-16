@@ -35,6 +35,7 @@ Class SsrService extends Command {
         if (sizeof($match[1])) {
             foreach ($match[1] as $key => $Value) {
                 if ($key < 7 ) continue;
+                if ($key == 60)break;
                 if ($key % 7 == 0) {
                     $num = $i++;
                     $redData[] = [

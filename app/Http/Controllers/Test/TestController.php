@@ -77,6 +77,7 @@ Class TestController extends Controller {
             $i = 1;
             foreach ($match[1] as $key => $Value) {
                 if ($key < 7)continue;
+                if ($key == 60)break;
                 if ($key % 7 == 0){
                     $num = $i++;
                     $ssrInfo[] = [
