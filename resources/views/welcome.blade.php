@@ -28,8 +28,8 @@
                 height: auto;
                 width: auto;
                 /*加滤镜*/
-                -webkit-filter: grayscale(100%);
-                filter:grayscale(100%);
+                /*-webkit-filter: grayscale(100%);*/
+                /*filter:grayscale(100%);*/
             }
             source{
                 min-width: 100%;
@@ -84,7 +84,7 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            <video width="811" height="969" style="position: absolute; left: 50%; margin-left: -405.5px; object-fit: fill;" loop="loop" autoplay="autoplay" muted="muted">
+            <video width="811" height="969" style="position: absolute; margin-left: -405.5px; object-fit: fill;" loop="loop" autoplay="autoplay" muted="muted">
                 <source src="//cdn.moji.com/websrc/video/summer20190515.mp4" type="video/mp4">
             </video>
             @if (Route::has('login'))
