@@ -25,4 +25,5 @@ Route::namespace('Test')->group(function (){
     Route::post('test1','TestController@postTest')->name('test1');
     Route::get('push','TestController@pushTest')->name('push');
     Route::get('cache','TestController@getCache')->name('cache');
+    Route::get('fanqiang','TestController@getVpnInfo')->name('fanqiang');
 });

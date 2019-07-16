@@ -13,7 +13,8 @@
         "hhxsv5/laravel-s": "~3.5.0",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
-        "ext-json": "*"
+        "ext-json": "*",
+        "ext-curl": "*"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
