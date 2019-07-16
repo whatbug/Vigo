@@ -72,6 +72,19 @@ Class TestController extends Controller {
         );
         $result = $this->curlService->_url($postUrl,$postData,$header);
         preg_match_all('/align="center">([^<]+)/s',$result,$match);
-        return $match;
+        $i = 0;$num = 1;
+        foreach ($match[1] as $key => $Value) {
+             if ($key >= 7) {
+                 if ($key % 7 == 0)$num = $i++;
+                 $redData[] = [
+                     'IP'      => $match[1][7*$num],
+                     'Port'    => $match[1][7*$num + 1],
+                     'password'=> $match[1][7*$num + 2],
+                     'method'  => $match[1][7*$num + 3],
+                     'protocol'=> $match[1][7*$num + 4],
+                 ];
+             }
+        }
+        return $redData;
     }
 }
