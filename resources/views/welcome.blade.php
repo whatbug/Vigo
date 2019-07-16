@@ -64,10 +64,11 @@
 
             .title {
                 font-size: 84px;
+                color: #f5f5f5;
             }
 
             .links > a {
-                color: #636b6f;
+                color: #f5f5f5;
                 padding: 0 25px;
                 font-size: 13px;
                 font-weight: 600;
@@ -83,8 +84,8 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            <video autoplay="autoplay" loop="loop">
-                <source src="http://cdn.moji.com/websrc/video/video621.mp4" type="video/mp4">
+            <video width="811" height="969" style="position: absolute; left: 50%; margin-left: -405.5px; object-fit: fill;" loop="loop" autoplay="autoplay" muted="muted">
+                <source src="//cdn.moji.com/websrc/video/summer20190515.mp4" type="video/mp4">
             </video>
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -100,7 +101,7 @@
                 </div>
             @endif
 
-            <div class="content">
+            <div class="content" style="position:absolute;z-index:99999">
                 <div class="title m-b-md">
                     Laravel
                 </div>
