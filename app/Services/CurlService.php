@@ -35,7 +35,6 @@ Class CurlService {
         curl_setopt($curl,CURLOPT_HEADER,0); //将头文件的信息作为数据流输出
         curl_setopt($curl,CURLOPT_RETURNTRANSFER,0); //返回获取的输出文本流
         curl_setopt($curl, CURLOPT_URL, $postUrl);
-        curl_setopt($curl, CURLOPT_PROXY, 'http://115.159.31.195:8080');
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, FALSE);
         if (sizeof($curlPost)){
