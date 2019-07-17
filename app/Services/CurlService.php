@@ -22,7 +22,13 @@ Class CurlService {
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
         curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
         $content = curl_exec($ch); //执行curl并赋值给$content
-        return $content;
+
+        // 获得响应结果里的：头大小
+        $headerSize = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
+        // 根据头大小去获取头信息内容
+        $header = substr($content, 0, $headerSize);
+
+        return $header;
         preg_match('/Set-Cookie:(.*);/iU',$content,$str); //正则匹配
         $cookie  = substr($str[1],1);
         curl_close($ch);

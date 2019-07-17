@@ -55,7 +55,6 @@ Class TestController extends Controller {
      */
     public function getVpnInfo (Request $request) {
         $valid = array_key_exists('anhao',(array)$request);
-        return get_headers('https://m.raws.tk/m/free_ssr');
         return $this->curlService->get_cookie('https://m.raws.tk/m/free_ssr');
         if (!$valid) {
             $key = '卧槽我怎么知道';
