@@ -10,7 +10,6 @@ Class CurlService {
             "Content-type:application/json;charset=utf-8",
             "Accept:application/json",
             "upgrade-insecure-requests: 1",
-            "referer:https://m.raws.tk/free_ssr",
             "user-agent: Mozilla/5.0 (Linux; U; Android 9; zh-cn; SM-G9750 Build/PPR1.180610.011) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/57.0.2987.132 MQQBrowser/8.9 Mobile Safari/537.36",
         );
         $ch = curl_init($url_); //初始化
@@ -22,13 +21,10 @@ Class CurlService {
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
         curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
         $content = curl_exec($ch); //执行curl并赋值给$content
-
         // 获得响应结果里的：头大小
-        $headerSize = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
+        //$headerSize = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
         // 根据头大小去获取头信息内容
-        $header = substr($content, 0, $headerSize);
-
-        return $header;
+        //$header = substr($content, 0, $headerSize);
         preg_match('/Set-Cookie:(.*);/iU',$content,$str); //正则匹配
         $cookie  = substr($str[1],1);
         curl_close($ch);
