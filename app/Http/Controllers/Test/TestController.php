@@ -54,8 +54,33 @@ Class TestController extends Controller {
      * @return bool|\Illuminate\Http\JsonResponse|string
      */
     public function getVpnInfo (Request $request) {
+        $cookie= $request->cookie;
+        if ($cookie) {
+            $postUrl = "https://m.raws.tk/tool/api/free_ssr?page=1&limit=10";
+            $postData= [];
+            $header  = array(
+                "user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36",
+                "referer: https://m.raws.tk/free_ssr",
+                "cookie: {$cookie}"
+            );
+            $result = (new CurlService)->_url($postUrl,$postData,$header);
+            $resource = json_decode($result);
+            foreach ($resource->data as $val) {
+                $redData['list'][] = [
+                    'country' => $val->country,
+                    'addTime' => $val->adddate,
+                    'ip'      => $val->server,
+                    'port'    => $val->server_port,
+                    'password'=> $val->password,
+                    'method'  => $val->method,
+                    'protocol'=> $val->protocol,
+                    'status'  => $val->status?"正常":"无效",
+                ];
+            }
+            $redData['count'] = 10;
+            Cache::put('ssr_info',$redData,60*60*12);
+        }
         $valid = array_key_exists('anhao',(array)$request);
-        return $this->curlService->get_cookie('https://m.raws.tk/free_ssr');
         if (!$valid) {
             $key = '卧槽我怎么知道';
             if ($request->anhao <> $key)
@@ -66,34 +91,6 @@ Class TestController extends Controller {
             ]);
         }
         $ssrInfo = Cache::get('ssr_info');
-
-        return $this->curlService->get_cookie('https://m.raws.tk/m/free_ssr');
-//        if (!$ssrInfo) {
-//            $postUrl = "https://fanqiang.network/";
-//            $postData= [];
-//            $header  = array(
-//                "user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36",
-//                "referer: https://m.raws.tk/free_ssr",
-//            );
-//            $result = (new CurlService)->_url($postUrl,$postData,$header);
-//            preg_match_all('/align="center">([^<]+)/s',$result,$match);
-//            $i = 1;
-//            foreach ($match[1] as $key => $Value) {
-//                if ($key < 7)continue;
-//                if ($key == 60)break;
-//                if ($key % 7 == 0){
-//                    $num = $i++;
-//                    $ssrInfo[] = [
-//                        'iP'      => $match[1][6*$num + 1],
-//                        'port'    => $match[1][6*$num + 2],
-//                        'password'=> $match[1][6*$num + 3],
-//                        'method'  => $match[1][6*$num + 4],
-//                        'protocol'=> $match[1][6*$num + 5],
-//                        'origin'  => $match[1][6*$num + 6],
-//                    ];
-//                }
-//            }
-//        }
         return response()->json([
             'code'   => 0,
             'msg'    => 'HIV航班祝您旅途愉快!',
