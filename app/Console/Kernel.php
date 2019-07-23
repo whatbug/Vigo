@@ -2,7 +2,7 @@
 
 namespace App\Console;
 
-use App\Console\Commands\SSR\SsrService;
+use App\Console\Commands\SsrService;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
