@@ -1,6 +1,5 @@
 <?php namespace App\Console\Commands;
 
-use App\Services\CurlService;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Cache;
 
@@ -23,19 +22,10 @@ Class SsrService extends Command {
      * @return mixed
      */
     public function handle() {
-        $postUrl = "https://fanqiang.network/";
-        $postData= [];
-        $header  = array(
-            "user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36",
-            "referer: https://m.raws.tk/free_ssr",
-        );
-        $result = (new CurlService)->_url($postUrl,$postData,$header);
-        preg_match_all('/align="center">([^<]+)/s',$result,$match);
-        $i = 1;$redData = [];
+        $resource = file_get_contents(base_path()."/storage/ssr.txt");$i = 1;
+        preg_match_all('/align="center">([^<]+)/s',$resource,$match);
         if (sizeof($match[1])) {
             foreach ($match[1] as $key => $Value) {
-                if ($key < 7 ) continue;
-                if ($key == 60)break;
                 if ($key % 7 == 0) {
                     $num = $i++;
                     $redData[] = [
@@ -49,6 +39,7 @@ Class SsrService extends Command {
                 }
             }
         }
-        return Cache::put('ssr_info',$redData,60*60*12);
+        return Cache::put('ssr_info',$redData,60*1.5);
     }
+
 }

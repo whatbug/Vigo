@@ -98,4 +98,27 @@ Class TestController extends Controller {
             'data'   => $ssrInfo
         ]);
     }
+
+
+    public function cll (){
+        $resource = file_get_contents(base_path()."/storage/ssr.txt");$i = 1;
+        preg_match_all('/align="center">([^<]+)/s',$resource,$match);
+        if (sizeof($match[1])) {
+            foreach ($match[1] as $key => $Value) {
+                if ($key % 7 == 0) {
+                    $num = $i++;
+                    $redData[] = [
+                        'iP'       => $match[1][6 * $num + 1],
+                        'port'     => $match[1][6 * $num + 2],
+                        'password' => $match[1][6 * $num + 3],
+                        'method'   => $match[1][6 * $num + 4],
+                        'protocol' => $match[1][6 * $num + 5],
+                        'origin'   => $match[1][6 * $num + 6],
+                    ];
+                }
+            }
+        }
+        return $redData;
+    }
+
 }
