@@ -56,7 +56,7 @@ Class TestController extends Controller {
     public function getVpnInfo (Request $request) {
         $cookie= $request->cookie;
         if ($cookie) {
-            $postUrl = "https://m.ssrtool.tk/tool/api/free_ssr?page=1&limit=10";
+            $postUrl = "https://m.ssrtool.com/tool/api/free_ssr?page=1&limit=10";
             $postData= [];
             $header  = array(
                 "user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36",
