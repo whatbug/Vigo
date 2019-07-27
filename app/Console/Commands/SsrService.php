@@ -36,9 +36,10 @@ Class SsrService extends Command {
                         'port'     => $array[6 * $num + 1],
                         'password' => $array[6 * $num + 2],
                         'method'   => $array[6 * $num + 3],
-                        'check_at' => $array[6 * $num + 4],
+                        'protocol' => 'origin',
                         'country'  => ($country[0][0] == '中国')?$country[0][1]:$country[0][0],
-                        'status'   => '有效',
+                        'status'   => 'available',
+                        'check_at' => $array[6 * $num + 4],
                     ];
                 }
 
