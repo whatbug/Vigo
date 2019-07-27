@@ -26,8 +26,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        //每6小时更新一次数据
-         $schedule->command('ssr:array');
+        //每1小时更新一次数据
+         $schedule->command('ssr:array')->hourly();
     }
 
     /**
