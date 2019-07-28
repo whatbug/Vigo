@@ -22,24 +22,23 @@ Class SsrService extends Command {
      * @return mixed
      */
     public function handle() {
-        $resource = file_get_contents(base_path()."/storage/ssr.txt");$i = 0;
-        preg_match_all('/align="center">([^<]+)/s',$resource,$match);
-        $array = array_values(array_splice($match[1],5));
+        $resource = file_get_contents(base_path()."/storage/ss.txt");$i = 0;
+        preg_match_all('/<td.*?>(.*?)<\/td>/',$resource,$match);
         if (sizeof($match[1])) {
-            foreach ($array as $key => $Value) {
-                $rate = ($key + 1) % 6;
-                if ($key + 1 == 90)break;
+            foreach ($match[1] as $key => $Value) {
+                $rate = ($key + 1) % 8;
+                if ($key + 1 == 128)break;
                 if ($rate == 0) {
                     $num = $i++;
                     $redData[] = [
-                        'service'  => $array[6 * $num + 0],
-                        'port'     => $array[6 * $num + 1],
-                        'password' => $array[6 * $num + 2],
-                        'method'   => $array[6 * $num + 3],
+                        'service'  => $match[1][8 * $num + 1],
+                        'port'     => $match[1][8 * $num + 2],
+                        'password' => $match[1][8 * $num + 3],
+                        'method'   => $match[1][8 * $num + 4],
                         'protocol' => 'origin',
-                        'country'  => $array[6 * $num + 5],
+                        'country'  => $match[1][8 * $num + 6],
                         'status'   => 'available',
-                        'check_at' => $array[6 * $num + 4],
+                        'check_at' => $match[1][8 * $num + 5],
                     ];
                 }
 
