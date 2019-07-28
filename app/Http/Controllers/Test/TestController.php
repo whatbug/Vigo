@@ -110,19 +110,19 @@ Class TestController extends Controller {
                 if ($key + 1 == 90)break;
                 if ($rate == 0) {
                     $num = $i++;
-                    $postUrl = "https://www.36ip.cn/?ip={$array[6 * $num + 0]}";
-                    $postData= [];
-                    $header  = array(
-                        "user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36",
-                    );
-                    $country = (new CurlService)->_url($postUrl,$postData,$header);
+                    #$postUrl = "https://www.36ip.cn/?ip={$array[6 * $num + 0]}";
+                    #$postData= [];
+                    #$header  = array(
+                    #    "user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36",
+                    #);
+                    #$country = (new CurlService)->_url($postUrl,$postData,$header);
                     $redData[] = [
                         'service'  => $array[6 * $num + 0],
                         'port'     => $array[6 * $num + 1],
                         'password' => $array[6 * $num + 2],
                         'method'   => $array[6 * $num + 3],
                         'protocol' => 'origin',
-                        'country'  => $country,
+                        'country'  => $array[6 * $num + 5],
                         'status'   => 'available',
                         'check_at' => $array[6 * $num + 4],
                     ];
