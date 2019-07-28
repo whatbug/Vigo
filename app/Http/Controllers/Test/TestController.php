@@ -106,10 +106,10 @@ Class TestController extends Controller {
         $array = array_values(array_splice($match[1],5));
         if (sizeof($match[1])) {
             foreach ($array as $key => $Value) {
-                sleep(5);
+                sleep(2);
                 if (($key + 1) % 6 == 0) {
                     $num = $i++;
-                    $rematch = file_get_contents("http://freeapi.ipip.net/{$array[6 * $num + 0]}");
+                    $rematch = file_get_contents("https://www.36ip.cn/?ip={$array[6 * $num + 0]}");
                     preg_match_all("/([\x{4e00}-\x{9fa5}]+)/u",$rematch,$country);
                     $redData[] = [
                         'service'  => $array[6 * $num + 0],
@@ -117,7 +117,7 @@ Class TestController extends Controller {
                         'password' => $array[6 * $num + 2],
                         'method'   => $array[6 * $num + 3],
                         'protocol' => 'origin',
-                        'country'  => ($country[0][0] == '中国')?$country[0][1]:$country[0][0],
+                        'country'  => $country,
                         'status'   => 'available',
                         'check_at' => $array[6 * $num + 4],
                     ];
