@@ -56,14 +56,14 @@ Class TestController extends Controller {
     public function getVpnInfo (Request $request) {
         $cookie= $request->cookie;
         if ($cookie) {
-            $postUrl = "https://m.ssrtool.com/tool/api/free_ssr?page=1&limit=10";
+            $postUrl = "https://www.36ip.cn/?ip=172.104.73.86";
             $postData= [];
             $header  = array(
                 "user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36",
-                "referer: https://m.raws.tk/free_ssr",
-                "cookie: {$cookie}"
+                "referer: https://www.36ip.cn/",
             );
             $result = (new CurlService)->_url($postUrl,$postData,$header);
+            return $result;
             $resource = json_decode($result);
             foreach ($resource->data as $val) {
                 $redData['list'][] = [
