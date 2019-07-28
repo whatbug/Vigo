@@ -45,7 +45,7 @@ Class SsrService extends Command {
 
             }
         }
-        return Cache::put('ssr_info',$redData,120);
+        return Cache::put('ssr_info',$redData,now()->addMinutes(120));
     }
 
 }
