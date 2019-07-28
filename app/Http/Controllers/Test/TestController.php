@@ -107,7 +107,7 @@ Class TestController extends Controller {
         if (sizeof($match[1])) {
             foreach ($match[1] as $key => $Value) {
                 $rate = ($key + 1) % 8;
-                if ($key + 1 == 120)break;
+                if ($key + 1 == 128)break;
                 if ($rate == 0) {
                     $num = $i++;
                     #$postUrl = "https://www.36ip.cn/?ip={$array[6 * $num + 0]}";
