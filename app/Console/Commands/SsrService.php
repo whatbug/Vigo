@@ -22,6 +22,7 @@ Class SsrService extends Command {
      * @return mixed
      */
     public function handle() {
+        set_time_limit(0);
         $resource = file_get_contents(base_path()."/storage/ssr.txt");$i = 0;
         preg_match_all('/align="center">([^<]+)/s',$resource,$match);
         $array = array_values(array_splice($match[1],5));
