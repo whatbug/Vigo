@@ -103,7 +103,7 @@ Class TestController extends Controller {
     public function cll (){
         $resource = file_get_contents(base_path()."/storage/ss.txt");$i = 0;
         #preg_match_all('/align="center">([^<]+)/s',$resource,$match);
-        preg_match_all('/<td>(.*?)</td>/si',$resource,$match);
+        preg_match_all('/<td.*?>(.*?)<\/td>/',$resource,$match);
         return $match;
         $array = array_values(array_splice($match[1],5));
         if (sizeof($match[1])) {
