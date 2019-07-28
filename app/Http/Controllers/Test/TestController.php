@@ -110,7 +110,13 @@ Class TestController extends Controller {
                 sleep(2);
                 if (($key + 1) % 6 == 0) {
                     $num = $i++;
-                    $rematch = file_get_contents("https://www.36ip.cn/?ip={$array[6 * $num + 0]}");
+                    $postUrl = "https://www.36ip.cn/?ip=172.104.73.86";
+                    $postData= [];
+                    $header  = array(
+                        "user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36",
+                        "referer: https://www.36ip.cn/",
+                    );
+                    $rematch = (new CurlService)->_url($postUrl,$postData,$header);
                     preg_match_all("/([\x{4e00}-\x{9fa5}]+)/u",$rematch,$country);
                     $redData[] = [
                         'service'  => $array[6 * $num + 0],
