@@ -106,6 +106,7 @@ Class TestController extends Controller {
         $array = array_values(array_splice($match[1],5));
         if (sizeof($match[1])) {
             foreach ($array as $key => $Value) {
+                sleep(5);
                 if (($key + 1) % 6 == 0) {
                     $num = $i++;
                     $rematch = file_get_contents("http://freeapi.ipip.net/{$array[6 * $num + 0]}");
