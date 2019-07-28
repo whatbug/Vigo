@@ -101,23 +101,21 @@ Class TestController extends Controller {
 
 
     public function cll (){
-        set_time_limit(0);
         $resource = file_get_contents(base_path()."/storage/ssr.txt");$i = 0;
         preg_match_all('/align="center">([^<]+)/s',$resource,$match);
         $array = array_values(array_splice($match[1],5));
         if (sizeof($match[1])) {
             foreach ($array as $key => $Value) {
-                sleep(2);
-                if (($key + 1) % 6 == 0) {
+                $rate = ($key + 1) % 6;
+                if ($key + 1 == 90)break;
+                if ($rate == 0) {
                     $num = $i++;
-                    $postUrl = "https://www.36ip.cn/?ip=172.104.73.86";
+                    $postUrl = "https://www.36ip.cn/?ip={$array[6 * $num + 0]}";
                     $postData= [];
                     $header  = array(
                         "user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36",
-                        "referer: https://www.36ip.cn/",
                     );
-                    $rematch = (new CurlService)->_url($postUrl,$postData,$header);
-                    preg_match_all("/([\x{4e00}-\x{9fa5}]+)/u",$rematch,$country);
+                    $country = (new CurlService)->_url($postUrl,$postData,$header);
                     $redData[] = [
                         'service'  => $array[6 * $num + 0],
                         'port'     => $array[6 * $num + 1],
