@@ -22,24 +22,22 @@ Class SsrService extends Command {
      * @return mixed
      */
     public function handle() {
-        set_time_limit(0);
         $resource = file_get_contents(base_path()."/storage/ssr.txt");$i = 0;
         preg_match_all('/align="center">([^<]+)/s',$resource,$match);
         $array = array_values(array_splice($match[1],5));
         if (sizeof($match[1])) {
             foreach ($array as $key => $Value) {
-                sleep(15);
-                if (($key + 1) % 6 == 0) {
+                $rate = ($key + 1) % 6;
+                if ($key + 1 == 90)break;
+                if ($rate == 0) {
                     $num = $i++;
-                    $rematch = file_get_contents("https://www.36ip.cn/?ip={$array[6 * $num + 0]}");
-                    preg_match_all("/([\x{4e00}-\x{9fa5}]+)/u",$rematch,$country);
                     $redData[] = [
                         'service'  => $array[6 * $num + 0],
                         'port'     => $array[6 * $num + 1],
                         'password' => $array[6 * $num + 2],
                         'method'   => $array[6 * $num + 3],
                         'protocol' => 'origin',
-                        'country'  => $country,
+                        'country'  => $array[6 * $num + 5],
                         'status'   => 'available',
                         'check_at' => $array[6 * $num + 4],
                     ];
