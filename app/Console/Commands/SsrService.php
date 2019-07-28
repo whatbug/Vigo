@@ -27,6 +27,7 @@ Class SsrService extends Command {
         $array = array_values(array_splice($match[1],5));
         if (sizeof($match[1])) {
             foreach ($array as $key => $Value) {
+                sleep(15);
                 if (($key + 1) % 6 == 0) {
                     $num = $i++;
                     $rematch = file_get_contents("http://freeapi.ipip.net/{$array[6 * $num + 0]}");
@@ -45,7 +46,7 @@ Class SsrService extends Command {
 
             }
         }
-        return Cache::put('ssr_info',$redData,60*1.5);
+        return Cache::put('ssr_info',$redData,120);
     }
 
 }
