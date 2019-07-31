@@ -18,19 +18,6 @@
                 height: 100vh;
                 margin: 0;
             }
-
-            video{
-                position: fixed;
-                right: 0px;
-                bottom: 0px;
-                min-width: 100%;
-                min-height: 100%;
-                height: auto;
-                width: auto;
-                /*加滤镜*/
-                -webkit-filter: grayscale(50%);
-                filter:grayscale(50%);
-            }
             source{
                 min-width: 100%;
                 min-height: 100%;
@@ -67,18 +54,78 @@
                 color: #f5f5f5;
             }
 
-            .links > a {
-                color: #f5f5f5;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
             .m-b-md {
                 margin-bottom: 30px;
+            }
+
+            @media screen and (max-width: 1200px) {
+                video{
+                    right: 0px;
+                    bottom: 0px;
+                    min-width: 0;
+                    min-height: 0;
+                    height: 0;
+                    width: 0;
+                }
+                .links > a {
+                    color: #a09e9e;
+                    padding: 0 25px;
+                    font-size: 13px;
+                    font-weight: 600;
+                    letter-spacing: .1rem;
+                    text-decoration: none;
+                    text-transform: uppercase;
+                }
+
+                .content {
+                    text-align: center;
+                }
+
+                .title {
+                    font-size: 84px;
+                    color: #a09e9e;
+                }
+
+                .m-b-md {
+                    margin-bottom: 30px;
+                }
+            }
+
+            @media screen and (min-width: 1200px) {
+                video{
+                    /*position: fixed;*/
+                    right: 0px;
+                    bottom: 0px;
+                    min-width: 100%;
+                    min-height: 100%;
+                    height: auto;
+                    width: auto;
+                    /*加滤镜*/
+                    -webkit-filter: grayscale(50%);
+                    filter:grayscale(50%);
+                }
+                .links > a {
+                    color: #f5f5f5;
+                    padding: 0 25px;
+                    font-size: 13px;
+                    font-weight: 600;
+                    letter-spacing: .1rem;
+                    text-decoration: none;
+                    text-transform: uppercase;
+                }
+
+                .content {
+                    text-align: center;
+                }
+
+                .title {
+                    font-size: 84px;
+                    color: #f5f5f5;
+                }
+
+                .m-b-md {
+                    margin-bottom: 30px;
+                }
             }
         </style>
     </head>
