@@ -22,30 +22,29 @@ Class SsrService extends Command {
      * @return mixed
      */
     public function handle() {
-        $resource = file_get_contents(base_path()."/storage/ssr.txt");$i = 0;
-        preg_match_all('/align="center">([^<]+)/s',$resource,$match);
-        $array = array_values(array_splice($match[1],5));
+        $resource = file_get_contents(base_path()."/storage/ss.txt");$i = 0;
+        preg_match_all('/<td.*?>(.*?)<\/td>/',$resource,$match);
         if (sizeof($match[1])) {
-            foreach ($array as $key => $Value) {
-                if (($key + 1) % 6 == 0) {
+            foreach ($match[1] as $key => $Value) {
+                $rate = ($key + 1) % 8;
+                if ($key + 1 == 128)break;
+                if ($rate == 0) {
                     $num = $i++;
-                    $rematch = file_get_contents("http://freeapi.ipip.net/{$array[6 * $num + 0]}");
-                    preg_match_all("/([\x{4e00}-\x{9fa5}]+)/u",$rematch,$country);
                     $redData[] = [
-                        'service'  => $array[6 * $num + 0],
-                        'port'     => $array[6 * $num + 1],
-                        'password' => $array[6 * $num + 2],
-                        'method'   => $array[6 * $num + 3],
+                        'service'  => $match[1][8 * $num + 1],
+                        'port'     => $match[1][8 * $num + 2],
+                        'password' => $match[1][8 * $num + 3],
+                        'method'   => $match[1][8 * $num + 4],
                         'protocol' => 'origin',
-                        'country'  => ($country[0][0] == '中国')?$country[0][1]:$country[0][0],
+                        'country'  => $match[1][8 * $num + 6],
                         'status'   => 'available',
-                        'check_at' => $array[6 * $num + 4],
+                        'check_at' => $match[1][8 * $num + 5],
                     ];
                 }
 
             }
         }
-        return Cache::put('ssr_info',$redData,60*1.5);
+        return Cache::put('ssr_info',$redData,now()->addMinutes(120));
     }
 
 }
