@@ -133,4 +133,13 @@ Class TestController extends Controller {
         return $redData;
     }
 
+
+    //验证密码正确性
+    public function vpnValidate (Request $request) {
+        if ($request->anhao == '卧槽我怎么知道'){
+            setcookie('anhao','卧槽我怎么知道');
+            return true;}
+        return false;
+    }
+
 }
