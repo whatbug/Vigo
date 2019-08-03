@@ -5,8 +5,8 @@
     <meta name="description" content="particles.js is a lightweight JavaScript library for creating particles.">
     <meta name="author" content="Vincent Garreau">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" media="screen" href="https://i-song.cc/css/style.css">
-    <link rel="stylesheet" type="text/css" href="https://i-song.cc/css/reset.css">
+    <link rel="stylesheet" media="screen" href="{{asset('css/style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('/css/reset.css')}}">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 <body>
