@@ -35,6 +35,7 @@ Route::namespace('Test')->group(function (){
         if (Cache::get($ipKey)) {
             if (Cache::get($ipKey) == md5('卧槽我怎么知道'.$request->getClientIp())) {
                 $ssrInfo = Cache::get('ssr_info');
+                return $ssrInfo;
                 return view('vpn.ssr',['data'=>$ssrInfo[0]]);
             }
         }
