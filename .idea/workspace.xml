@@ -4,9 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/app/Http/Controllers/Test/TestController.php" line="58" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e5216d6-fbcd-4943-8d11-8237777cfe25" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/resources/views/vpn/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vpn/index.blade.php" afterDir="false" />
-    </list>
+    <list default="true" id="9e5216d6-fbcd-4943-8d11-8237777cfe25" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,8 +31,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/vpn/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="15" column="26" lean-forward="true" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
+            <state relative-caret-position="176">
+              <caret line="8" column="56" selection-start-line="8" selection-start-column="56" selection-end-line="8" selection-end-column="56" />
             </state>
           </provider>
         </entry>
@@ -368,12 +366,12 @@
       <workItem from="1564555539632" duration="595000" />
       <workItem from="1564626734583" duration="597000" />
       <workItem from="1564718508800" duration="3585000" />
-      <workItem from="1564811254528" duration="454000" />
+      <workItem from="1564811254528" duration="1127000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="127075000" />
+    <option name="totallyTimeSpent" value="127748000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -683,8 +681,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/vpn/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="15" column="26" lean-forward="true" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
+        <state relative-caret-position="176">
+          <caret line="8" column="56" selection-start-line="8" selection-start-column="56" selection-end-line="8" selection-end-column="56" />
         </state>
       </provider>
     </entry>

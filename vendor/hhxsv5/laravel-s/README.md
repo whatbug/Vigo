@@ -7,7 +7,9 @@
 |______\__,_|_|  \__,_| \_/ \___|_|_____/ 
                                            
 ```
-> 🚀`LaravelS` is a glue that is used to quickly integrate `Swoole` into `Laravel` or `Lumen`, and then give them better performance and more possibilities.
+> 🚀`LaravelS` is like a glue that is used to quickly integrate `Swoole` into `Laravel` or `Lumen`, and then give them better performance and more possibilities.
+
+*Please `Watch` this repository to get the latest updates.*
 
 [![Latest Stable Version](https://poser.pugx.org/hhxsv5/laravel-s/v/stable.svg)](https://packagist.org/packages/hhxsv5/laravel-s)
 [![Latest Unstable Version](https://poser.pugx.org/hhxsv5/laravel-s/v/unstable.svg)](https://packagist.org/packages/hhxsv5/laravel-s)
@@ -126,7 +128,7 @@ php artisan laravels publish
 | `start` | Start LaravelS, list the processes by "*ps -ef&#124;grep laravels*". Support the option "*-d&#124;--daemonize*" to run as a daemon; Support the option "*-e&#124;--env*" to specify the environment to run, such as `--env=testing` will use the configuration file `.env.testing` firstly, this feature requires `Laravel 5.2+` |
 | `stop` | Stop LaravelS |
 | `restart` | Restart LaravelS, support the options "*-d&#124;--daemonize*" and "*-e&#124;--env*" |
-| `reload` | Reload all Task/Worker/Timer processes which contain your business codes, and trigger the method `onReload` of Custom process, CANNOT reload Master/Manger processes |
+| `reload` | Reload all Task/Worker/Timer processes which contain your business codes, and trigger the method `onReload` of Custom process, CANNOT reload Master/Manger processes. After modifying `config/laravels.php`, you can `only` call `restart` to restart |
 | `info` | Display component version information |
 | `help` | Display help information |
 
@@ -953,11 +955,32 @@ Supported events:
 
 | Event | Interface | When happened |
 | -------- | -------- | -------- |
+| BeforeStart | Hhxsv5\LaravelS\Swoole\Events\BeforeStartInterface | Occurs before the Master process starts, `this event should not handle complex business logic, and can only do some simple work of initialization`. |
 | WorkerStart | Hhxsv5\LaravelS\Swoole\Events\WorkerStartInterface | Occurs when the Worker/Task process starts, and the Laravel initialization has been completed. |
 | WorkerStop | Hhxsv5\LaravelS\Swoole\Events\WorkerStopInterface | Occurs when the Worker/Task process exits normally. |
 | WorkerError | Hhxsv5\LaravelS\Swoole\Events\WorkerErrorInterface | Occurs when an exception or fatal error occurs in the Worker/Task process. |
 
 1.Create an event class to implement the corresponding interface.
+```php
+namespace App\Events;
+use Hhxsv5\LaravelS\Swoole\Events\BeforeStartInterface;
+use Swoole\Atomic;
+use Swoole\Http\Server;
+class BeforeStartEvent implements BeforeStartInterface
+{
+    public function __construct()
+    {
+    }
+    public function handle(Server $server)
+    {
+        // Initialize a global counter (available across processes)
+        $server->atomicCount = new Atomic(2233);
+
+        // Invoked in controller: app('swoole')->atomicCount->get();
+    }
+}
+```
+
 ```php
 namespace App\Events;
 use Hhxsv5\LaravelS\Swoole\Events\WorkerStartInterface;
@@ -978,6 +1001,7 @@ class WorkerStartEvent implements WorkerStartInterface
 ```php
 // Edit `config/laravels.php`
 'event_handlers' => [
+    'BeforeStart' => \App\Events\BeforeStartEvent::class,
     'WorkerStart' => \App\Events\WorkerStartEvent::class,
 ],
 ```
@@ -989,12 +1013,6 @@ class WorkerStartEvent implements WorkerStartInterface
     - Under FPM mode, singleton instances will be instantiated and recycled in every request, request start=>instantiate instance=>request end=>recycled instance.
 
     - Under Swoole Server, All singleton instances will be held in memory, different lifetime from FPM, request start=>instantiate instance=>request end=>do not recycle singleton instance. So need developer to maintain status of singleton instances in every request.
-    
-    - All controllers are singleton in LaravelS, the properties defined in controllers will be retained after the request is finished. This is not what we want in most cases. If you want to migrate to LaravelS, or find out potential problems, you can use the command below, it can list all properties of all controllers related your routes.
-
-    ```bash
-    php artisan laravels:list-properties
-    ```
 
     - If Session/Authentication/JWT is used in your project, please uncomment the `cleaners` in `laravels.php` as appropriate.
 

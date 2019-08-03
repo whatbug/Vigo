@@ -9,6 +9,8 @@
 ```
 > 🚀`LaravelS`是一个胶水项目，用于快速集成`Swoole`到`Laravel`或`Lumen`，然后赋予它们更好的性能、更多可能性。
 
+*请`Watch`此仓库，以获得最新的更新。*
+
 [![Latest Stable Version](https://poser.pugx.org/hhxsv5/laravel-s/v/stable.svg)](https://packagist.org/packages/hhxsv5/laravel-s)
 [![Latest Unstable Version](https://poser.pugx.org/hhxsv5/laravel-s/v/unstable.svg)](https://packagist.org/packages/hhxsv5/laravel-s)
 [![Total Downloads](https://poser.pugx.org/hhxsv5/laravel-s/downloads.svg)](https://packagist.org/packages/hhxsv5/laravel-s)
@@ -131,7 +133,7 @@ php artisan laravels publish
 | `start` | 启动LaravelS，展示已启动的进程列表 "*ps -ef&#124;grep laravels*"。支持选项 "*-d&#124;--daemonize*" 以守护进程的方式运行，此选项将覆盖`laravels.php`中`swoole.daemonize`设置；支持选项 "*-e&#124;--env*" 用来指定运行的环境，如`--env=testing`将会优先使用配置文件`.env.testing`，这个特性要求`Laravel 5.2+` |
 | `stop` | 停止LaravelS |
 | `restart` | 重启LaravelS，支持选项 "*-d&#124;--daemonize*" 和 "*-e&#124;--env*" |
-| `reload` | 平滑重启所有Task/Worker/Timer进程(这些进程内包含了你的业务代码)，并触发自定义进程的`onReload`方法，不会重启Master/Manger进程 |
+| `reload` | 平滑重启所有Task/Worker/Timer进程(这些进程内包含了你的业务代码)，并触发自定义进程的`onReload`方法，不会重启Master/Manger进程；修改`config/laravels.php`后，你`只能`调用`restart`来实现重启 |
 | `info` | 显示组件的版本信息 |
 | `help` | 显示帮助信息 |
 
@@ -735,7 +737,7 @@ public function onClose(Server $server, $fd, $reactorId)
 
 > 更多的信息，请参考[Swoole增加监听的端口](https://wiki.swoole.com/wiki/page/16.html)与[多端口混合协议](https://wiki.swoole.com/wiki/page/525.html)
 
-为了使我们的主服务器能支持除`HTTP`和`WebSocket`外的更多协议，我们引入了`Swoole`的`多端口混合协议`特性，在LaravelS中称为`Socket`。现在，可以很方便地在`Laravel`上被构建`TCP/UDP`应用。
+为了使我们的主服务器能支持除`HTTP`和`WebSocket`外的更多协议，我们引入了`Swoole`的`多端口混合协议`特性，在LaravelS中称为`Socket`。现在，可以很方便地在`Laravel`上构建`TCP/UDP`应用。
 
 1. 创建Socket处理类，继承`Hhxsv5\LaravelS\Swoole\Socket\{TcpSocket|UdpSocket|Http|WebSocket}`
 
@@ -967,11 +969,32 @@ public function onClose(Server $server, $fd, $reactorId)
 
 | 事件 | 需实现的接口 | 发生时机 |
 | -------- | -------- | -------- |
+| BeforeStart | Hhxsv5\LaravelS\Swoole\Events\BeforeStartInterface | 发生在Master进程启动之前，`此事件中不应处理复杂的业务逻辑，只能做一些初始化的简单工作`。|
 | WorkerStart | Hhxsv5\LaravelS\Swoole\Events\WorkerStartInterface | 发生在Worker/Task进程启动时，并且已经完成Laravel初始化 |
 | WorkerStop | Hhxsv5\LaravelS\Swoole\Events\WorkerStopInterface | 发生在Worker/Task进程正常退出时。 |
 | WorkerError | Hhxsv5\LaravelS\Swoole\Events\WorkerErrorInterface | 发生在Worker/Task进程发生异常或致命错误时。 |
 
 1.创建事件处理类，实现相应的接口。
+```php
+namespace App\Events;
+use Hhxsv5\LaravelS\Swoole\Events\BeforeStartInterface;
+use Swoole\Atomic;
+use Swoole\Http\Server;
+class BeforeStartEvent implements BeforeStartInterface
+{
+    public function __construct()
+    {
+    }
+    public function handle(Server $server)
+    {
+        // 初始化一个全局计数器(跨进程的可用)
+        $server->atomicCount = new Atomic(2233);
+
+        // 控制器中调用：app('swoole')->atomicCount->get();
+    }
+}
+```
+
 ```php
 namespace App\Events;
 use Hhxsv5\LaravelS\Swoole\Events\WorkerStartInterface;
@@ -992,6 +1015,7 @@ class WorkerStartEvent implements WorkerStartInterface
 ```php
 // 修改文件 config/laravels.php
 'event_handlers' => [
+    'BeforeStart' => \App\Events\BeforeStartEvent::class,
     'WorkerStart' => \App\Events\WorkerStartEvent::class,
 ],
 ```
@@ -1005,12 +1029,6 @@ class WorkerStartEvent implements WorkerStartInterface
 
     - 如果你的项目中使用到了Session、Authentication、JWT，请根据情况解除`laravels.php`中`cleaners`的注释。
     
-    - 在 LaravelS 中，所有控制器都是单例，控制器里面设置的属性在请求结束后也会保留下来，在后续请求中都可以获取到之前请求设置的属性，这在大部分情况都不是我们想要的效果。如果想要迁移到 LaravelS，或者找出潜在的问题，可以使用下面的命令。它可以列出你的路由中所有关联的控制器的所有属性：
-    
-    ```bash
-    php artisan laravels:list-properties
-    ```
-
     - 常见的解决方案：
 
         1. 写一个`XxxCleaner`类来清理单例对象状态，此类需实现接口`Hhxsv5\LaravelS\Illuminate\Cleaners\CleanerInterface`，然后注册到`laravels.php`的`cleaners`中。
