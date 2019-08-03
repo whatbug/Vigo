@@ -31,7 +31,7 @@ Route::namespace('Test')->group(function (){
         return view('vpn.index');
     });
     Route::get('free-ssr',function(){
-        if ($_COOKIE == '卧槽我怎么知道') {
+        if ($_COOKIE['anhao'] == md5('卧槽我怎么知道')) {
             $ssrInfo = Cache::get('ssr_info');
             return view('vpn.ssr',['data'=>$ssrInfo]);
         }

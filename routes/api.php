@@ -17,4 +17,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//验证用户是否有效
 Route::post('/validate','TestController@vpnValidate');

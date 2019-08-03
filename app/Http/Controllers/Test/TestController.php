@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers\Test;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Controller as BaseController;
 use App\Services\CurlService;
 use App\Swoole\Task\TestTask;
 use Hhxsv5\LaravelS\Swoole\Task\Task;
@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Input;
 
-Class TestController extends Controller {
+Class TestController extends BaseController {
     private $curlService;
     public function __construct(CurlService $curlService)
     {
@@ -131,15 +131,6 @@ Class TestController extends Controller {
             }
         }
         return $redData;
-    }
-
-
-    //验证密码正确性
-    public function vpnValidate (Request $request) {
-        if ($request->anhao == '卧槽我怎么知道'){
-            setcookie('anhao','卧槽我怎么知道');
-            return true;}
-        return false;
     }
 
 }
