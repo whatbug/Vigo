@@ -24,7 +24,7 @@ Route::namespace('Test')->group(function (){
     Route::get('swoole','TestController@Swoole')->name('swoole');
     Route::get('cll','TestController@cll')->name('cll');
     Route::get('tasks','TestController@getTask')->name('task');
-    Route::post('test1','TestController@postTest')->name('test1');
+    Route::get('test1','TestController@postTest')->name('test1');
     Route::get('push','TestController@pushTest')->name('push');
     Route::get('cache','TestController@getCache')->name('cache');
     Route::get('fanqiang',function(){

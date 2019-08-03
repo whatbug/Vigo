@@ -28,7 +28,7 @@ Class TestController extends Controller {
     }
 
     public function postTest () {
-        return app('url');
+        return base_path('/public/assets/1.css');
     }
 
     public function pushTest () {
