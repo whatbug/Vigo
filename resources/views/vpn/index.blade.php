@@ -65,13 +65,12 @@
             url : "/api/validate",
             dataType : "json",
             data : {'anhao':$("#input").val()},
-            success : function(test) {
-                if (test) {
+            success : function(res) {
+                if (res == '1') {
                     window.location.href="/free-ssr";
+                } else {
+                    alert('看来兄弟非魔教中人！');
                 }
-            },
-            error : function(){
-                alert('看来兄弟非魔教中人！');
             }
         });
     }
