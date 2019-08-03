@@ -28,7 +28,7 @@ Class TestController extends Controller {
     }
 
     public function postTest () {
-        var_dump('1456666');
+        return app('url');
     }
 
     public function pushTest () {
