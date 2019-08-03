@@ -30,8 +30,8 @@ Route::namespace('Test')->group(function (){
     Route::get('fanqiang',function(){
         return view('vpn.index');
     });
-    Route::get('free-ssr',function(){
-        if ($_COOKIE['anhao'] == md5('卧槽我怎么知道')) {
+    Route::get('free-ssr',function(\Illuminate\Http\Request $request){
+        if ($_COOKIE['anhao'] == md5('卧槽我怎么知道').$request->getClientIp()) {
             $ssrInfo = Cache::get('ssr_info');
             return view('vpn.ssr',['data'=>$ssrInfo]);
         }
