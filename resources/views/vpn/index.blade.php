@@ -16,7 +16,7 @@
             Share Free Ssr
         </div>
         <div class="login-center clearfix">
-            <div class="login-center-img"><img src="https://i-song.cc/img/password.png"></div>
+            <div class="login-center-img"><img src="https://i-song.oss-cn-beijing.aliyuncs.com/images/img/password.png"></div>
             <div class="login-center-input">
                 <input type="text" name="anhao" value="" id="input" placeholder="请输入密码" onfocus="this.placeholder=&#39;&#39;" onblur="this.placeholder=&#39;请输入密码&#39;">
                 <div class="login-center-input-text">密码</div>
