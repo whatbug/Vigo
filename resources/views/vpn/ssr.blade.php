@@ -62,14 +62,15 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach ($data as $val)
+                                    @foreach ($data as $key=>$val)
                                     <tr>
-                                        <td align="center">{{$val->service}}</td>
-                                        <td align="center">{{$val->port}}</td>
-                                        <td align="center">{{$val->password}}</td>
-                                        <td align="center">{{$val->method}}</td>
-                                        <td align="center">{{$val->check_at}}</td>
-                                        <td align="center">{{$val->country}}</td>
+                                        {{$val}}
+{{--                                        <td align="center">{{$val->service}}</td>--}}
+{{--                                        <td align="center">{{$val->port}}</td>--}}
+{{--                                        <td align="center">{{$val->password}}</td>--}}
+{{--                                        <td align="center">{{$val->method}}</td>--}}
+{{--                                        <td align="center">{{$val->check_at}}</td>--}}
+{{--                                        <td align="center">{{$val->country}}</td>--}}
                                     </tr>
                                     @endforeach
                                     </tbody>
