@@ -11,7 +11,8 @@ class TestController extends BaseController
     public function vpnValidate (Request $request) {
         if ($request->anhao == '卧槽我怎么知道'){
             setcookie('anhao',md5('卧槽我怎么知道'));
-            return true;}
-        return false;
+            return 1;
+        }
+        return 0;
     }
 }
