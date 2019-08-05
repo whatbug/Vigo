@@ -5,8 +5,8 @@
     <meta name="description" content="particles.js is a lightweight JavaScript library for creating particles.">
     <meta name="author" content="Vincent Garreau">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" media="screen" href="https://i-song.oss-cn-beijing.aliyuncs.com/css/style.css">
-    <link rel="stylesheet" type="text/css" href="https://i-song.oss-cn-beijing.aliyuncs.com/css/reset.css">
+    <link rel="stylesheet" media="screen" href="{{asset('./statics/css/style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('./statics/css/reset.css')}}">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 <body>
@@ -16,7 +16,7 @@
             Share Free Ssr
         </div>
         <div class="login-center clearfix">
-            <div class="login-center-img"><img src="https://i-song.oss-cn-beijing.aliyuncs.com/images/img/password.png"></div>
+            <div class="login-center-img"><img src="{{asset('./statics/img/password.png')}}"></div>
             <div class="login-center-input">
                 <input type="text" name="anhao" value="" id="input" placeholder="请输入密码" onfocus="this.placeholder=&#39;&#39;" onblur="this.placeholder=&#39;请输入密码&#39;">
                 <div class="login-center-input-text">密码</div>
@@ -70,6 +70,7 @@
                     window.location.href="/free-ssr";
                 } else {
                     alert('看来兄弟非魔教中人！');
+                    window.location.href="/fanqiang";
                 }
             }
         });

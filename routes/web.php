@@ -19,6 +19,25 @@ Route::get('/', function () {
 Route::get('/test', function (){
     return 666;
 });
+//二维码
+Route::get('/app/qrcode',function() {
+    if(strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger')){
+        if(strpos($_SERVER['HTTP_USER_AGENT'], 'iPhone')){
+            $Ios     = 'https://itunes.apple.com/cn/app/讯都网/id1453804979';
+            header("location:{$Ios}");
+        }else{
+            $JumpUrl = 'http://mm.eastday.com/wechatjump/sxg.jump?location=http://app.xunduwang.com/app/qrcode';
+            header("location:{$JumpUrl}");
+        }
+    }elseif(strpos($_SERVER['HTTP_USER_AGENT'], 'iPhone')){
+        $Ios     = 'https://itunes.apple.com/cn/app/讯都网/id1453804979';
+        header("location:{$Ios}");
+    }else{
+        $resource = file_get_contents('https://android.myapp.com/myapp/searchAjax.htm?kw=%E8%AE%AF%E9%83%BD%E7%BD%91&pns=&sid=');
+        $appUrl   = json_decode($resource)->obj->items[0]->appDetail->apkUrl;
+        header('location:'.$appUrl);
+    }
+});
 
 Route::namespace('Test')->group(function (){
     Route::get('swoole','TestController@Swoole')->name('swoole');
