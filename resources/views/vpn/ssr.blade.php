@@ -24,7 +24,7 @@
         }
     </style>
     <link rel="stylesheet" id="dashicons-css" href="https://i-song.cc/statics/css/dashicons.min.css" type="text/css" media="all">
-    <link rel="stylesheet" id="theme-style-css" href="https://i-song.cc/statics/css/ssr-style.css" type="text/css" media="all">
+    <link rel="stylesheet" id="theme-style-css" href="{{asset('./statics/css/ssr-style.css')}}" type="text/css" media="all">
     <!--[if lt IE 9]>
     <link rel='stylesheet' id='theme-ie8-css'  href='https://www.youneed.win/wp-content/themes/Beginning/css/ie8.css?ver=23' type='text/css' media='all' />
     <![endif]-->
