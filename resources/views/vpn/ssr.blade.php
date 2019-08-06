@@ -101,7 +101,8 @@
 <body>
 <!-- Swiper -->
 <div class="swiper-container swiper-container-initialized swiper-container-vertical">
-    <div class="swiper-wrapper"">
+    <div class="swiper-wrapper">
+    @foreach ($data as $key=>$val)
     <div class="swiper-slide" style="height: 812px; margin-bottom: 30px;">
         <table>
             <thead>
@@ -115,7 +116,6 @@
             </tr>
             </thead>
             <tbody>
-            @foreach ($data as $key=>$val)
             <tr>
                 <td align="center" data-label="服务IP">{{$val['service']}}</td>
                 <td align="center" data-label="端口">{{$val['port']}}</td>
@@ -124,10 +124,10 @@
                 <td align="center" data-label="更新时间">{{$val['check_at']}}</td>
                 <td align="center" data-label="国家">{{$val['country']}}</td>
             </tr>
-            @endforeach
             </tbody>
         </table>
     </div>
+    @endforeach
 </div>
 <!-- Add Pagination -->
 <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 1"></span><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 3"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 4"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 5"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 6"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 7"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 8"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 9"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 10"></span></div>
