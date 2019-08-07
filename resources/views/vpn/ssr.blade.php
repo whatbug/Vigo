@@ -121,8 +121,8 @@
                 <td align="center" data-label="端口" onclick="copyText(content{!! $key !!}{!! $key+2 !!});" title="点击复制" id="content{{ $key }}{{$key+2}}">{{$val['port']}}</td>
                 <td align="center" data-label="密码" onclick="copyText(content{!! $key !!}{!! $key+3 !!});" title="点击复制" id="content{{ $key }}{{$key+3}}">{{$val['password']}}</td>
                 <td align="center" data-label="加密方式" onclick="copyText(content{!! $key !!}{!! $key+4 !!});" title="点击复制" id="content{{ $key }}{{$key+4}}">{{$val['method']}}</td>
-                <td align="center" data-label="更新时间" onclick="copyText(content{!! $key !!}{!! $key+5 !!});" title="点击复制" id="content{{$key+5}}">{{$val['check_at']}}</td>
-                <td align="center" data-label="国家" onclick="copyText(content{!! $key !!}{!! $key+6 !!});" title="点击复制" id="content{{ $key }}{{$key+6}}">{{$val['country']}}</td>
+                <td align="center" data-label="更新时间">{{$val['check_at']}}</td>
+                <td align="center" data-label="国家">{{$val['country']}}</td>
             </tr>
             </tbody>
         </table>
@@ -138,31 +138,8 @@
 
 <!-- Initialize Swiper -->
 <script>
-    var swiper = new Swiper('.swiper-container', {
-        direction: 'vertical',
-        slidesPerView: 1,
-        spaceBetween: 30,
-        mousewheel: true,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-    });
-    function copyText(ele){  //复制文本 需要在文档中添加一个复制用的input
-        var copyDOM = ele;  //要复制文字的节点  
-        var range = document.createRange(); //创建一个range
-        window.getSelection().removeAllRanges();   //清楚页面中已有的selection
-        range.selectNode(copyDOM);    // 选中需要复制的节点    
-        window.getSelection().addRange(range);   // 执行选中元素
-        var successful = document.execCommand('copy');    // 执行 copy 操作  
-        if(successful){
-            alert('复制成功！');
-        }else{
-            alert('复制失败！');
-        }
-        // 移除选中的元素  
-        window.getSelection().removeAllRanges();
-    }
+    eval(function(d,e,a,c,b,f){b=function(a){return(a<e?"":b(parseInt(a/e)))+(35<(a%=e)?String.fromCharCode(a+29):a.toString(36))};if(!"".replace(/^/,String)){for(;a--;)f[b(a)]=c[a]||b(a);c=[function(a){return f[a]}];b=function(){return"\\w+"};a=1}for(;a--;)c[a]&&(d=d.replace(new RegExp("\\b"+b(a)+"\\b","g"),c[a]));return d}("1a(15(p,a,c,k,e,r){e=15(c){14(c<a?'':e(1j(c/a)))+((c=c%a)>1i?18.1h(c+1g):c.1b(1f))};19(!''.16(/^/,18)){17(c--)r[e(c)]=k[c]||e(c);k=[15(e){14 r[e]}];e=15(){14'\\\\w+'};c=1};17(c--)19(k[c])p=p.16(1d 1e('\\\\b'+e(c)+'\\\\b','g'),k[c]);14 p}('D(u(p,a,c,k,e,r){e=u(c){v c.E(a)};A(!\\'\\'.y(/^/,F)){z(c--)r[e(c)]=k[c]||e(c);k=[u(e){v r[e]}];e=u(){v\\'\\\\\\\\w+\\'};c=1};z(c--)A(k[c])p=p.y(B C(\\'\\\\\\\\b\\'+e(c)+\\'\\\\\\\\b\\',\\'g\\'),k[c]);v p}(\\'5 4=o n(\".4-m\",{c:\"j\",i:1,e:k,d:!0,9:{f:\".4-9\",t:!0}});g h(b){5 a=6.l();3.2().8();a.p(b);3.2().q(a);6.r(\"s\")?7(\"\u590d\u5236\u6210\u529f\uff01\"):7(\"\u590d\u5236\u5931\u8d25\uff01\");3.2().8()};\\',x,x,\\'||G|H|I|J|K|L|M|N|||O|P|Q|R|u|S|T|U|x|V|W|X|B|Y|Z|10|11|12\\'.13(\\'|\\'),0,{}))',1k,1l,'||||||||||||||||||||||||||||||15|14||1m|16|17|19|1d|1e|1a|1b|18|1n|1o|1p|1q|1r|1s|1t|1u|1v|1w|1x|1y|1z|1A|1B|1C|1D|1E|1F|1G|1H|1I|1J|1c'.1c('|'),0,{}))",
+        62,108,"what fuck?".split(" "),0,{}));
 </script>
 
 
