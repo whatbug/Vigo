@@ -33,8 +33,8 @@ Class SsrService extends Command {
                     $redData[] = [
                         'service'  => $match[1][8 * $num + 1],
                         'port'     => $match[1][8 * $num + 2],
-                        'password' => $match[1][8 * $num + 3],
-                        'method'   => $match[1][8 * $num + 4],
+                        'method'   => $match[1][8 * $num + 3],
+                        'password' => $match[1][8 * $num + 4],
                         'protocol' => 'origin',
                         'country'  => $match[1][8 * $num + 6],
                         'status'   => 'available',

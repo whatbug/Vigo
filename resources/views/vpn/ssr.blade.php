@@ -90,8 +90,9 @@
             }
 
             table td:before {
+                display: block;
                 content: attr(data-label);
-                float: left;
+                float: left!important;
                 text-transform: uppercase;
                 font-weight: bold;
             }
