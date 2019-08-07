@@ -117,12 +117,12 @@
             </thead>
             <tbody>
             <tr>
-                <td align="center" data-label="服务IP">{{$val['service']}}</td>
-                <td align="center" data-label="端口">{{$val['port']}}</td>
-                <td align="center" data-label="密码">{{$val['password']}}</td>
-                <td align="center" data-label="加密方式">{{$val['method']}}</td>
-                <td align="center" data-label="更新时间">{{$val['check_at']}}</td>
-                <td align="center" data-label="国家">{{$val['country']}}</td>
+                <td align="center" data-label="服务IP" onclick="copyText(content{!! $key+1 !!});" title="点击复制" id="content{{$key+1}}">{{$val['service']}}</td>
+                <td align="center" data-label="端口" onclick="copyText(content{!! $key+2 !!});" title="点击复制" id="content{{$key+2}}">{{$val['port']}}</td>
+                <td align="center" data-label="密码" onclick="copyText(content{!! $key+3 !!});" title="点击复制" id="content{{$key+3}}">{{$val['password']}}</td>
+                <td align="center" data-label="加密方式" onclick="copyText(content{!! $key+4 !!});" title="点击复制" id="content{{$key+4}}">{{$val['method']}}</td>
+                <td align="center" data-label="更新时间" onclick="copyText(content{!! $key+5 !!});" title="点击复制" id="content{{$key+5}}">{{$val['check_at']}}</td>
+                <td align="center" data-label="国家" onclick="copyText(content{!! $key+6 !!});" title="点击复制" id="content{{$key+6}}">{{$val['country']}}</td>
             </tr>
             </tbody>
         </table>
@@ -148,6 +148,21 @@
             clickable: true,
         },
     });
+    function copyText(ele){  //复制文本 需要在文档中添加一个复制用的input
+        var copyDOM = ele;  //要复制文字的节点  
+        var range = document.createRange(); //创建一个range
+        window.getSelection().removeAllRanges();   //清楚页面中已有的selection
+        range.selectNode(copyDOM);    // 选中需要复制的节点    
+        window.getSelection().addRange(range);   // 执行选中元素
+        var successful = document.execCommand('copy');    // 执行 copy 操作  
+        if(successful){
+            alert('复制成功！');
+        }else{
+            alert('复制失败！');
+        }
+        // 移除选中的元素  
+        window.getSelection().removeAllRanges();
+    }
 </script>
 
 
