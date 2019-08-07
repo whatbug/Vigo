@@ -96,6 +96,11 @@
                 text-transform: uppercase;
                 font-weight: bold;
             }
+            table td:after{
+                display: block;
+                content: '';
+                clear: both;
+            }
         }
     </style>
 </head>

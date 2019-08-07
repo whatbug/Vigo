@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e5216d6-fbcd-4943-8d11-8237777cfe25" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Console/Commands/SsrService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/SsrService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/vpn/ssr.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vpn/ssr.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -52,8 +51,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/vpn/ssr.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-418">
-              <caret line="94" column="16" lean-forward="true" selection-start-line="94" selection-start-column="16" selection-end-line="94" selection-end-column="16" />
+            <state relative-caret-position="660">
+              <caret line="104" column="12" lean-forward="true" selection-start-line="104" selection-start-column="12" selection-end-line="104" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -429,12 +428,12 @@
       <workItem from="1564811254528" duration="12274000" />
       <workItem from="1564972270896" duration="4445000" />
       <workItem from="1565060367791" duration="6658000" />
-      <workItem from="1565154858681" duration="3491000" />
+      <workItem from="1565154858681" duration="3878000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="153489000" />
+    <option name="totallyTimeSpent" value="153876000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -805,8 +804,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/vpn/ssr.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-418">
-          <caret line="94" column="16" lean-forward="true" selection-start-line="94" selection-start-column="16" selection-end-line="94" selection-end-column="16" />
+        <state relative-caret-position="660">
+          <caret line="104" column="12" lean-forward="true" selection-start-line="104" selection-start-column="12" selection-end-line="104" selection-end-column="12" />
         </state>
       </provider>
     </entry>
