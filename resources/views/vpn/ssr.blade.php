@@ -117,12 +117,12 @@
             </thead>
             <tbody>
             <tr>
-                <td align="center" data-label="服务IP" onclick="copyText(content{!! $key+1 !!});" title="点击复制" id="content{{$key+1}}">{{$val['service']}}</td>
-                <td align="center" data-label="端口" onclick="copyText(content{!! $key+2 !!});" title="点击复制" id="content{{$key+2}}">{{$val['port']}}</td>
-                <td align="center" data-label="密码" onclick="copyText(content{!! $key+3 !!});" title="点击复制" id="content{{$key+3}}">{{$val['password']}}</td>
-                <td align="center" data-label="加密方式" onclick="copyText(content{!! $key+4 !!});" title="点击复制" id="content{{$key+4}}">{{$val['method']}}</td>
-                <td align="center" data-label="更新时间" onclick="copyText(content{!! $key+5 !!});" title="点击复制" id="content{{$key+5}}">{{$val['check_at']}}</td>
-                <td align="center" data-label="国家" onclick="copyText(content{!! $key+6 !!});" title="点击复制" id="content{{$key+6}}">{{$val['country']}}</td>
+                <td align="center" data-label="服务IP" onclick="copyText(content{!! $key !!}{!! $key+1 !!});" title="点击复制" id="content{{ $key }}{{$key+1}}">{{$val['service']}}</td>
+                <td align="center" data-label="端口" onclick="copyText(content{!! $key !!}{!! $key+2 !!});" title="点击复制" id="content{{ $key }}{{$key+2}}">{{$val['port']}}</td>
+                <td align="center" data-label="密码" onclick="copyText(content{!! $key !!}{!! $key+3 !!});" title="点击复制" id="content{{ $key }}{{$key+3}}">{{$val['password']}}</td>
+                <td align="center" data-label="加密方式" onclick="copyText(content{!! $key !!}{!! $key+4 !!});" title="点击复制" id="content{{ $key }}{{$key+4}}">{{$val['method']}}</td>
+                <td align="center" data-label="更新时间" onclick="copyText(content{!! $key !!}{!! $key+5 !!});" title="点击复制" id="content{{$key+5}}">{{$val['check_at']}}</td>
+                <td align="center" data-label="国家" onclick="copyText(content{!! $key !!}{!! $key+6 !!});" title="点击复制" id="content{{ $key }}{{$key+6}}">{{$val['country']}}</td>
             </tr>
             </tbody>
         </table>
