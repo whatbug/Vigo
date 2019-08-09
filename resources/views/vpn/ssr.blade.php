@@ -141,7 +141,7 @@
                         <td align="center" data-label="加密方式" onclick="copyText(content{!! $key !!}{!! $key+4 !!});" title="点击复制" id="content{{ $key }}{{$key+4}}">{{$val['method']}}</td>
                         <td align="center" data-label="更新时间">{{$val['check_at']}}</td>
                         <td align="center" data-label="国家">{{$val['country']}}</td>
-                        <td align="center" data-label="二维码" onclick="qrcode()">查看二维码</td>
+                        <td align="center" data-label="二维码" onclick="qrcode('{{$val['ssrLink']}}')">查看二维码</td>
                     </tr>
                     </tbody>
                 </table>
