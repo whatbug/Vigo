@@ -168,7 +168,7 @@
             width: 160, //设置宽高
             height: 160
         });
-        var html = document.getElementById(domId).innerHTML;
+        var html = document.getElementById('' + domId).innerHTML;
         qrcode.makeCode(html);
     }
 </script>
