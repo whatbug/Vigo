@@ -44,7 +44,7 @@ Class SsrService extends Command {
                     'method'   => $last_arr[3],
                     'obfs'     => $last_arr[4],
                     'password' => base64_decode($last_arr[5]),
-                    'ssrLink'  => 'ssr://:'.$value,
+                    'ssrLink'  => 'ssr://:'.base64_decode($last_arr[2].':'.base64_decode($last_arr[5]).'@'.$last_arr[0].':'.$last_arr[1]),
                     'country'  => $country[0][0],
                     'check_at' => date('H:i:s', time()+$key*30),
                 ];
