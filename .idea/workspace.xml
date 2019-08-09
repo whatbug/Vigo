@@ -4,7 +4,9 @@
     <bookmark url="file://$PROJECT_DIR$/app/Http/Controllers/Test/TestController.php" line="58" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e5216d6-fbcd-4943-8d11-8237777cfe25" name="Default Changelist" comment="" />
+    <list default="true" id="9e5216d6-fbcd-4943-8d11-8237777cfe25" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/resources/views/vpn/ssr.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vpn/ssr.blade.php" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,8 +55,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/vpn/ssr.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="169" column="47" selection-start-line="169" selection-start-column="24" selection-end-line="169" selection-end-column="47" />
+            <state relative-caret-position="475">
+              <caret line="164" column="19" selection-start-line="164" selection-start-column="13" selection-end-line="164" selection-end-column="19" />
               <folding>
                 <element signature="n#style#0;n#td#7;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -368,12 +370,12 @@
       <workItem from="1564972270896" duration="4445000" />
       <workItem from="1565060367791" duration="6658000" />
       <workItem from="1565154858681" duration="3878000" />
-      <workItem from="1565341454655" duration="1666000" />
+      <workItem from="1565341454655" duration="2143000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="155542000" />
+    <option name="totallyTimeSpent" value="156019000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -746,8 +748,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/vpn/ssr.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="169" column="47" selection-start-line="169" selection-start-column="24" selection-end-line="169" selection-end-column="47" />
+        <state relative-caret-position="475">
+          <caret line="164" column="19" selection-start-line="164" selection-start-column="13" selection-end-line="164" selection-end-column="19" />
           <folding>
             <element signature="n#style#0;n#td#7;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
