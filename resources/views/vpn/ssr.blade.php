@@ -103,15 +103,8 @@
             }
         }
         .qr {
-            display: inline-block;
-            vertical-align: middle;
-            position: relative;
-            z-index: 1;
-            cursor: auto;
-            min-width: 200px;
-            min-height: 100px;
-            width: auto;
-            height: auto;
+            position: absolute;
+            top: 60%;
         }
     </style>
 </head>
@@ -168,7 +161,12 @@
               width: 160, //设置宽高
               height: 160
           });
-          qrcode.makeCode(ssr);
+          var width = document.documentElement.clientWidth;
+          if (width <= 600) {
+              location.href = ssr;
+          } else {
+              qrcode.makeCode(ssr);
+          }
       }
 
 </script>
