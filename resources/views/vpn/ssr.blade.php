@@ -142,7 +142,7 @@
                         <td align="center" data-label="更新时间">{{$val['check_at']}}</td>
                         <td align="center" data-label="国家">{{$val['country']}}</td>
                         <td align="center" data-label="二维码" onclick="qrcode(qr{!! $key !!})">查看二维码</td>
-                        <td style="visibility:hidden;" id="qr{!! $key !!}">{{$val['ssrLink']}}</td>
+                        <td style="visibility:hidden;float: top;" id="qr{!! $key !!}">{{$val['ssrLink']}}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -167,9 +167,7 @@
             width: 160, //设置宽高
             height: 160
         });
-        document.getElementById("send").onclick = function() {
-            qrcode.makeCode(document.getElementById(id).innerText);
-        }
+        qrcode.makeCode(document.getElementById(id).innerText);
     }
 </script>
 
