@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e5216d6-fbcd-4943-8d11-8237777cfe25" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/app/Console/Commands/SsrService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/SsrService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/vpn/ssr.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vpn/ssr.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,11 +19,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Console/Commands/SsrService.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="520">
-              <caret line="44" column="44" selection-start-line="44" selection-start-column="44" selection-end-line="44" selection-end-column="44" />
+            <state relative-caret-position="564">
+              <caret line="46" column="43" lean-forward="true" selection-start-line="46" selection-start-column="43" selection-end-line="46" selection-end-column="43" />
               <folding>
                 <element signature="e#39#70#0#PHP" expanded="true" />
               </folding>
@@ -52,11 +53,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/vpn/ssr.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="651">
-              <caret line="165" column="14" selection-start-line="165" selection-start-column="14" selection-end-line="165" selection-end-column="14" />
+            <state relative-caret-position="211">
+              <caret line="136" column="91" selection-start-line="136" selection-start-column="85" selection-end-line="136" selection-end-column="91" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -159,8 +160,8 @@
         <option value="$PROJECT_DIR$/public/statics/css/style.css" />
         <option value="$PROJECT_DIR$/resources/views/vpn/index.blade.php" />
         <option value="$PROJECT_DIR$/public/statics/js/qrcode.js" />
-        <option value="$PROJECT_DIR$/app/Console/Commands/SsrService.php" />
         <option value="$PROJECT_DIR$/resources/views/vpn/ssr.blade.php" />
+        <option value="$PROJECT_DIR$/app/Console/Commands/SsrService.php" />
       </list>
     </option>
   </component>
@@ -379,12 +380,12 @@
       <workItem from="1564972270896" duration="4445000" />
       <workItem from="1565060367791" duration="6658000" />
       <workItem from="1565154858681" duration="3878000" />
-      <workItem from="1565341454655" duration="9205000" />
+      <workItem from="1565341454655" duration="9904000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="163081000" />
+    <option name="totallyTimeSpent" value="163780000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -745,22 +746,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Console/Commands/SsrService.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/vpn/ssr.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="44" column="44" selection-start-line="44" selection-start-column="44" selection-end-line="44" selection-end-column="44" />
+        <state relative-caret-position="211">
+          <caret line="136" column="91" selection-start-line="136" selection-start-column="85" selection-end-line="136" selection-end-column="91" />
           <folding>
-            <element signature="e#39#70#0#PHP" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/vpn/ssr.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Console/Commands/SsrService.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="651">
-          <caret line="165" column="14" selection-start-line="165" selection-start-column="14" selection-end-line="165" selection-end-column="14" />
+        <state relative-caret-position="564">
+          <caret line="46" column="43" lean-forward="true" selection-start-line="46" selection-start-column="43" selection-end-line="46" selection-end-column="43" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#39#70#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
