@@ -55,8 +55,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/vpn/ssr.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="651">
-              <caret line="171" column="5" lean-forward="true" selection-start-line="171" selection-start-column="5" selection-end-line="171" selection-end-column="5" />
+            <state relative-caret-position="742">
+              <caret line="170" column="13" lean-forward="true" selection-start-line="170" selection-start-column="13" selection-end-line="170" selection-end-column="13" />
               <folding>
                 <element signature="n#style#0;n#td#7;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -370,12 +370,12 @@
       <workItem from="1564972270896" duration="4445000" />
       <workItem from="1565060367791" duration="6658000" />
       <workItem from="1565154858681" duration="3878000" />
-      <workItem from="1565341454655" duration="3543000" />
+      <workItem from="1565341454655" duration="4181000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="157419000" />
+    <option name="totallyTimeSpent" value="158057000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -748,8 +748,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/vpn/ssr.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="651">
-          <caret line="171" column="5" lean-forward="true" selection-start-line="171" selection-start-column="5" selection-end-line="171" selection-end-column="5" />
+        <state relative-caret-position="742">
+          <caret line="170" column="13" lean-forward="true" selection-start-line="170" selection-start-column="13" selection-end-line="170" selection-end-column="13" />
           <folding>
             <element signature="n#style#0;n#td#7;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
