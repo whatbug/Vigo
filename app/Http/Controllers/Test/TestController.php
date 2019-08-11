@@ -101,33 +101,33 @@ Class TestController extends BaseController {
 
 
     public function cll (){
-        $resource = file_get_contents(base_path()."/storage/ss.txt");$i = 0;
-        #preg_match_all('/align="center">([^<]+)/s',$resource,$match);
-        preg_match_all('/<td.*?>(.*?)<\/td>/',$resource,$match);
-        if (sizeof($match[1])) {
-            foreach ($match[1] as $key => $Value) {
-                $rate = ($key + 1) % 8;
-                if ($key + 1 == 128)break;
-                if ($rate == 0) {
-                    $num = $i++;
-                    #$postUrl = "https://www.36ip.cn/?ip={$array[6 * $num + 0]}";
-                    #$postData= [];
-                    #$header  = array(
-                    #    "user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36",
-                    #);
-                    #$country = (new CurlService)->_url($postUrl,$postData,$header);
-                    $redData[] = [
-                        'service'  => $match[1][8 * $num + 1],
-                        'port'     => $match[1][8 * $num + 2],
-                        'password' => $match[1][8 * $num + 3],
-                        'method'   => $match[1][8 * $num + 4],
-                        'protocol' => 'origin',
-                        'country'  => $match[1][8 * $num + 6],
-                        'status'   => 'available',
-                        'check_at' => $match[1][8 * $num + 5],
-                    ];
-                }
-
+        set_time_limit(0);$i=0;
+        $content = file_get_contents(base_path()."/storage/ss.txt");
+        $ssrs     = base64_decode($content);
+        $stBase   = explode('ssr://', str_replace("\n","",$ssrs));
+        $normol   = array_splice($stBase,1);
+        $dataList = array_values(array_unique($normol));
+        foreach ($dataList as $key=>$value){
+            if ($i*4 == 60)break;
+            if ($key != $i*4 && $key != 0) {
+                continue;
+            } else {
+                $i++;
+                $real_rs = base64_decode($value);
+                $last_arr = explode(':', explode('/', mb_convert_encoding($real_rs, 'UTF-8', 'UTF-8'))[0]);
+                preg_match_all("/[\x{4e00}-\x{9fa5}]+/u", json_decode(file_get_contents("https://pdf-lib.org/tools/ip?IP={$last_arr[0]}"))->CustomerAddress, $country);
+                $redData[] = [
+                    'service'  => $last_arr[0],
+                    'port'     => $last_arr[1],
+                    'protocol' => $last_arr[2],
+                    'method'   => $last_arr[3],
+                    'obfs'     => $last_arr[4],
+                    'password' => base64_decode($last_arr[5]),
+                    'ssLink'   => 'ss://'.base64_encode($last_arr[3].':'.base64_decode($last_arr[5]).'@'.$last_arr[0].':'.$last_arr[1]),
+                    'ssrLink'  => 'ssr://'.$value,
+                    'country'  => $country[0][0],
+                    'check_at' => date('H:i:s', time()+$key*30),
+                ];
             }
         }
         return $redData;
