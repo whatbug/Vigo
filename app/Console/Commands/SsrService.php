@@ -43,7 +43,7 @@ Class SsrService extends Command {
                 'password' => base64_decode($last_arr[5]),
                 'ssLink'   => 'ss://' . base64_encode($last_arr[3] . ':' . base64_decode($last_arr[5]) . '@' . $last_arr[0] . ':' . $last_arr[1]),
                 'ssrLink'  => 'ssr://' . $value,
-                'country'  => ($country[0]!='中国')?:$country[1],
+                'country'  => ($country[0]!='中国')?$country[0]:$country[0]."({$country[1]})",
                 'check_at' => date('H:i:s'),
             ];
             sleep(3);
