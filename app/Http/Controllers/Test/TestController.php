@@ -115,7 +115,8 @@ Class TestController extends BaseController {
                 $i++;
                 $real_rs = base64_decode($value);
                 $last_arr = explode(':', explode('/', mb_convert_encoding($real_rs, 'UTF-8', 'UTF-8'))[0]);
-                preg_match_all("/[\x{4e00}-\x{9fa5}]+/u", json_decode(file_get_contents("https://pdf-lib.org/tools/ip?IP={$last_arr[0]}"))->CustomerAddress, $country);
+//                preg_match_all("/[\x{4e00}-\x{9fa5}]+/u", json_decode(file_get_contents("https://pdf-lib.org/tools/ip?IP={$last_arr[0]}"))->CustomerAddress, $country);
+                $country = json_decode(file_get_contents("http://freeapi.ipip.net/{$last_arr[0]}"))[0];
                 $redData[] = [
                     'service'  => $last_arr[0],
                     'port'     => $last_arr[1],
@@ -126,9 +127,10 @@ Class TestController extends BaseController {
                     'ssLink'   => 'ss://'.base64_encode($last_arr[3].':'.base64_decode($last_arr[5]).'@'.$last_arr[0].':'.$last_arr[1]),
                     'ssrLink'  => 'ssr://'.$value,
                     'country'  => $country[0][0],
-                    'check_at' => date('H:i:s', time()+$key*30),
+                    'check_at' => date('H:i:s'),
                 ];
             }
+            sleep(2);
         }
         return $redData;
     }

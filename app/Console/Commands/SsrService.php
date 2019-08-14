@@ -22,29 +22,31 @@ Class SsrService extends Command {
      * @return mixed
      */
     public function handle() {
-        set_time_limit(0);$i=0;
+        set_time_limit(0);
         $content = file_get_contents(base_path()."/storage/ss.txt");
         $ssrs     = base64_decode($content);
         $stBase   = explode('ssr://', str_replace("\n","",$ssrs));
         $normol   = array_splice($stBase,1);
         $dataList = array_values(array_unique($normol));
         foreach ($dataList as $key=>$value) {
-            if ($key==15)break;
+            if ($key == 1)continue;
+            if ($key == 16)break;
             $real_rs = base64_decode($value);
             $last_arr = explode(':', explode('/', mb_convert_encoding($real_rs, 'UTF-8', 'UTF-8'))[0]);
-            preg_match_all("/[\x{4e00}-\x{9fa5}]+/u", json_decode(file_get_contents("https://pdf-lib.org/tools/ip?IP={$last_arr[0]}"))->CustomerAddress, $country);
+            $country = json_decode(file_get_contents("http://freeapi.ipip.net/{$last_arr[0]}"))[0];
             $redData[] = [
-                'service' => $last_arr[0],
-                'port' => $last_arr[1],
+                'service'  => $last_arr[0],
+                'port'     => $last_arr[1],
                 'protocol' => $last_arr[2],
-                'method' => $last_arr[3],
-                'obfs' => $last_arr[4],
+                'method'   => $last_arr[3],
+                'obfs'     => $last_arr[4],
                 'password' => base64_decode($last_arr[5]),
-                'ssLink' => 'ss://' . base64_encode($last_arr[3] . ':' . base64_decode($last_arr[5]) . '@' . $last_arr[0] . ':' . $last_arr[1]),
-                'ssrLink' => 'ssr://' . $value,
-                'country' => $country[0][0],
-                'check_at' => date('H:i:s', time() + $key * 30),
+                'ssLink'   => 'ss://' . base64_encode($last_arr[3] . ':' . base64_decode($last_arr[5]) . '@' . $last_arr[0] . ':' . $last_arr[1]),
+                'ssrLink'  => 'ssr://' . $value,
+                'country'  => $country,
+                'check_at' => date('H:i:s'),
             ];
+            sleep(3);
         }
         return Cache::put('ssr_info',$redData,now()->addMinutes(120));
     }
