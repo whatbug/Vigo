@@ -29,7 +29,7 @@ Class SsrService extends Command {
         $normol   = array_splice($stBase,1);
         $dataList = array_values(array_unique($normol));
         foreach ($dataList as $key=>$value) {
-            if ($key == 1)continue;
+            if ($key == 0)continue;
             if ($key == 16)break;
             $real_rs = base64_decode($value);
             $last_arr = explode(':', explode('/', mb_convert_encoding($real_rs, 'UTF-8', 'UTF-8'))[0]);
