@@ -164,7 +164,7 @@
           if (width <= 600) {
               location.href = ssr;
           } else {
-              document.getElementById(ids)[0].innerHTML='';
+              document.getElementById(ids).innerHTML='';
               qrcode.makeCode(ss);
           }
       }

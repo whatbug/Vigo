@@ -5,9 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e5216d6-fbcd-4943-8d11-8237777cfe25" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Console/Commands/SsrService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/SsrService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Test/TestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Test/TestController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/vpn/ssr.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vpn/ssr.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -45,8 +42,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/vpn/ssr.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="638">
-              <caret line="167" column="38" selection-start-line="167" selection-start-column="38" selection-end-line="167" selection-end-column="38" />
+            <state relative-caret-position="616">
+              <caret line="166" column="56" lean-forward="true" selection-start-line="166" selection-start-column="56" selection-end-line="166" selection-end-column="56" />
             </state>
           </provider>
         </entry>
@@ -419,12 +416,12 @@
       <workItem from="1565578982166" duration="595000" />
       <workItem from="1565677236472" duration="599000" />
       <workItem from="1565752209518" duration="2008000" />
-      <workItem from="1565766294658" duration="2929000" />
+      <workItem from="1565766294658" duration="3378000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="171905000" />
+    <option name="totallyTimeSpent" value="172354000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -793,8 +790,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/vpn/ssr.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="638">
-          <caret line="167" column="38" selection-start-line="167" selection-start-column="38" selection-end-line="167" selection-end-column="38" />
+        <state relative-caret-position="616">
+          <caret line="166" column="56" lean-forward="true" selection-start-line="166" selection-start-column="56" selection-end-line="166" selection-end-column="56" />
         </state>
       </provider>
     </entry>
