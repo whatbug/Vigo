@@ -33,7 +33,7 @@ Class SsrService extends Command {
             if ($key == 16)break;
             $real_rs = base64_decode($value);
             $last_arr = explode(':', explode('/', mb_convert_encoding($real_rs, 'UTF-8', 'UTF-8'))[0]);
-            $country = json_decode(file_get_contents("http://freeapi.ipip.net/{$last_arr[0]}"))[0];
+            $country = json_decode(file_get_contents("http://freeapi.ipip.net/{$last_arr[0]}"));
             $redData[] = [
                 'service'  => $last_arr[0],
                 'port'     => $last_arr[1],
@@ -43,7 +43,7 @@ Class SsrService extends Command {
                 'password' => base64_decode($last_arr[5]),
                 'ssLink'   => 'ss://' . base64_encode($last_arr[3] . ':' . base64_decode($last_arr[5]) . '@' . $last_arr[0] . ':' . $last_arr[1]),
                 'ssrLink'  => 'ssr://' . $value,
-                'country'  => $country,
+                'country'  => ($country[0]!='中国')?:$country[1],
                 'check_at' => date('H:i:s'),
             ];
             sleep(3);
