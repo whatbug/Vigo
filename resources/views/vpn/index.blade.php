@@ -26,7 +26,6 @@
             确定
         </div>
     </div>
-    <span>1111</span>
     <div class="sk-rotating-plane"></div>
     <canvas class="particles-js-canvas-el" width="1920" height="969" style="width: 100%; height: 100%;"></canvas></div>
     <div class="dialog-copy" id="dialog" style="display: none">
@@ -80,7 +79,7 @@
         });
     }
     function alerts (str,url) {
-        document.getElementsByTagName('span')[0].remove();
+        document.getElementById('dialog').parentNode.removeChild(span);
         let dialog = document.getElementById("dialog");
         let frame = document.createElement("span");
         let addText  = document.createTextNode(str);
