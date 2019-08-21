@@ -79,7 +79,6 @@
         });
     }
     function alerts (str,url) {
-        document.getElementById('dialog').parentNode.removeChild(span);
         let dialog = document.getElementById("dialog");
         let frame = document.createElement("span");
         let addText  = document.createTextNode(str);
@@ -88,6 +87,7 @@
         dialog.style.display = 'block';
         setTimeout( function(){
             dialog.style.display = 'none';
+            frame.remove();
             if (url) {
                 window.location.href=url;
             }
