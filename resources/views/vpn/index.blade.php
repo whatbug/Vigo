@@ -26,6 +26,7 @@
             确定
         </div>
     </div>
+    <span>1111</span>
     <div class="sk-rotating-plane"></div>
     <canvas class="particles-js-canvas-el" width="1920" height="969" style="width: 100%; height: 100%;"></canvas></div>
     <div class="dialog-copy" id="dialog" style="display: none">
@@ -72,12 +73,14 @@
                 if (res == '1') {
                     window.location.href="/free-ssr";
                 } else {
-                    alerts('看来兄弟非魔教中人！','/fanqiang');
+                    // alerts('看来兄弟非魔教中人！','/fanqiang');
+                    alerts('看来兄弟非魔教中人！');
                 }
             }
         });
     }
     function alerts (str,url) {
+        document.getElementsByTagName('span')[0].remove();
         let dialog = document.getElementById("dialog");
         let frame = document.createElement("span");
         let addText  = document.createTextNode(str);

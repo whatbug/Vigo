@@ -105,6 +105,16 @@
             position: absolute;
             top: 60%;
         }
+        .dialog-copy {
+            position: fixed;
+            left: 50%;
+            top: 20%;
+            transform: translate(-50%,-50%);
+            padding: 20px;
+            background: #fff;
+            box-shadow: 3px 3px 5px 0 rgba(0,0,0,.2);
+            z-index: 999
+        }
     </style>
 </head>
 <body>
@@ -157,7 +167,7 @@
 
 <!-- Initialize Swiper -->
 <script>
-    eval(function(p,a,c,k,e,r){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('3 4=m n(\'.4-o\',{p:\'q\',r:1,s:t,u:e,f:{v:\'.4-f\',w:e,},});5 x(a){3 b=a;3 c=0.y();6.7().g();c.z(b);6.7().A(c);3 d=0.B(\'C\');D(d){h(\'复制成功\')}6.7().g()}5 h(a){8 2=0.E("2");8 9=0.F("G");8 i=0.H(a);9.j(i);2.j(9);2.k.l=\'I\';J(5(){2.k.l=\'K\'},L)}',48,48,'document||dialog|var|swiper|function|window|getSelection|let|frame|||||true|pagination|removeAllRanges|alerts|addText|appendChild|style|display|new|Swiper|container|direction|vertical|slidesPerView|spaceBetween|30|mousewheel|el|clickable|copyText|createRange|selectNode|addRange|execCommand|copy|if|getElementById|createElement|span|createTextNode|block|setTimeout|none|1500'.split('|'),0,{}));
+    eval(function(p,a,c,k,e,r){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('4 5=o p(\'.5-q\',{r:\'s\',t:1,u:v,w:f,g:{x:\'.5-g\',y:f,},});6 z(a){4 b=a;4 c=2.A();7.8().h();c.B(b);7.8().C(c);4 d=2.D(\'E\');F(d){i(\'复制成功\')}7.8().h()}6 i(a){2.G(\'j\')[0].H();9 3=2.I("3");9 e=2.J("j");9 k=2.K(a);e.l(k);3.l(e);3.m.n=\'L\';M(6(){3.m.n=\'N\'},O)}',51,51,'||document|dialog|var|swiper|function|window|getSelection|let|||||frame|true|pagination|removeAllRanges|alerts|span|addText|appendChild|style|display|new|Swiper|container|direction|vertical|slidesPerView|spaceBetween|30|mousewheel|el|clickable|copyText|createRange|selectNode|addRange|execCommand|copy|if|getElementsByTagName|remove|getElementById|createElement|createTextNode|block|setTimeout|none|1500'.split('|'),0,{}));
     eval(function(p,a,c,k,e,r){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('l m(b,7,c){d["\\3\\5\\6\\8\\4\\0\\1\\2"][\'\\n\\0\\2\\e\\9\\0\\4\\0\\1\\2\\o\\p\\q\\3\'](7)[\'\\a\\1\\1\\0\\f\\r\\s\\t\\u\']=\'\';g h=v w(7,{x:i,y:i});g j=d["\\3\\5\\6\\8\\4\\0\\1\\2"][\'\\3\\5\\6\\8\\4\\0\\1\\2\\e\\9\\0\\4\\0\\1\\2\'][\'\\6\\9\\a\\0\\1\\2\\z\\a\\3\\2\\k\'];A(j<=B){C[\'\\k\\f\\0\\D\']=c}E{h[\'\\4\\F\\G\\0\\H\\5\\3\\0\'](b)}}',44,44,'x65|x6e|x74|x64|x6d|x6f|x63|vaAiXPFCS2|x75|x6c|x69|C1|KMw3|window|x45|x72|var|WZKQ4|160|RK5|x68|function|qrcode|x67|x42|x79|x49|x48|x54|x4d|x4c|new|QRCode|width|height|x57|if|600|location|x66|else|x61|x6b|x43'.split('|'),0,{}));
 </script>
 </body></html>
