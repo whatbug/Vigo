@@ -15,7 +15,6 @@
         }
         body {
             background: #eee;
-            font-size: 14px;
             color:#000;
             margin: 0;
             padding: 0;
@@ -106,15 +105,6 @@
             position: absolute;
             top: 60%;
         }
-        .dialog-copy {
-            position: fixed;
-            left: 50%;
-            top: 20%;
-            transform: translate(-50%,-50%);
-            padding: 20px;
-            background: #fff;
-            box-shadow: 3px 3px 5px 0 rgba(0,0,0,.2);
-        }
     </style>
 </head>
 <body>
@@ -158,7 +148,7 @@
 
     {{--Dialog--}}
     <div class="dialog-copy" id="dialog" style="display: none">
-        <img src="//img.alicdn.com/tfs/TB10YifXKT2gK0jSZFvXXXnFXXa-32-32.png" alt="" style="width: 16px;">
+        <img src="//img.alicdn.com/tfs/TB10YifXKT2gK0jSZFvXXXnFXXa-32-32.png" alt="" style="width: 14px;">
     </div>
 
 <!-- Swiper JS -->

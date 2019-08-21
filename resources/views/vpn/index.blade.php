@@ -8,17 +8,6 @@
     <link rel="stylesheet" media="screen" href="https://i-song.cc/statics/css/style.css">
     <link rel="stylesheet" type="text/css" href="https://i-song.cc/statics/css/reset.css">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <style>
-        .dialog-copy {
-            position: fixed;
-            left: 50%;
-            top: 20%;
-            transform: translate(-50%,-50%);
-            padding: 20px;
-            background: #fff;
-            box-shadow: 3px 3px 5px 0 rgba(0,0,0,.2);
-        }
-    </style>
 </head>
 <body>
 <div id="particles-js">
@@ -40,7 +29,7 @@
     <div class="sk-rotating-plane"></div>
     <canvas class="particles-js-canvas-el" width="1920" height="969" style="width: 100%; height: 100%;"></canvas></div>
     <div class="dialog-copy" id="dialog" style="display: none">
-        <img src="https://i-song.cc/statics/img/error.png" alt="" style="width: 16px;">
+        <img src="https://i-song.cc/statics/img/go.png" alt="" style="width: 14px;">
     </div>
 <script type="text/javascript">
     function hasClass(elem, cls) {
