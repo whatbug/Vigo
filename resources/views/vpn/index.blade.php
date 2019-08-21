@@ -30,6 +30,7 @@
     <canvas class="particles-js-canvas-el" width="1920" height="969" style="width: 100%; height: 100%;"></canvas></div>
     <div class="dialog-copy" id="dialog" style="display: none">
         <img src="https://i-song.cc/statics/img/go.png" alt="" style="width: 14px;">
+        <span>看来兄弟非魔教中人</span>
     </div>
 <script type="text/javascript">
     function hasClass(elem, cls) {
@@ -72,21 +73,16 @@
                 if (res == '1') {
                     window.location.href="/free-ssr";
                 } else {
-                    alerts('看来兄弟非魔教中人！','/fanqiang');
+                    alerts('/fanqiang');
                 }
             }
         });
     }
-    function alerts (str,url) {
+    function alerts (url) {
         let dialog = document.getElementById("dialog");
-        let frame = document.createElement("span");
-        let addText  = document.createTextNode(str);
-        frame.appendChild(addText);
-        dialog.appendChild(frame);
         dialog.style.display = 'block';
         setTimeout( function(){
             dialog.style.display = 'none';
-            frame.remove();
             if (url) {
                 window.location.href=url;
             }
