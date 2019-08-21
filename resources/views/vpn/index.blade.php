@@ -72,8 +72,7 @@
                 if (res == '1') {
                     window.location.href="/free-ssr";
                 } else {
-                    // alerts('看来兄弟非魔教中人！','/fanqiang');
-                    alerts('看来兄弟非魔教中人！');
+                    alerts('看来兄弟非魔教中人！','/fanqiang');
                 }
             }
         });
