@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Controller as BaseController;
 use App\Services\CurlService;
+use App\Services\MessageNotifier;
 use App\Swoole\Task\TestTask;
 use Hhxsv5\LaravelS\Swoole\Task\Task;
 use Illuminate\Http\Request;
@@ -28,7 +29,7 @@ Class TestController extends BaseController {
     }
 
     public function postTest () {
-        return base_path('/public/assets/1.css');
+        MessageNotifier::sendMsg('18587388678',9000);
     }
 
     public function pushTest () {
