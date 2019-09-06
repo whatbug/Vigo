@@ -24,6 +24,6 @@ Class MessageNotifier {
             curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
             curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
         }
-        var_dump(curl_exec($curl));
+        return json_decode($curl);
     }
 }
