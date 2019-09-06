@@ -29,6 +29,7 @@ Class TestController extends BaseController {
     }
 
     public function postTest () {
+        return shell_exec('python3 spy.py');
         MessageNotifier::sendMsg('18587388678',9000);
     }
 

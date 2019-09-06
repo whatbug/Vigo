@@ -10,7 +10,7 @@ Class SpyDataNotify extends Command {
      * The name and signature of the console command.
      * @var string
      */
-    protected $signature = 'btc:notify';
+    protected $signature = 'spy:notify';
 
     /**
      * The console command description.
@@ -24,11 +24,11 @@ Class SpyDataNotify extends Command {
      */
     public function handle(RecordData $data) {
         set_time_limit(0);
-        $content = file_get_contents(base_path()."/storage/btc.txt");
+        $content = file_get_contents(base_path()."/storage/spy.txt");
         if ($content) {
-            $dataList = explode(',', $content);
-            $result = [
-                'values' => $dataList[0],
+            $dataNum = str_replace(',','',$content);
+            $result  = [
+                'values' => $dataNum,
                 'type' => 1,
                 'record_time' => time(),
             ];
