@@ -6,9 +6,11 @@ Class RecordData extends Model {
 
     protected $primaryKey = 'id';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'values',
         'type',
-        'record_time',
+        'time',
     ];
 }

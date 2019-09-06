@@ -30,7 +30,7 @@ Class SpyDataNotify extends Command {
             $result  = [
                 'values' => $dataNum,
                 'type' => 1,
-                'record_time' => time(),
+                'time' => time(),
             ];
             $data->fill($result)->save();
             if ($result['values'] < 10800) {
