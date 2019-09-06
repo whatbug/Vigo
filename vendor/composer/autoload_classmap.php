@@ -50,6 +50,7 @@ return array(
     'App\\Providers\\EventServiceProvider' => $baseDir . '/app/Providers/EventServiceProvider.php',
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
     'App\\Services\\CurlService' => $baseDir . '/app/Services/CurlService.php',
+    'App\\Services\\MessageNotifier' => $baseDir . '/app/Services/MessageNotifier.php',
     'App\\Services\\WebSocketService' => $baseDir . '/app/Services/WebSocketService.php',
     'App\\Swoole\\Socket\\WsTable' => $baseDir . '/app/Swoole/Socket/WsTable.php',
     'App\\Swoole\\Task\\TestTask' => $baseDir . '/app/Swoole/Task/TestTask.php',

@@ -480,6 +480,7 @@ class ComposerStaticInit28e1a7ea79c585a5acc83b162302d0d3
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\Services\\CurlService' => __DIR__ . '/../..' . '/app/Services/CurlService.php',
+        'App\\Services\\MessageNotifier' => __DIR__ . '/../..' . '/app/Services/MessageNotifier.php',
         'App\\Services\\WebSocketService' => __DIR__ . '/../..' . '/app/Services/WebSocketService.php',
         'App\\Swoole\\Socket\\WsTable' => __DIR__ . '/../..' . '/app/Swoole/Socket/WsTable.php',
         'App\\Swoole\\Task\\TestTask' => __DIR__ . '/../..' . '/app/Swoole/Task/TestTask.php',
