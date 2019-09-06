@@ -24,8 +24,8 @@ Class SpyDataNotify extends Command {
      */
     public function handle(RecordData $data) {
         set_time_limit(0);
-        $content = file_get_contents(base_path()."/storage/spy.txt");
-        if ($content) {
+        $content = shell_exec('python3 spy.py');
+        if (!is_null($content)) {
             $dataNum = str_replace(',','',$content);
             $result  = [
                 'values' => $dataNum,
