@@ -1,7 +1,7 @@
 <?php namespace App\Console\Commands;
 
 use App\Repositories\RecordData;
-use App\Services\MessageNotifier;
+use App\Repositories\RunData;
 use Illuminate\Console\Command;
 
 Class SpyDataNotify extends Command {
@@ -33,9 +33,7 @@ Class SpyDataNotify extends Command {
                 'time' => time(),
             ];
             $data->fill($result)->save();
-            if ($result['values'] < 10800) {
-                MessageNotifier::sendMsg('18587388678',$result['values']);
-            }
+            RunData::notifyUsers($result['values'],1);
         }
         return true;
     }

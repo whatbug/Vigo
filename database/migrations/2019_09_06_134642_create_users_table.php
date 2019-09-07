@@ -15,7 +15,12 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
+            $table->integer('run_user')->default(0);
+            $table->string('max_value',10)->default(5);
+            $table->string('run_value',10)->default(0);
+            $table->string('mobile',15)->default(0);
+            $table->string('run_time',10)->default(0);
+            $table->integer('run_type')->default(1);
         });
     }
 
