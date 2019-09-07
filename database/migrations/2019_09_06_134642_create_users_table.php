@@ -13,7 +13,7 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('run_data', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('run_user')->default(0);
             $table->string('max_value',10)->default(5);
@@ -31,6 +31,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('run_data');
     }
 }
