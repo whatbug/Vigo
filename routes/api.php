@@ -19,3 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 //验证用户是否有效
 Route::post('/validate','TestController@vpnValidate');
+//修改用户监控数值
+Route::get('setData.do','SpyDataController@changeData');

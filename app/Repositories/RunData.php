@@ -32,4 +32,10 @@ Class RunData extends Model {
         }
         return true;
     }
+
+    //update to set infos
+    static public function setRunData ($data){
+         return static::whereId(1)->update(['run_value'=>$data->run_value,'run_time'=>0]);
+    }
+
 }
