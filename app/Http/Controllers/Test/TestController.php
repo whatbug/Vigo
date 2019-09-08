@@ -29,7 +29,7 @@ Class TestController extends BaseController {
     }
 
     public function postTest () {
-        MessageNotifier::sendMsg('18587388678',9000);
+        MessageNotifier::sendMsg('18587388678',9000.2);
     }
 
     public function pushTest () {

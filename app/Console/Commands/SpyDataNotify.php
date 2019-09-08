@@ -23,13 +23,12 @@ Class SpyDataNotify extends Command {
      * @return mixed
      */
     public function handle(RecordData $data) {
-        return true;
         set_time_limit(0);
         $content = shell_exec('python3 /spy.py');
         if (!is_null($content)) {
-            $dataNum = str_replace('\n','',str_replace(',','',$content));
+            preg_match('/(\d+)\.(\d+)/is',$content,$dataNum);
             $result  = [
-                'values' => $dataNum,
+                'values' => $dataNum[0],
                 'type' => 1,
                 'time' => time(),
             ];
