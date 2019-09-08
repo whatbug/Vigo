@@ -17,6 +17,6 @@ Class RecordData extends Model {
 
     //select data
     static function selData () {
-        return ['value' => static::orderBy('id','DESC')->first()->run_value];
+        return ['value' => static::orderBy('time','DESC')->first()->values];
     }
 }
