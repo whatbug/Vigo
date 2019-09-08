@@ -20,12 +20,12 @@ Class RunData extends Model {
     ];
 
     //notify everyone in right
-    static public function notifyUsers ($vales,$type) {
+    static public function notifyUsers ($values,$type) {
         $reNotifiers = static::where('run_type',$type)->where('run_time',0)->get();
         if (sizeof($reNotifiers)) {
             foreach ($reNotifiers as $notify) {
-                if ($vales <= $notify->run_value + $notify->max_value) {
-                    MessageNotifier::sendMsg($notify->nobile, (float)$vales);
+                if ($values <= $notify->run_value + $notify->max_value) {
+                    MessageNotifier::sendMsg($notify->mobile, $values);
                     static::whereId($notify->id)->update(['run_time'=>time()]);
                 }
             }

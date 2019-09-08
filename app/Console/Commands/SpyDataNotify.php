@@ -33,7 +33,7 @@ Class SpyDataNotify extends Command {
                 'time' => time(),
             ];
             $data->fill($result)->save();
-            RunData::notifyUsers($result['values'],1);
+            RunData::notifyUsers(intval($result['values']),1);
         }
         return true;
     }
