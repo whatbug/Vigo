@@ -22,4 +22,4 @@ Route::post('/validate','TestController@vpnValidate');
 //修改用户监控数值
 Route::get('setData.do','SpyDataController@changeData');
 //查询当前比特币数值
-Route::get('selData.do','SpyDataController@SelData');
+Route::get('selData.do','SpyDataController@selData');
