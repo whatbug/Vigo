@@ -25,7 +25,7 @@ Class RunData extends Model {
         if (sizeof($reNotifiers)) {
             foreach ($reNotifiers as $notify) {
                 if ($vales <= $notify->run_value + $notify->max_value) {
-                    MessageNotifier::sendMsg($notify->nobile, $vales);
+                    MessageNotifier::sendMsg($notify->nobile, (float)$vales);
                     static::whereId($notify->id)->update(['run_time'=>time()]);
                 }
             }
