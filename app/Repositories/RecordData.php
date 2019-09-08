@@ -1,4 +1,5 @@
 <?php namespace App\Repositories;
+use function foo\func;
 use Illuminate\Database\Eloquent\Model;
 
 Class RecordData extends Model {
@@ -13,4 +14,9 @@ Class RecordData extends Model {
         'type',
         'time',
     ];
+
+    //select data
+    static function selData () {
+        return ['value' => static::orderBy('id','DESC')->first()->run_value];
+    }
 }
