@@ -26,7 +26,7 @@ Class SpyDataNotify extends Command {
         set_time_limit(0);
         $content = shell_exec('python3 /spy.py');
         if (!is_null($content)) {
-            $dataNum = str_replace(',','',$content);
+            $dataNum = str_replace('\n','',str_replace(',','',$content));
             $result  = [
                 'values' => $dataNum,
                 'type' => 1,
