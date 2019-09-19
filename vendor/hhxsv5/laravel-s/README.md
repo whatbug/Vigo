@@ -109,11 +109,11 @@ composer require "hhxsv5/laravel-s:~3.5.0" -vvv
     ```
 
 3.Publish configuration and binaries.
-> *Suggest that do publish after upgrade LaravelS every time*
+> *After upgrading LaravelS, you need to republish; click [here](https://github.com/hhxsv5/laravel-s/releases) to see the change notes of each version.*
 ```bash
 php artisan laravels publish
 # Configuration: config/laravels.php
-# Binary: bin/laravels bin/fswatch
+# Binary: bin/laravels bin/fswatch bin/inotify
 ```
 
 4.Change `config/laravels.php`: listen_ip, listen_port, refer [Settings](https://github.com/hhxsv5/laravel-s/blob/master/Settings.md).
@@ -274,7 +274,8 @@ class WebSocketService implements WebSocketHandlerInterface
     }
     public function onOpen(Server $server, Request $request)
     {
-        // Laravel has finished its lifetime before triggering onOpen event, so Laravel's Request & Session are available here, Request is readable only, Session is readable & writable both.
+        // Before the onOpen event is triggered, the HTTP request to establish the WebSocket has passed the Laravel route, 
+        // so Laravel's Request, Auth information is readable, and Session is readable and writable, but only in the onOpen event.
         // \Log::info('New WebSocket connection', [$request->fd, request()->all(), session()->getId(), session('xxx'), session(['yyy' => time()])]);
         $server->push($request->fd, 'Welcome to LaravelS');
         // throw new \Exception('an exception');// all exceptions will be ignored, then record them into Swoole log, you need to try/catch them
@@ -686,35 +687,58 @@ var_dump($swoole->stats());// Singleton
 ```
 
 2.Access `Table`: all table instances will be bound on `SwooleServer`, access by `app('swoole')->xxxTable`.
+
 ```php
+namespace App\Services;
+use Hhxsv5\LaravelS\Swoole\WebsocketHandlerInterface;
 use Swoole\Http\Request;
 use Swoole\WebSocket\Frame;
 use Swoole\WebSocket\Server;
-// Scene：bind UserId & FD in WebSocket
-public function onOpen(Server $server, Request $request)
+class WebSocketService implements WebSocketHandlerInterface
 {
-    // var_dump(app('swoole') === $server);// The same instance
-    $userId = mt_rand(1000, 10000);
-    app('swoole')->wsTable->set('uid:' . $userId, ['value' => $request->fd]);// Bind map uid to fd
-    app('swoole')->wsTable->set('fd:' . $request->fd, ['value' => $userId]);// Bind map fd to uid
-    $server->push($request->fd, 'Welcome to LaravelS');
-}
-public function onMessage(Server $server, Frame $frame)
-{
-    foreach (app('swoole')->wsTable as $key => $row) {
-        if (strpos($key, 'uid:') === 0 && $server->exist($row['value'])) {
-            $server->push($row['value'], 'Broadcast: ' . date('Y-m-d H:i:s'));// Broadcast
+    /**@var \Swoole\Table $wsTable */
+    private $wsTable;
+    public function __construct()
+    {
+        $this->wsTable = app('swoole')->wsTable;
+    }
+    // Scene：bind UserId & FD in WebSocket
+    public function onOpen(Server $server, Request $request)
+    {
+        // var_dump(app('swoole') === $server);// The same instance
+        /**
+         * Get the currently logged in user
+         * This feature requires that the path to establish a WebSocket connection go through middleware such as Authenticate.
+         * E.g:
+         * Browser side: var ws = new WebSocket("ws://127.0.0.1:5200/ws");
+         * Then the /ws route in Laravel needs to add the middleware like Authenticate.
+         */
+        // $user = Auth::user();
+        // $userId = $user ? $user->id : 0; // 0 means a guest user who is not logged in
+        $userId = mt_rand(1000, 10000);
+        $this->wsTable->set('uid:' . $userId, ['value' => $request->fd]);// Bind map uid to fd
+        $this->wsTable->set('fd:' . $request->fd, ['value' => $userId]);// Bind map fd to uid
+        $server->push($request->fd, "Welcome to LaravelS #{$request->fd}");
+    }
+    public function onMessage(Server $server, Frame $frame)
+    {
+        // Broadcast
+        foreach ($this->wsTable as $key => $row) {
+            if (strpos($key, 'uid:') === 0 && $server->isEstablished($row['value'])) {
+                $content = sprintf('Broadcast: new message "%s" from #%d', $frame->data, $frame->fd);
+                $server->push($row['value'], $content);
+            }
         }
     }
-}
-public function onClose(Server $server, $fd, $reactorId)
-{
-    $uid = app('swoole')->wsTable->get('fd:' . $fd);
-    if ($uid !== false) {
-        app('swoole')->wsTable->del('uid:' . $uid['value']); // Unbind uid map
+    public function onClose(Server $server, $fd, $reactorId)
+    {
+        $uid = $this->wsTable->get('fd:' . $fd);
+        if ($uid !== false) {
+            $this->wsTable->del('uid:' . $uid['value']); // Unbind uid map
+        }
+        $this->wsTable->del('fd:' . $fd);// Unbind fd map
+        $server->push($fd, "Goodbye #{$fd}");
     }
-    app('swoole')->wsTable->del('fd:' . $fd);// Unbind fd map
-    $server->push($fd, 'Goodbye');
 }
 ```
 
@@ -1014,8 +1038,6 @@ class WorkerStartEvent implements WorkerStartInterface
 
     - Under Swoole Server, All singleton instances will be held in memory, different lifetime from FPM, request start=>instantiate instance=>request end=>do not recycle singleton instance. So need developer to maintain status of singleton instances in every request.
 
-    - If Session/Authentication/JWT is used in your project, please uncomment the `cleaners` in `laravels.php` as appropriate.
-
     - Common solutions:
 
         1. Write a `XxxCleaner` class to clean up the singleton object state. This class implements the interface `Hhxsv5\LaravelS\Illuminate\Cleaners\CleanerInterface` and then registers it in `cleaners` of `laravels.php`.
@@ -1023,6 +1045,8 @@ class WorkerStartEvent implements WorkerStartInterface
         2. `Reset` status of singleton instances by `Middleware`.
 
         1. Re-register `ServiceProvider`, add `XxxServiceProvider` into `register_providers` of file `laravels.php`. So that reinitialize singleton instances in every request [Refer](https://github.com/hhxsv5/laravel-s/blob/master/Settings.md).
+    
+    - LaravelS has built in some [Cleaners](https://github.com/hhxsv5/laravel-s/blob/master/Settings.md).
 
 - [Known issues](https://github.com/hhxsv5/laravel-s/blob/master/KnownIssues.md): a package of known issues and solutions.
 

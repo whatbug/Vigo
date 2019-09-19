@@ -114,11 +114,11 @@ composer require "hhxsv5/laravel-s:~3.5.0" -vvv
     ```
 
 3.发布配置和二进制文件。
-> *每次升级LaravelS后，需重新发布*
+> *每次升级LaravelS后，需重新publish；点击[Release](https://github.com/hhxsv5/laravel-s/releases)去了解各个版本的变更记录。*
 ```bash
 php artisan laravels publish
 # 配置文件：config/laravels.php
-# 二进制文件：bin/laravels bin/fswatch
+# 二进制文件：bin/laravels bin/fswatch bin/inotify
 ```
 
 4.修改配置`config/laravels.php`：监听的IP、端口等，请参考[配置项](https://github.com/hhxsv5/laravel-s/blob/master/Settings-CN.md)。
@@ -279,7 +279,8 @@ class WebSocketService implements WebSocketHandlerInterface
     }
     public function onOpen(Server $server, Request $request)
     {
-        // 在触发onOpen事件之前Laravel的生命周期已经完结，所以Laravel的Request是可读的，Session是可读写的
+        // 在触发onOpen事件之前，建立WebSocket的HTTP请求已经经过了Laravel的路由，
+        // 所以Laravel的Request、Auth等信息是可读的，Session是可读写的，但仅限在onOpen事件中。
         // \Log::info('New WebSocket connection', [$request->fd, request()->all(), session()->getId(), session('xxx'), session(['yyy' => time()])]);
         $server->push($request->fd, 'Welcome to LaravelS');
         // throw new \Exception('an exception');// 此时抛出的异常上层会忽略，并记录到Swoole日志，需要开发者try/catch捕获处理
@@ -701,35 +702,56 @@ var_dump($swoole->stats());// 单例
 2.访问Table：所有的Table实例均绑定在`SwooleServer`上，通过`app('swoole')->xxxTable`访问。
 
 ```php
+namespace App\Services;
+use Hhxsv5\LaravelS\Swoole\WebsocketHandlerInterface;
 use Swoole\Http\Request;
 use Swoole\WebSocket\Frame;
 use Swoole\WebSocket\Server;
-
-// 场景：WebSocket中UserId与FD绑定
-public function onOpen(Server $server, Request $request)
+class WebSocketService implements WebSocketHandlerInterface
 {
-    // var_dump(app('swoole') === $server);// 同一实例
-    $userId = mt_rand(1000, 10000);
-    app('swoole')->wsTable->set('uid:' . $userId, ['value' => $request->fd]);// 绑定uid到fd的映射
-    app('swoole')->wsTable->set('fd:' . $request->fd, ['value' => $userId]);// 绑定fd到uid的映射
-    $server->push($request->fd, 'Welcome to LaravelS');
-}
-public function onMessage(Server $server, Frame $frame)
-{
-    foreach (app('swoole')->wsTable as $key => $row) {
-        if (strpos($key, 'uid:') === 0 && $server->exist($row['value'])) {
-            $server->push($row['value'], 'Broadcast: ' . date('Y-m-d H:i:s'));// 广播
+    /**@var \Swoole\Table $wsTable */
+    private $wsTable;
+    public function __construct()
+    {
+        $this->wsTable = app('swoole')->wsTable;
+    }
+    // 场景：WebSocket中UserId与FD绑定
+    public function onOpen(Server $server, Request $request)
+    {
+        // var_dump(app('swoole') === $server);// 同一实例
+        /**
+         * 获取当前登录的用户
+         * 此特性要求建立WebSocket连接的路径要经过Authenticate之类的中间件。
+         * 例如：
+         * 浏览器端：var ws = new WebSocket("ws://127.0.0.1:5200/ws");
+         * 那么Laravel中/ws路由就需要加上类似Authenticate的中间件。
+         */
+        // $user = Auth::user();
+        // $userId = $user ? $user->id : 0; // 0 表示未登录的访客用户
+        $userId = mt_rand(1000, 10000);
+        $this->wsTable->set('uid:' . $userId, ['value' => $request->fd]);// 绑定uid到fd的映射
+        $this->wsTable->set('fd:' . $request->fd, ['value' => $userId]);// 绑定fd到uid的映射
+        $server->push($request->fd, "Welcome to LaravelS #{$request->fd}");
+    }
+    public function onMessage(Server $server, Frame $frame)
+    {
+        // 广播
+        foreach ($this->wsTable as $key => $row) {
+            if (strpos($key, 'uid:') === 0 && $server->isEstablished($row['value'])) {
+                $content = sprintf('Broadcast: new message "%s" from #%d', $frame->data, $frame->fd);
+                $server->push($row['value'], $content);
+            }
         }
     }
-}
-public function onClose(Server $server, $fd, $reactorId)
-{
-    $uid = app('swoole')->wsTable->get('fd:' . $fd);
-    if ($uid !== false) {
-        app('swoole')->wsTable->del('uid:' . $uid['value']);// 解绑uid映射
+    public function onClose(Server $server, $fd, $reactorId)
+    {
+        $uid = $this->wsTable->get('fd:' . $fd);
+        if ($uid !== false) {
+            $this->wsTable->del('uid:' . $uid['value']); // 解绑uid映射
+        }
+        $this->wsTable->del('fd:' . $fd);// 解绑fd映射
+        $server->push($fd, "Goodbye #{$fd}");
     }
-    app('swoole')->wsTable->del('fd:' . $fd);// 解绑fd映射
-    $server->push($fd, 'Goodbye');
 }
 ```
 
@@ -1026,8 +1048,6 @@ class WorkerStartEvent implements WorkerStartInterface
     - 传统FPM下，单例模式的对象的生命周期仅在每次请求中，请求开始=>实例化单例=>请求结束后=>单例对象资源回收。
 
     - Swoole Server下，所有单例对象会常驻于内存，这个时候单例对象的生命周期与FPM不同，请求开始=>实例化单例=>请求结束=>单例对象依旧保留，需要开发者自己维护单例的状态。
-
-    - 如果你的项目中使用到了Session、Authentication、JWT，请根据情况解除`laravels.php`中`cleaners`的注释。
     
     - 常见的解决方案：
 
@@ -1036,6 +1056,8 @@ class WorkerStartEvent implements WorkerStartInterface
         2. 用一个`中间件`来`重置`单例对象的状态。
 
         3. 如果是以`ServiceProvider`注册的单例对象，可添加该`ServiceProvider`到`laravels.php`的`register_providers`中，这样每次请求会重新注册该`ServiceProvider`，重新实例化单例对象，[参考](https://github.com/hhxsv5/laravel-s/blob/master/Settings-CN.md)。
+
+    - LaravelS 已经内置了一些[Cleaner](https://github.com/hhxsv5/laravel-s/blob/master/Settings-CN.md)。
 
 - [常见问题](https://github.com/hhxsv5/laravel-s/blob/master/KnownIssues-CN.md)：一揽子的已知问题和解决方案。
 
@@ -1203,6 +1225,7 @@ class WorkerStartEvent implements WorkerStartInterface
 | *强 | 50 |
 | Anthony | 18.88 |
 | *官龙 | 100 |
+| 0o飞舞o0木木 *科 | 288 |
 
 ## License
 
