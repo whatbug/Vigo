@@ -24,7 +24,7 @@ Class SpyDataNotify extends Command {
      * Execute the console command.
      * @return mixed
      */
-    public function handle(RecordData $data) {
+    public function handle(RunMethod $data) {
         set_time_limit(0);
         $content = shell_exec('python3 /spy.py');
         if (!is_null($content)) {
