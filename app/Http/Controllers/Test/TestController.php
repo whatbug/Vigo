@@ -64,7 +64,6 @@ Class TestController extends BaseController {
                 "referer: https://www.36ip.cn/",
             );
             $result = (new CurlService)->_url($postUrl,$postData,$header);
-            return $result;
             $resource = json_decode($result);
             foreach ($resource->data as $val) {
                 $redData['list'][] = [

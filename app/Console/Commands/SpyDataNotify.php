@@ -1,6 +1,6 @@
 <?php namespace App\Console\Commands;
 
-use App\Repositories\RecordData;
+use App\Repositories\HuoCollect\Repositories\RunRecordRepositories;
 use App\Repositories\RunData;
 use Illuminate\Console\Command;
 
@@ -22,7 +22,7 @@ Class SpyDataNotify extends Command {
      * Execute the console command.
      * @return mixed
      */
-    public function handle(RecordData $data) {
+    public function handle(RunRecordRepositories $data) {
         set_time_limit(0);
         $content = shell_exec('python3 /spy.py');
         if (!is_null($content)) {
@@ -32,8 +32,8 @@ Class SpyDataNotify extends Command {
                 'type' => 1,
                 'time' => time(),
             ];
-            $data->fill($result)->save();
-            RunData::notifyUsers(intval($result['values']),1);
+            $data->insertRedis($result);
+            $data->notifyUsers(intval($result['values']),1);
         }
         return true;
     }
