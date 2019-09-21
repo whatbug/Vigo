@@ -21,5 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/validate','TestController@vpnValidate');
 //修改用户监控数值
 Route::get('setData.do','SpyDataController@changeData');
-//查询当前比特币数值
+//查询用户提醒数据
 Route::get('selData.do','SpyDataController@selData');
+//查询采集数值
+Route::get('selSpy.do','SpyDataController@selSpy');

@@ -32,4 +32,13 @@ class SpyDataController extends BaseController
         }
         return ['code'=>300,'success'=>false];
     }
+
+    //查询采集数值
+    public function selSpy () {
+        $data = $this->run_data->selSpyVal();
+        if (sizeof($data)) {
+            return ['code'=>200,'data'=>$data,'success'=>true];
+        }
+        return ['code'=>300,'success'=>false];
+    }
 }

@@ -35,7 +35,14 @@ Class RunMethod implements RecordData
      */
     public function selRunData()
     {
-        return $this->model->query()->whereStatus(0)->get()->toArray();
+        return $this->model->query()->where('run_time',0)->get()->toArray();
+    }
+
+    /*
+     * 采集数值查询
+     */
+    public function selSpyVal() {
+        return Cache::get('btc_record')?:[];
     }
 
 

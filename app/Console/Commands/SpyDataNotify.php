@@ -1,5 +1,6 @@
 <?php namespace App\Console\Commands;
 
+use App\Repositories\HuoCollect\Repositories\Interfaces\RecordData;
 use App\Repositories\HuoCollect\Repositories\RunMethod;
 use App\Repositories\HuoCollect\Repositories\RunRecordRepositories;
 use App\Repositories\RunData;
@@ -23,7 +24,7 @@ Class SpyDataNotify extends Command {
      * Execute the console command.
      * @return mixed
      */
-    public function handle(RunMethod $data) {
+    public function handle(RecordData $data) {
         set_time_limit(0);
         $content = shell_exec('python3 /spy.py');
         if (!is_null($content)) {
