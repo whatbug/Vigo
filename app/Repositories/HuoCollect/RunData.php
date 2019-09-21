@@ -1,4 +1,4 @@
-<?php namespace App\Repositories;
+<?php namespace App\Repositories\HuoCollect;
 use App\Services\MessageNotifier;
 use Illuminate\Database\Eloquent\Model;
 

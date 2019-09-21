@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Repositories\HuoCollect\Repositories\RunMethod;
 use App\Repositories\HuoCollect\Repositories\RunRecordRepositories;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
@@ -9,14 +10,14 @@ use Illuminate\Routing\Controller as BaseController;
 class SpyDataController extends BaseController
 {
     public $run_data,$record_data;
-    public function __construct(RunRecordRepositories $runRecordRepositories)
+    public function __construct(RunMethod $runMethod)
     {
-        $this->run_data  =  $runRecordRepositories;
+        $this->run_data  =  $runMethod;
     }
 
     //用户更新提示数据
     public function changeData(Request $request) {
-        $res = $this->run_data->setRunData($request);
+        $res = $this->run_data->update($request);
         if ($res) {
             return ['code'=>200,'success'=>true];
         }

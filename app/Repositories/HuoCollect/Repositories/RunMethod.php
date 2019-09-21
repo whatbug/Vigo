@@ -1,13 +1,13 @@
 <?php namespace App\Repositories\HuoCollect\Repositories;
 
 use App\Repositories\HuoCollect\Repositories\Interfaces\RecordData;
-use App\Repositories\RunData;
+use App\Repositories\HuoCollect\RunData;
 use App\Services\MessageNotifier;
 use Illuminate\Support\Facades\Cache;
 
 Class RunMethod implements RecordData
 {
-    private $model,$status,$data;
+    private $model,$status;
 
     public function __construct()
     {
