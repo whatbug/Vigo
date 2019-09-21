@@ -9,9 +9,8 @@ Class RunMethod implements RecordData
 {
     private $model,$status,$data;
 
-    public function __construct($data)
+    public function __construct()
     {
-        $this->data  = $data;
         $this->model = new RunData();
     }
 
@@ -45,7 +44,7 @@ Class RunMethod implements RecordData
      */
     public function update($array)
     {
-        return $this->checkStatus($this->data->id)->updates($this->data);
+        return $this->checkStatus($array)->updates($array);
     }
 
     /*

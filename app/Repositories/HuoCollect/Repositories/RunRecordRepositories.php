@@ -61,7 +61,7 @@ Class RunRecordRepositories
      * @return mixed
      */
     public function setRunData ($data){
-        return $this->model->update(new RunMethod($data));
+        return $this->model->update($data);
     }
 
     /*
