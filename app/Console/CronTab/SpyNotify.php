@@ -21,21 +21,19 @@ Class SpyNotify extends CronJob
 
    public function run()
    {
-       \Log::info(1111);
        $content = shell_exec('python3 /spy.py');
-       \Log::info($content);
-//       if (!is_null($content)) {
-//           preg_match('/(\d+)\.(\d+)/is',$content,$dataNum);
-//           $result  = [
-//               'values' => $dataNum[0],
-//               'type' => 1,
-//               'time' => time(),
-//           ];
-//           $data = new RunMethod();
-//           $data->insertRedis($result);
-//           $data->notifyUsers(intval($result['values']),1);
-//       }
-//       return true;
+       if (!is_null($content)) {
+           preg_match('/(\d+)\.(\d+)/is',$content,$dataNum);
+           $result  = [
+               'values' => $dataNum[0],
+               'type' => 1,
+               'time' => time(),
+           ];
+           $data = new RunMethod();
+           $data->insertRedis($result);
+           $data->notifyUsers(intval($result['values']),1);
+       }
+       return true;
    }
 
 }
