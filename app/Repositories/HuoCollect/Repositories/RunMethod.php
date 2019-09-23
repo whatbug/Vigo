@@ -5,7 +5,7 @@ use App\Repositories\HuoCollect\RunData;
 use App\Services\MessageNotifier;
 use Illuminate\Support\Facades\Cache;
 
-Class RunMethod implements RecordData
+abstract Class RunMethod implements RecordData
 {
     private $model,$status;
 
@@ -59,7 +59,7 @@ Class RunMethod implements RecordData
      */
     public function insertRedis($array) {
         $getData = Cache::get('btc_record')?:[];
-        if (sizeof($getData) > 60) $getData=array_values(array_slice($getData,sizeof($getData)-40,sizeof($getData)-1));
+        if (sizeof($getData) > 60) $getData=array_values(array_slice($getData,0,sizeof($getData)-40));
         array_unshift($getData,$array);
         return Cache::put('btc_record',$getData,10*60);
     }

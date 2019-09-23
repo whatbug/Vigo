@@ -28,8 +28,8 @@ class Kernel extends ConsoleKernel
     {
         //每1小时更新一次数据
          $schedule->command('ssr:array')->hourly();
-        //每分钟监控一次
-         $schedule->command('spy:notify')->everyMinute();
+        //每分钟监控一次 被秒级取代
+        //$schedule->command('spy:notify')->everyMinute();
     }
 
     /**

@@ -2,6 +2,9 @@
 
 interface RecordData
 {
+    //禁止实例化
+    public function __construct();
+
     /*
      * 触发推送
      */

@@ -1,9 +1,6 @@
 <?php namespace App\Console\Commands;
 
-use App\Repositories\HuoCollect\Repositories\Interfaces\RecordData;
 use App\Repositories\HuoCollect\Repositories\RunMethod;
-use App\Repositories\HuoCollect\Repositories\RunRecordRepositories;
-use App\Repositories\RunData;
 use Illuminate\Console\Command;
 
 Class SpyDataNotify extends Command {

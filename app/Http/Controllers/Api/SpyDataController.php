@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Repositories\HuoCollect\Repositories\Interfaces\RecordData;
 use App\Repositories\HuoCollect\Repositories\RunMethod;
-use App\Repositories\HuoCollect\Repositories\RunRecordRepositories;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 
@@ -25,7 +25,8 @@ class SpyDataController extends BaseController
     }
 
     //查询当前实时数值
-    public function selData () {
+    public function selData (RecordData $data) {
+        $this->run_data = $data;
         $data = $this->run_data->selRunData();
         if (sizeof($data)) {
             return ['code'=>200,'data'=>$data,'success'=>true];
