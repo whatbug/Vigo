@@ -35,10 +35,10 @@ return [
             'enable'        => true,
             'jobs'          => [
                 // Enable LaravelScheduleJob to run `php artisan schedule:run` every 1 minute, replace Linux Crontab
-                //\Hhxsv5\LaravelS\Illuminate\LaravelScheduleJob::class,
+//                \Hhxsv5\LaravelS\Illuminate\LaravelScheduleJob::class,
                 // Two ways to configure parameters:
-                 [\App\Console\CronTab\SpyNotify::class, [7000, true]], // Pass in parameters when registering
-                // \App\Jobs\XxxCronJob::class, // Override the corresponding method to return the configuration
+//                 [\App\Console\CronTab\SpyNotify::class, [7000, true]], // Pass in parameters when registering
+                  \App\Console\CronTab\SpyNotify::class, // Override the corresponding method to return the configuration
             ],
             'max_wait_time' => 5,
     ],
