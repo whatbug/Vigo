@@ -4,7 +4,10 @@
     <bookmark url="file://$PROJECT_DIR$/app/Http/Controllers/Test/TestController.php" line="59" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e5216d6-fbcd-4943-8d11-8237777cfe25" name="Default Changelist" comment="" />
+    <list default="true" id="9e5216d6-fbcd-4943-8d11-8237777cfe25" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/app/Jobs/Timer/SpyNotify.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/CronTab/SpyNotify.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/laravels.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/laravels.php" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,11 +49,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Console/CronTab/SpyNotify.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="44">
-              <caret line="2" column="41" lean-forward="true" selection-start-line="2" selection-start-column="41" selection-end-line="2" selection-end-column="41" />
+            <state relative-caret-position="454">
+              <caret line="22" column="4" lean-forward="true" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
+              <folding>
+                <element signature="e#38#79#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -100,11 +106,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/laravels.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="40" column="43" selection-start-line="40" selection-start-column="43" selection-end-line="40" selection-end-column="43" />
+            <state relative-caret-position="88">
+              <caret line="27" column="15" lean-forward="true" selection-start-line="27" selection-start-column="15" selection-end-line="27" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -180,8 +186,9 @@
         <option value="$PROJECT_DIR$/app/Repositories/HuoCollect/Repositories/Interfaces/RecordData.php" />
         <option value="$PROJECT_DIR$/app/Repositories/HuoCollect/Repositories/RunMethod.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Api/SpyDataController.php" />
-        <option value="$PROJECT_DIR$/config/laravels.php" />
+        <option value="$PROJECT_DIR$/app/Jobs/Timer/SpyNotify.php" />
         <option value="$PROJECT_DIR$/app/Console/CronTab/SpyNotify.php" />
+        <option value="$PROJECT_DIR$/config/laravels.php" />
       </list>
     </option>
   </component>
@@ -306,6 +313,19 @@
             <path>
               <item name="self" type="b2602c69:ProjectViewProjectNode" />
               <item name="self" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Console" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="self" type="b2602c69:ProjectViewProjectNode" />
+              <item name="self" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Console" type="462c0819:PsiDirectoryNode" />
+              <item name="CronTab" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="self" type="b2602c69:ProjectViewProjectNode" />
+              <item name="self" type="462c0819:PsiDirectoryNode" />
               <item name="database" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -334,17 +354,17 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\self\app\Repositories\HuoCollect" />
-      <recent name="C:\xampp\htdocs\Vigo\public\statics\css" />
-      <recent name="C:\xampp\htdocs\Vigo\public\statics\img" />
-      <recent name="C:\xampp\htdocs\Vigo\public\css" />
-      <recent name="C:\xampp\htdocs\Vigo\public\img" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\self\public\statics\js" />
       <recent name="C:\xampp\htdocs\Vigo\public\statics\js" />
       <recent name="C:\xampp\htdocs\Vigo\public\statics\css" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\self\app\Console\CronTab" />
+      <recent name="C:\xampp\htdocs\self\app\Jobs\Timer" />
+      <recent name="C:\xampp\htdocs\self\app\Repositories\HuoCollect" />
+      <recent name="C:\xampp\htdocs\Vigo\public\statics\css" />
+      <recent name="C:\xampp\htdocs\Vigo\public\statics\img" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -447,15 +467,16 @@
       <workItem from="1568443414837" duration="597000" />
       <workItem from="1568880812203" duration="663000" />
       <workItem from="1568944894210" duration="34043000" />
-      <workItem from="1569204528506" duration="8024000" />
+      <workItem from="1569204528506" duration="8586000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="280547000" />
+    <option name="totallyTimeSpent" value="281109000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13539445" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -802,13 +823,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/hhxsv5/laravel-s/src/Swoole/Timer/CronJob.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="740">
-          <caret line="38" column="47" lean-forward="true" selection-start-line="38" selection-start-column="47" selection-end-line="38" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/hhxsv5/laravel-s/src/Illuminate/LaravelScheduleJob.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="572">
@@ -816,17 +830,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/laravels.php">
+    <entry file="file://$PROJECT_DIR$/vendor/hhxsv5/laravel-s/src/Swoole/Timer/CronJob.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="40" column="43" selection-start-line="40" selection-start-column="43" selection-end-line="40" selection-end-column="43" />
+        <state relative-caret-position="740">
+          <caret line="38" column="47" lean-forward="true" selection-start-line="38" selection-start-column="47" selection-end-line="38" selection-end-column="47" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Console/CronTab/SpyNotify.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="41" lean-forward="true" selection-start-line="2" selection-start-column="41" selection-end-line="2" selection-end-column="41" />
+        <state relative-caret-position="454">
+          <caret line="22" column="4" lean-forward="true" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
+          <folding>
+            <element signature="e#38#79#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/laravels.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="27" column="15" lean-forward="true" selection-start-line="27" selection-start-column="15" selection-end-line="27" selection-end-column="15" />
         </state>
       </provider>
     </entry>

@@ -38,7 +38,7 @@ return [
 //                \Hhxsv5\LaravelS\Illuminate\LaravelScheduleJob::class,
                 // Two ways to configure parameters:
 //                 [\App\Console\CronTab\SpyNotify::class, [7000, true]], // Pass in parameters when registering
-                  \App\Jobs\Timer\SpyNotify::class, // Override the corresponding method to return the configuration
+                  \App\Console\CronTab\SpyNotify::class, //每7秒同步一次数据
             ],
             'max_wait_time' => 5,
     ],
