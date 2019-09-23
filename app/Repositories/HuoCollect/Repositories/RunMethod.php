@@ -5,7 +5,7 @@ use App\Repositories\HuoCollect\RunData;
 use App\Services\MessageNotifier;
 use Illuminate\Support\Facades\Cache;
 
-abstract Class RunMethod implements RecordData
+Class RunMethod implements RecordData
 {
     private $model,$status;
 
