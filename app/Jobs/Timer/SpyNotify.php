@@ -1,4 +1,4 @@
-<?php namespace App\Console\CronTab;
+<?php namespace App\Jobs\Timer;
 
 use Hhxsv5\LaravelS\Swoole\Timer\CronJob;
 use App\Repositories\HuoCollect\Repositories\RunMethod;
