@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e5216d6-fbcd-4943-8d11-8237777cfe25" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Console/Commands/SpyDataNotify.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/SpyDataNotify.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Console/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Kernel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/SpyDataController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/SpyDataController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/HuoCollect/Repositories/Interfaces/RecordData.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/HuoCollect/Repositories/Interfaces/RecordData.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/HuoCollect/Repositories/RunMethod.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/HuoCollect/Repositories/RunMethod.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/laravels.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/laravels.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,8 +30,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Repositories/HuoCollect/Repositories/RunMethod.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-756">
-              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+            <state relative-caret-position="510">
+              <caret line="45" column="5" lean-forward="true" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
               <folding>
                 <element signature="e#59#126#0#PHP" expanded="true" />
               </folding>
@@ -90,8 +84,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/SpyDataController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
+            <state relative-caret-position="616">
+              <caret line="28" column="39" selection-start-line="28" selection-start-column="39" selection-end-line="28" selection-end-column="39" />
               <folding>
                 <element signature="e#44#111#0#PHP" expanded="true" />
               </folding>
@@ -102,8 +96,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/laravels.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="30" column="40" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="40" />
+            <state relative-caret-position="506">
+              <caret line="38" column="52" lean-forward="true" selection-start-line="38" selection-start-column="52" selection-end-line="38" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -172,15 +166,15 @@
         <option value="$PROJECT_DIR$/app/Repositories/HuoCollect/RunData.php" />
         <option value="$PROJECT_DIR$/routes/api.php" />
         <option value="$PROJECT_DIR$/app/Repositories/HuoCollect/Repositories/RunRecordRepositories.php" />
-        <option value="$PROJECT_DIR$/config/laravels.php" />
         <option value="$PROJECT_DIR$/app/Console/CrontabS/SpyNotify.php" />
         <option value="$PROJECT_DIR$/app/Console/Crontab/SpyNotify.php" />
         <option value="$PROJECT_DIR$/app/Console/CronTab/SpyNotify.php" />
         <option value="$PROJECT_DIR$/app/Console/Commands/SpyDataNotify.php" />
         <option value="$PROJECT_DIR$/app/Console/Kernel.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Api/SpyDataController.php" />
         <option value="$PROJECT_DIR$/app/Repositories/HuoCollect/Repositories/Interfaces/RecordData.php" />
         <option value="$PROJECT_DIR$/app/Repositories/HuoCollect/Repositories/RunMethod.php" />
+        <option value="$PROJECT_DIR$/config/laravels.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Api/SpyDataController.php" />
       </list>
     </option>
   </component>
@@ -506,12 +500,12 @@
       <workItem from="1568443414837" duration="597000" />
       <workItem from="1568880812203" duration="663000" />
       <workItem from="1568944894210" duration="34043000" />
-      <workItem from="1569204528506" duration="4924000" />
+      <workItem from="1569204528506" duration="5232000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="277447000" />
+    <option name="totallyTimeSpent" value="277755000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -801,13 +795,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/laravels.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="30" column="40" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Console/CrontabS/SpyNotify.php">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -873,10 +860,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/config/laravels.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="38" column="52" lean-forward="true" selection-start-line="38" selection-start-column="52" selection-end-line="38" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/SpyDataController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
+        <state relative-caret-position="616">
+          <caret line="28" column="39" selection-start-line="28" selection-start-column="39" selection-end-line="28" selection-end-column="39" />
           <folding>
             <element signature="e#44#111#0#PHP" expanded="true" />
           </folding>
@@ -885,8 +879,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Repositories/HuoCollect/Repositories/RunMethod.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-756">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        <state relative-caret-position="510">
+          <caret line="45" column="5" lean-forward="true" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
           <folding>
             <element signature="e#59#126#0#PHP" expanded="true" />
           </folding>

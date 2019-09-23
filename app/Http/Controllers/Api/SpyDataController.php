@@ -25,8 +25,7 @@ class SpyDataController extends BaseController
     }
 
     //查询当前实时数值
-    public function selData (RecordData $data) {
-        $this->run_data = $data;
+    public function selData () {
         $data = $this->run_data->selRunData();
         if (sizeof($data)) {
             return ['code'=>200,'data'=>$data,'success'=>true];
