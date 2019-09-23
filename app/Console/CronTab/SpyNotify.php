@@ -3,7 +3,7 @@
 use Hhxsv5\LaravelS\Swoole\Timer\CronJob;
 use App\Repositories\HuoCollect\Repositories\RunMethod;
 
-Abstract Class SpyNotify extends CronJob
+Class SpyNotify extends CronJob
 {
     protected $num = 0;
 
@@ -21,7 +21,6 @@ Abstract Class SpyNotify extends CronJob
 
    public function run()
    {
-       set_time_limit(0);
        $content = shell_exec('python3 /spy.py');
        if (!is_null($content)) {
            preg_match('/(\d+)\.(\d+)/is',$content,$dataNum);
@@ -34,7 +33,6 @@ Abstract Class SpyNotify extends CronJob
            $data->insertRedis($result);
            $data->notifyUsers(intval($result['values']),1);
        }
-       return true;
    }
 
 }
