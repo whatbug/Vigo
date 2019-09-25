@@ -25,7 +25,6 @@ Class SpyDataNotify extends Command {
         $content = shell_exec('python3 /spy.py');
         $arr = explode(',',$content);
         echo number_format($arr[0],2);
-        return true;
     }
 
 }
