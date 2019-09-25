@@ -23,8 +23,8 @@ Class SpyDataNotify extends Command {
     public function handle() {
         set_time_limit(0);
         $content = shell_exec('python3 /spy.py');
-        preg_match('/(\d+)\.(\d+)/is',$content,$dataNum);
-        return $content;
+        $arr = explode(',',$content);
+        return number_format($arr[0],2);
     }
 
 }

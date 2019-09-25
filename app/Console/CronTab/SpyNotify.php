@@ -22,19 +22,15 @@ Class SpyNotify extends CronJob
    public function run()
    {
        $content = shell_exec('python3 /spy.py');
-       preg_match('/(\d+)\.(\d+)/is',$content,$dataNum);
-       if (!is_null($content) && is_array($dataNum)) {
-           $array = [
+       $dataNum = explode(',',$content);
+       if (!is_null($content) && sizeof($dataNum)) {
+           $array = [[
                'values' => $dataNum[0],
                'type'   => 'BTC',
-           ];
-//           $array = [[
-//               'values' => $dataNum[0],
-//               'type'   => 'BTC',
-//           ],[
-//               'values' => $dataNum[3],
-//               'type'   => 'EHT',
-//           ]];
+           ],[
+               'values' => $dataNum[1],
+               'type'   => 'EHT',
+           ]];
            dispatch(function() use($array){
                new ProcessSpy($array);
            });
