@@ -52,12 +52,12 @@ Trait ApiResponse
             $this->setStatusCode($code);
         }
 
-        $status = [
+        $sta = [
             'success' => $status,
             'code'    => $this->statusCode,
         ];
 
-        $data = array_merge($status,$data);
+        $data = array_merge($sta,$data);
         return $this->respond($data);
 
     }

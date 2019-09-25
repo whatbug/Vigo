@@ -25,9 +25,16 @@ Class RunMethod implements RecordData
         $reNotifiers = $this->model->query()->where('run_type',$type)->where('run_time',0)->get();
         if (sizeof($reNotifiers)) {
             foreach ($reNotifiers as $notify) {
-                if ($values <= $notify->run_value + $notify->max_value) {
-                    MessageNotifier::sendMsg($notify->mobile, $values);
-                    $this->model->whereId($notify->id)->update(['run_time'=>time()]);
+                if ($notify->type == 1) {
+                    if ($values <= $notify->run_value + $notify->max_value) {
+                        MessageNotifier::sendMsg($notify->mobile, $values);
+                        $this->model->whereId($notify->id)->update(['run_time' => time()]);
+                    }
+                } else {
+                    if ($values >= $notify->run_value + $notify->max_value) {
+                        MessageNotifier::sendMsg($notify->mobile, $values);
+                        $this->model->whereId($notify->id)->update(['run_time' => time()]);
+                    }
                 }
             }
         }
