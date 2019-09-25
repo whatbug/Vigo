@@ -3,7 +3,7 @@
 interface RecordData
 {
     //禁止实例化
-    public function __construct();
+//    public function __construct();
 
     /*
      * 触发推送
@@ -23,5 +23,5 @@ interface RecordData
     /*
      * 插入Redis
      */
-    public function insertRedis($array);
+    public function insertRedis($array,$key_name);
 }

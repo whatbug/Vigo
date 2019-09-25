@@ -1,5 +1,6 @@
 <?php namespace App\Repositories\HuoCollect\Repositories;
 
+use App\Jobs\ProcessSpy;
 use App\Repositories\HuoCollect\Repositories\Interfaces\RecordData;
 use App\Repositories\HuoCollect\RunData;
 use App\Services\MessageNotifier;
@@ -8,6 +9,9 @@ use Illuminate\Support\Facades\Cache;
 Class RunMethod implements RecordData
 {
     private $model,$status;
+
+    const BTC = 'btc_record';
+    const EHT = 'eht_record';
 
     public function __construct()
     {
@@ -41,8 +45,8 @@ Class RunMethod implements RecordData
     /*
      * 采集数值查询
      */
-    public function selSpyVal() {
-        return Cache::get('btc_record')?:[];
+    public function selSpyVal($request) {
+        return Cache::get(constant('self::'.$request->type))?:[];
     }
 
 
@@ -57,11 +61,11 @@ Class RunMethod implements RecordData
     /*
      * 存入Redis
      */
-    public function insertRedis($array) {
-        $getData = Cache::get('btc_record')?:[];
+    public function insertRedis($array,$key_name) {
+        $getData = Cache::get($key_name)?:[];
         if (sizeof($getData) > 60) $getData=array_values(array_slice($getData,0,sizeof($getData)-40));
         array_unshift($getData,$array);
-        return Cache::put('btc_record',$getData,10*60);
+        return Cache::put($key_name,$getData,10*60);
     }
 
     /**

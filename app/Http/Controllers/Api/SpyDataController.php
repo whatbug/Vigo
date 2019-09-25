@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Repositories\HuoCollect\Repositories\Interfaces\RecordData;
+use App\Repositories\ApiResponse;
 use App\Repositories\HuoCollect\Repositories\RunMethod;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 
 class SpyDataController extends BaseController
 {
+    use ApiResponse;
+
     public $run_data,$record_data;
     public function __construct(RunMethod $runMethod)
     {
@@ -19,26 +21,27 @@ class SpyDataController extends BaseController
     public function changeData(Request $request) {
         $res = $this->run_data->update($request);
         if ($res) {
-            return ['code'=>200,'success'=>true];
+            return $this->success($res);
         }
-        return ['code'=>300,'success'=>false];
+        return $this->failed('update failed!');
     }
 
-    //查询当前实时数值
+    //查询用户监控数据
     public function selData () {
         $data = $this->run_data->selRunData();
         if (sizeof($data)) {
-            return ['code'=>200,'data'=>$data,'success'=>true];
+            return $this->success($data);
         }
-        return ['code'=>300,'success'=>false];
+        return $this->failed('select failed!');
     }
 
     //查询采集数值
-    public function selSpy () {
-        $data = $this->run_data->selSpyVal();
+    public function selSpy (Request $request) {
+        if (!$request->type) return $this->failed('params is error!');
+        $data = $this->run_data->selSpyVal($request);
         if (sizeof($data)) {
-            return ['code'=>200,'data'=>$data,'success'=>true];
+            return $this->success($data);
         }
-        return ['code'=>300,'success'=>false];
+        return $this->failed('select failed!');
     }
 }

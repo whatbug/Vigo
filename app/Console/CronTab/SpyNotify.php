@@ -1,7 +1,7 @@
 <?php namespace App\Console\CronTab;
 
+use App\Jobs\ProcessSpy;
 use Hhxsv5\LaravelS\Swoole\Timer\CronJob;
-use App\Repositories\HuoCollect\Repositories\RunMethod;
 
 Class SpyNotify extends CronJob
 {
@@ -22,16 +22,18 @@ Class SpyNotify extends CronJob
    public function run()
    {
        $content = shell_exec('python3 /spy.py');
-       if (!is_null($content)) {
-           preg_match('/(\d+)\.(\d+)/is',$content,$dataNum);
-           $result  = [
+       preg_match('/(\d+)\.(\d+)/is',$content,$dataNum);
+       if (!is_null($content) && is_array($dataNum)) {
+           $array = [[
                'values' => $dataNum[0],
-               'type' => 1,
-               'time' => time(),
-           ];
-           $data = new RunMethod();
-           $data->insertRedis($result);
-           $data->notifyUsers(intval($result['values']),1);
+               'type'   => 'BTC',
+           ],[
+               'values' => $dataNum[3],
+               'type'   => 'EHT',
+           ]];
+           dispatch(function() use($array){
+               new ProcessSpy($array);
+           });
        }
        return true;
    }
