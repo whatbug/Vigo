@@ -38,9 +38,6 @@ class SpyDataController extends BaseController
 
     //查询采集数值
     public function selSpy (Request $request) {
-        $redis = new \Redis();
-        $redis->set('11',33);
-        return $redis->get('11');
         if (!$request->type) return $this->failed('params is error!');
         $data = $this->run_data->selSpyVal($request);
         if (sizeof($data)) {
