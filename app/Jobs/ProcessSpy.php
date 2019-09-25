@@ -39,8 +39,8 @@ class ProcessSpy implements ShouldQueue
     {
           foreach ($this->array as $value) {
               $data = new RunMethod();
-              $data->insertRedis(['values'=>$value->values,'type'=>$value->type,'time'=>time()],constant('self::'.$value->type));
-              $data->notifyUsers(intval($value->values),$value->type);
+              $data->insertRedis(['values'=>$value['values'],'type'=>$value['type'],'time'=>time()],constant('self::'.$value['type']));
+              $data->notifyUsers(intval($value['values']),$value['type']);
           }
     }
 }
