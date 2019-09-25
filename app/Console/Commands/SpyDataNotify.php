@@ -1,6 +1,5 @@
 <?php namespace App\Console\Commands;
 
-use App\Repositories\HuoCollect\Repositories\RunMethod;
 use Illuminate\Console\Command;
 
 Class SpyDataNotify extends Command {
@@ -21,20 +20,11 @@ Class SpyDataNotify extends Command {
      * Execute the console command.
      * @return mixed
      */
-    public function handle(RunMethod $data) {
+    public function handle() {
         set_time_limit(0);
         $content = shell_exec('python3 /spy.py');
-        if (!is_null($content)) {
-            preg_match('/(\d+)\.(\d+)/is',$content,$dataNum);
-            $result  = [
-                'values' => $dataNum[0],
-                'type' => 1,
-                'time' => time(),
-            ];
-            $data->insertRedis($result);
-            $data->notifyUsers(intval($result['values']),1);
-        }
-        return true;
+        preg_match('/(\d+)\.(\d+)/is',$content,$dataNum);
+        return $dataNum;
     }
 
 }
