@@ -31,9 +31,9 @@ Class SpyNotify extends CronJob
                'values' => round($dataNum[1],2),
                'type'   => 'EHT',
            ]];
-           dispatch(function() use($array){
+           dispatch(function() use($array) {
                new ProcessSpy($array);
-           });
+           })->onQueue('spy')->allOnConnection('redis');
        }
    }
 
