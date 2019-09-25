@@ -33,7 +33,7 @@ Class SpyNotify extends CronJob
            ]];
            dispatch(function() use($array) {
                new ProcessSpy($array);
-           })->onQueue('spy')->allOnConnection('redis');
+           });
        }
    }
 
