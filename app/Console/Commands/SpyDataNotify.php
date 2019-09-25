@@ -24,7 +24,7 @@ Class SpyDataNotify extends Command {
         set_time_limit(0);
         $content = shell_exec('python3 /spy.py');
         preg_match('/(\d+)\.(\d+)/is',$content,$dataNum);
-        return $dataNum;
+        return $content;
     }
 
 }
