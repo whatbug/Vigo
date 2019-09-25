@@ -493,6 +493,7 @@ class ComposerStaticInit28e1a7ea79c585a5acc83b162302d0d3
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
+        'App\\Providers\\HorizonServiceProvider' => __DIR__ . '/../..' . '/app/Providers/HorizonServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\Repositories\\ApiResponse' => __DIR__ . '/../..' . '/app/Repositories/ApiResponse.php',
         'App\\Repositories\\HuoCollect\\Repositories\\Interfaces\\RecordData' => __DIR__ . '/../..' . '/app/Repositories/HuoCollect/Repositories/Interfaces/RecordData.php',
