@@ -103,6 +103,6 @@ Trait ApiResponse
      */
     public function success($data, $status = true){
 
-        return $this->status($status,compact('data'));
+        return $this->status($status,compact('data'),FoundationResponse::HTTP_OK);
     }
 }
