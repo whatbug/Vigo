@@ -92,4 +92,15 @@ Class RunMethod implements RecordData
         }
         return false;
     }
+
+    /**
+     * 查询最新数据
+     */
+    public function selNews () {
+        if (!sizeof(Cache::get(self::BTC))) return array();
+        return [
+           'BTC' => Cache::get(self::BTC)[0]->values,
+           'EHT' => Cache::get(self::EHT)[0]->values
+        ];
+    }
 }

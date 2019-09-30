@@ -6,7 +6,6 @@ use App\Repositories\ApiResponse;
 use App\Repositories\HuoCollect\Repositories\RunMethod;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Support\Facades\Redis;
 
 class SpyDataController extends BaseController
 {
@@ -40,6 +39,15 @@ class SpyDataController extends BaseController
     public function selSpy (Request $request) {
         if (!$request->type) return $this->failed('params is error!');
         $data = $this->run_data->selSpyVal($request);
+        if (sizeof($data)) {
+            return $this->success($data);
+        }
+        return $this->failed('select failed!');
+    }
+
+    //查询最新数据
+    public function selNews () {
+        $data = $this->run_data->selNews();
         if (sizeof($data)) {
             return $this->success($data);
         }
