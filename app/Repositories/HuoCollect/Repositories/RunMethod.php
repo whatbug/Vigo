@@ -99,8 +99,8 @@ Class RunMethod implements RecordData
     public function selNews () {
         if (!sizeof(Cache::get(self::BTC))) return array();
         return [
-           'BTC' => Cache::get(self::BTC)[0],
-           'EHT' => Cache::get(self::EHT)[0]
+           'BTC' => Cache::get(self::BTC)[0]['values'],
+           'EHT' => Cache::get(self::EHT)[0]['values']
         ];
     }
 }
