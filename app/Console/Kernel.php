@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\NewSSProcess;
 use App\Console\Commands\SsrService;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -16,6 +17,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         //SSR 服务
         SsrService::class,
+        NewSSProcess::class
     ];
 
     /**
@@ -26,8 +28,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        //每天更新一次
+        $schedule->command('ssr:new')->dailyAt(2);
         //每1小时更新一次数据
-         $schedule->command('ssr:array')->hourly();
+//         $schedule->command('ssr:array')->hourly();
         //每分钟监控一次 被秒级取代
         //$schedule->command('spy:notify')->everyMinute();
     }

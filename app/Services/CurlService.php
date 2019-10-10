@@ -41,7 +41,7 @@ Class CurlService {
         curl_setopt($curl, CURLOPT_URL, $postUrl);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, FALSE);
-        if (sizeof($curlPost)){
+        if (!empty($curlPost)){
             curl_setopt($curl, CURLOPT_POST, 1);
             curl_setopt($curl, CURLOPT_POSTFIELDS, $curlPost);
         }
