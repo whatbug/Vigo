@@ -21,7 +21,8 @@ Class SpyNotify extends CronJob
 
    public function run()
    {
-       $content = shell_exec("python3 cd / && spy.py > /dev/null 2>&1 &");
+       $content = exec("python3 /spy.py > /dev/null 2>&1 &");
+       \Log::info(date('H:i:s'));
        if (!is_null($content)) {
            $dataNum = explode(',',$content);
            if (sizeof($dataNum)) {
