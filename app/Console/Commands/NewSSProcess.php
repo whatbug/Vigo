@@ -24,8 +24,9 @@ Class NewSSProcess extends Command {
      */
     public function handle() {
         set_time_limit(0);$arr = array();
-        $content = file_get_contents(base_path()."/storage/newss.txt");
-        $content = (new BaiOrcService)->resRecognize('http://icon.qiantucdn.com/20191010/0a2b382dbed019497c2f996282c80b8f2');
+        shell_exec("python3 cd / && new.py");
+        $content = file_get_contents(base_path()."/storage/ss.txt");
+        $content = (new BaiOrcService)->resRecognize($content);
         foreach ($content->words_result as $key => $val) {
             if (preg_match('/:[\S]+/',$val->words,$resMatch)){
                 $arr[] = substr($resMatch[0],1);
@@ -44,7 +45,7 @@ Class NewSSProcess extends Command {
                 'method'  => $arr[5 * $i +3],
                 'password'=> $arr[5 * $i +2],
                 'ssLink'  => 'ss://' . base64_encode($arr[5 * $i +3] . ':' . base64_encode($arr[5 * $i +2]) . '@' . $arr[5 * $i] . ':' . $arr[5 * $i +1]),
-                'ssrLink' => 'ssr://' . "{$arr[5 * $i]}:{$arr[5 * $i +1]}:origin:{$arr[5 * $i +3]}:plain:".base64_encode($arr[5 * $i +2])."/?obfsparam=&protoparam=&remarks=".base64_encode('如果失效请耐心等待修复')."&group=".base64_encode('free share for I-Song'),
+                'ssrLink' => 'ssr://' . base64_encode("{$arr[5 * $i]}:{$arr[5 * $i +1]}:origin:{$arr[5 * $i +3]}:plain:".base64_encode($arr[5 * $i +2])."/?obfsparam=&protoparam=&remarks=".base64_encode("如果失效请耐心等待修复")."&group=".base64_encode('free share for I-Song')),
                 'country' => ($country[0] != '中国') ? $country[0] : $country[0] . "({$country[1]})",
                 'check_at'=> date('H:i:s'),
             ];
