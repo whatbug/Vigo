@@ -22,21 +22,21 @@ Class SpyNotify extends CronJob
    public function run()
    {
        $content = exec("python3 /spy.py > /dev/null 2>&1 &");
-       \Log::info(date('H:i:s'));
-       if (!is_null($content)) {
-           $dataNum = explode(',',$content);
-           if (sizeof($dataNum)) {
-               $array = [[
-                   'values' => round($dataNum[0],2),
-                   'type'   => 'BTC',
-               ],[
-                   'values' => round($dataNum[1],2),
-                   'type'   => 'EHT',
-               ]];
-               dispatch(new ProcessSpy($array));
-           }
-
-       }
+       \Log::info($content);
+//       if (!is_null($content)) {
+//           $dataNum = explode(',',$content);
+//           if (sizeof($dataNum)) {
+//               $array = [[
+//                   'values' => round($dataNum[0],2),
+//                   'type'   => 'BTC',
+//               ],[
+//                   'values' => round($dataNum[1],2),
+//                   'type'   => 'EHT',
+//               ]];
+//               dispatch(new ProcessSpy($array));
+//           }
+//
+//       }
    }
 
 }
