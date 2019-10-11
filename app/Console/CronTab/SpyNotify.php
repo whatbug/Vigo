@@ -22,7 +22,7 @@ Class SpyNotify extends CronJob
    public function run()
    {
        try {
-           $content = shell_exec("python3 cd / && spy.py");
+           $content = shell_exec("python3 /spy.py");
            if (!is_null($content)) {
                $dataNum = explode(',',$content);
                if (sizeof($dataNum)) {
@@ -38,7 +38,7 @@ Class SpyNotify extends CronJob
 
            }
        } catch (\Exception $e) {
-           \Log::info("fuck bug");
+           \Log::info("fuck bug*******{$e->getMessage()}");
        }
    }
 
