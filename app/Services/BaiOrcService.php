@@ -3,7 +3,7 @@
 class BaiOrcService
 {
     //普通识别URL
-    private $generalBasicUrl = 'https://aip.baidubce.com/rest/2.0/ocr/v1/general_basic';
+    private $generalBasicUrl = 'https://aip.baidubce.com/rest/2.0/ocr/v1/accurate';
 
     //获取tokenURL
     private $getTokenUrl = 'https://aip.baidubce.com/oauth/2.0/token';
@@ -35,7 +35,7 @@ class BaiOrcService
         $api = "{$this->generalBasicUrl}?access_token={$this->getToken()}";
         $header = ['Content-Type: application/x-www-form-urlencoded'];
         $post = [
-            'url' => $imgUrl,// 网络图片url
+            'image' => base64_encode(file_get_contents($imgUrl)),// 网络图片url
         ];
         $res = json_decode((new CurlService())->_url($api, $post, $header));
         return $res;

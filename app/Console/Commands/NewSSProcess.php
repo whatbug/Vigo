@@ -1,7 +1,7 @@
 <?php namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
 use App\Services\BaiOrcService;
+use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Cache;
 
 Class NewSSProcess extends Command {
@@ -24,11 +24,11 @@ Class NewSSProcess extends Command {
      */
     public function handle() {
         set_time_limit(0);$arr = array();
-        shell_exec("python3 cd / && new.py");
+        shell_exec("python3 /new.py");
         $content = file_get_contents(base_path()."/storage/ss.txt");
-        $content = (new BaiOrcService)->resRecognize($content);
+        $content = (new BaiOrcService())->resRecognize($content);
         foreach ($content->words_result as $key => $val) {
-            if (preg_match('/:[\S]+/',$val->words,$resMatch)){
+            if (preg_match('/:[\S]+/',str_replace(' ','',$val->words),$resMatch)){
                 $arr[] = substr($resMatch[0],1);
             }else {
                 continue;
@@ -36,16 +36,16 @@ Class NewSSProcess extends Command {
         }
         $i = 0;
         foreach ($arr as $key => $value) {
-            if ($key < 5 * ($i+1)) {
-                $country = json_decode(file_get_contents("http://freeapi.ipip.net/{$arr[5 * $i]}"));
+            if ($key < 6 * ($i+1)) {
+                $country = json_decode(file_get_contents("http://freeapi.ipip.net/{$arr[6 * $i]}"));
                 $redData[] = [
-                'service' => $arr[5 * $i],
-                'port'    => $arr[5 * $i +1],
-                'protocol'=> 'origin',
-                'method'  => $arr[5 * $i +3],
-                'password'=> $arr[5 * $i +2],
-                'ssLink'  => 'ss://' . base64_encode($arr[5 * $i +3] . ':' . base64_encode($arr[5 * $i +2]) . '@' . $arr[5 * $i] . ':' . $arr[5 * $i +1]),
-                'ssrLink' => 'ssr://' . base64_encode("{$arr[5 * $i]}:{$arr[5 * $i +1]}:origin:{$arr[5 * $i +3]}:plain:".base64_encode($arr[5 * $i +2])."/?obfsparam=&protoparam=&remarks=".base64_encode("如果失效请耐心等待修复")."&group=".base64_encode('free share for I-Song')),
+                'service' => $arr[6 * $i],
+                'port'    => $arr[6 * $i +1],
+                'protocol'=> $arr[6 * $i +4],
+                'method'  => $arr[6 * $i +3],
+                'password'=> $arr[6 * $i +2],
+                'ssLink'  => 'ss://' . base64_encode($arr[6 * $i +3] . ':' . base64_encode($arr[6 * $i +2]) . '@' . $arr[6 * $i] . ':' . $arr[6 * $i +1]),
+                'ssrLink' => 'ssr://' . base64_encode("{$arr[6 * $i]}:{$arr[6 * $i +1]}:{$arr[6 * $i +4]}:{$arr[6 * $i +3]}:plain:".base64_encode($arr[6 * $i +2])."/?obfsparam=&protoparam=&remarks=".base64_encode("如果失效请耐心等待修复")."&group=".base64_encode('free share for I-Song')),
                 'country' => ($country[0] != '中国') ? $country[0] : $country[0] . "({$country[1]})",
                 'check_at'=> date('H:i:s'),
             ];
