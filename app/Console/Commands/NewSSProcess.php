@@ -44,8 +44,8 @@ Class NewSSProcess extends Command {
                 'protocol'=> $arr[6 * $i +4],
                 'method'  => $arr[6 * $i +3] == 'origin' ? "RC4" : $arr[6 * $i +3],
                 'password'=> $arr[6 * $i +2],
-                'ssLink'  => 'ss://' . base64_encode($arr[6 * $i +3] == 'origin' ? "RC4" : $arr[6 * $i +3] . ':' . base64_encode($arr[6 * $i +2]) . '@' . $arr[6 * $i] . ':' . $arr[6 * $i +1]),
-                'ssrLink' => 'ssr://' . base64_encode("{$arr[6 * $i]}:{$arr[6 * $i +1]}:{$arr[6 * $i +4]}:".$arr[6 * $i +3] == "origin" ? "RC4" : $arr[6 * $i +3].":plain:".base64_encode($arr[6 * $i +2])."/?obfsparam=&protoparam=&remarks=".base64_encode("如果失效请耐心等待修复")."&group=".base64_encode('free share for I-Song')),
+                'ssLink'  => 'ss://' . base64_encode((($arr[6 * $i +3] == 'origin') ? "RC4" : $arr[6 * $i +3]) . ':' . base64_encode($arr[6 * $i +2]) . '@' . $arr[6 * $i] . ':' . $arr[6 * $i +1]),
+                'ssrLink' => 'ssr://' . base64_encode("{$arr[6 * $i]}:{$arr[6 * $i +1]}:{$arr[6 * $i +4]}:".(($arr[6 * $i +3] == "origin") ? "RC4" : $arr[6 * $i +3]).":plain:".base64_encode($arr[6 * $i +2])."/?obfsparam=&protoparam=&remarks=".base64_encode("如果失效请耐心等待修复")."&group=".base64_encode('free share for I-Song')),
                 'country' => ($country[0] != '中国') ? $country[0] : $country[0] . "({$country[1]})",
                 'check_at'=> date('H:i:s'),
             ];
