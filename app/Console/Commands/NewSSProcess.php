@@ -34,6 +34,7 @@ Class NewSSProcess extends Command {
                 continue;
             }
         }
+        var_dump($arr);
         $i = 0;
         foreach ($arr as $key => $value) {
             if ($key < 6 * ($i+1)) {
@@ -54,6 +55,7 @@ Class NewSSProcess extends Command {
             }
             if($i == 2) break;
         }
+        var_dump($redData);exit();
         return Cache::put('ssr_info',$redData,now()->addMinutes(60*24));
     }
 
