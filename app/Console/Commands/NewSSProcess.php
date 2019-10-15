@@ -25,8 +25,8 @@ Class NewSSProcess extends Command {
     public function handle() {
         set_time_limit(0);$arr = array();
         shell_exec("python3 /new.py");
-        $content = file_get_contents(base_path()."/storage/ss.txt");
-        $content = (new BaiOrcService())->resRecognize($content);
+        $imgUrl = file_get_contents(base_path()."/storage/ss.txt");
+        $content = (new BaiOrcService())->resRecognize($imgUrl);
         foreach ($content->words_result as $key => $val) {
             if (preg_match('/:[\S]+/',str_replace(' ','',$val->words),$resMatch)){
                 $arr[] = substr($resMatch[0],1);
@@ -34,7 +34,6 @@ Class NewSSProcess extends Command {
                 continue;
             }
         }
-        var_dump($arr);
         $i = 0;
         foreach ($arr as $key => $value) {
             if ($key < 6 * ($i+1)) {
@@ -42,11 +41,11 @@ Class NewSSProcess extends Command {
                 $redData[] = [
                 'service' => $arr[6 * $i],
                 'port'    => $arr[6 * $i +1],
-                'protocol'=> $arr[6 * $i +4],
+                'protocol'=> $arr[6 * $i +4] == 'origin' ? "RC4" : $arr[6 * $i +4],
                 'method'  => $arr[6 * $i +3],
                 'password'=> $arr[6 * $i +2],
                 'ssLink'  => 'ss://' . base64_encode($arr[6 * $i +3] . ':' . base64_encode($arr[6 * $i +2]) . '@' . $arr[6 * $i] . ':' . $arr[6 * $i +1]),
-                'ssrLink' => 'ssr://' . base64_encode("{$arr[6 * $i]}:{$arr[6 * $i +1]}:{$arr[6 * $i +4]}:{$arr[6 * $i +3]}:plain:".base64_encode($arr[6 * $i +2])."/?obfsparam=&protoparam=&remarks=".base64_encode("如果失效请耐心等待修复")."&group=".base64_encode('free share for I-Song')),
+                'ssrLink' => 'ssr://' . base64_encode("{$arr[6 * $i]}:{$arr[6 * $i +1]}:".$arr[6 * $i +4] == "origin" ? "RC4" : $arr[6 * $i +4].":{$arr[6 * $i +3]}:plain:".base64_encode($arr[6 * $i +2])."/?obfsparam=&protoparam=&remarks=".base64_encode("如果失效请耐心等待修复")."&group=".base64_encode('free share for I-Song')),
                 'country' => ($country[0] != '中国') ? $country[0] : $country[0] . "({$country[1]})",
                 'check_at'=> date('H:i:s'),
             ];
@@ -55,7 +54,6 @@ Class NewSSProcess extends Command {
             }
             if($i == 2) break;
         }
-        var_dump($redData);exit();
         return Cache::put('ssr_info',$redData,now()->addMinutes(60*24));
     }
 
