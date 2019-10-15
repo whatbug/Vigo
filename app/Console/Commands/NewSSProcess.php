@@ -24,9 +24,9 @@ Class NewSSProcess extends Command {
      */
     public function handle() {
         set_time_limit(0);$arr = array();
-//        shell_exec("python3 /new.py");
-//        $content = file_get_contents(base_path()."/storage/ss.txt");
-        $content = (new BaiOrcService())->resRecognize('https://ae01.alicdn.com/kf/H7e81659c4cac4eadbb7d6b9e763d9f560.png');
+        shell_exec("python3 /new.py");
+        $content = file_get_contents(base_path()."/storage/ss.txt");
+        $content = (new BaiOrcService())->resRecognize($content);
         foreach ($content->words_result as $key => $val) {
             if (preg_match('/:[\S]+/',str_replace(' ','',$val->words),$resMatch)){
                 $arr[] = substr($resMatch[0],1);
@@ -54,7 +54,6 @@ Class NewSSProcess extends Command {
             }
             if($i == 2) break;
         }
-        var_dump($redData);exit();
         return Cache::put('ssr_info',$redData,now()->addMinutes(60*24));
     }
 
