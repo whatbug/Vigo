@@ -41,10 +41,9 @@ Class OssUploadService {
         $hashFileNameWithPath = $oss_dir.$hashFileName;
         //随机文件名防止重复
         $result = $ossClient->uploadFile($this->bucket,$hashFileNameWithPath,$fileName);
-        return $result;
         if (isset($result['info'])){
             $result['info']['filename'] = $hashFileName;
-            $result['info']['cdnUrl'] = $this->getOssUploadFileUrl($hashFileName,$oss_dir);
+            $result['info']['cdnUrl'] = str_replace('http','https',$result['info']['url']);
         }
         return isset($result['info']) ? $result['info'] : false;
     }
