@@ -66,10 +66,11 @@ class SpyDataController extends BaseController
                 return $this->failed('图片格式错误');
             }
             $fileName = md5(time()) . '.' . $extension;
+            $file->storeAs('photo', $fileName);
             $files = storage_path() . '/app/photo/' . $fileName;
-            $result = $oss->uploadFileToOss($files, 'mini-avatar/');
+            $result = $oss->uploadFileToOss($files, 'mini-pro/');
             if (isset($result['filename']) && !empty($result['filename'])) {
-                $imgUrl = $oss->getOssUploadFileUrl($result['filename'], 'volunteer/');
+                $imgUrl = $oss->getOssUploadFileUrl($result['filename'], 'mini-pro/');
                 unlink($files);
             }
         }
