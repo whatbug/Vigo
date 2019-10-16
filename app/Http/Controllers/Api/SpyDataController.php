@@ -57,8 +57,8 @@ class SpyDataController extends BaseController
 
     //上传图片
     public function actionUpload (Request $request) {
-        var_dump($request);
-//        $file = $request->file('file');$imgUrl = '';
+        $file = $request->file('file');$imgUrl = '';
+        return $file;
 //        if (sizeof($request->file())) {
 //            $oss = new OssUploadService();
 //            $extension = $file->extension();
