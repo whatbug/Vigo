@@ -57,7 +57,8 @@ class SpyDataController extends BaseController
 
     //上传图片
     public function actionUpload (Request $request) {
-        $file = $request->file('file');
+        $file = $request->file();$imgUrl = '';
+        var_dump($file);exit();
         if ($request->hasFile('file') && $request->file('file')->isValid()) {
             $oss = new OssUploadService();
             $extension = $file->extension();
@@ -65,7 +66,7 @@ class SpyDataController extends BaseController
             if ($file->getClientOriginalExtension() && !in_array($file->getClientOriginalExtension(), $allowedExtensions)) {
                 return $this->failed('图片格式错误');
             }
-            $fileName = md5(time()) . '.' . $extension;$imgUrl = '';
+            $fileName = md5(time()) . '.' . $extension;
             $files = storage_path() . '/app/photo/' . $fileName;
             $result = $oss->uploadFileToOss($files, 'mini-avatar/');
             if (isset($result['filename']) && !empty($result['filename'])) {
