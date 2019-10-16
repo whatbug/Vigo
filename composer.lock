@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "edff3d1436d4ab86c638702e1e175a8d",
+    "content-hash": "af4308407ea98cea2f780aa5e17baa5f",
     "packages": [
         {
             "name": "alchemy/binary-driver",
@@ -74,6 +74,53 @@
                 "driver"
             ],
             "time": "2019-05-19T08:43:30+00:00"
+        },
+        {
+            "name": "aliyuncs/oss-sdk-php",
+            "version": "v2.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/aliyun/aliyun-oss-php-sdk.git",
+                "reference": "e69f57916678458642ac9d2fd341ae78a56996c8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/aliyun/aliyun-oss-php-sdk/zipball/e69f57916678458642ac9d2fd341ae78a56996c8",
+                "reference": "e69f57916678458642ac9d2fd341ae78a56996c8",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0",
+                "satooshi/php-coveralls": "~1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "OSS\\": "src/OSS"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aliyuncs",
+                    "homepage": "http://www.aliyun.com"
+                }
+            ],
+            "description": "Aliyun OSS SDK for PHP",
+            "homepage": "http://www.aliyun.com/product/oss/",
+            "time": "2018-01-08T06:59:35+00:00"
         },
         {
             "name": "cakephp/chronos",

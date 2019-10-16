@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Repositories\ApiResponse;
 use App\Repositories\HuoCollect\Repositories\RunMethod;
+use App\Services\OssUploadService;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 
@@ -56,7 +57,25 @@ class SpyDataController extends BaseController
 
     //上传图片
     public function actionUpload (Request $request) {
-        $fileResource = $request->file('file');
-        return $fileResource;
+        $file = $request->file('file');
+        if ($request->hasFile('file') && $request->file('file')->isValid()) {
+            $oss = new OssUploadService();
+            $extension = $file->extension();
+            $allowedExtensions = ["png", "jpg", "gif", "jpeg"];
+            if ($file->getClientOriginalExtension() && !in_array($file->getClientOriginalExtension(), $allowedExtensions)) {
+                return $this->failed('图片格式错误');
+            }
+            $fileName = md5(time()) . '.' . $extension;$imgUrl = '';
+            $files = storage_path() . '/app/photo/' . $fileName;
+            $result = $oss->uploadFileToOss($files, 'mini-avatar/');
+            if (isset($result['filename']) && !empty($result['filename'])) {
+                $imgUrl = $oss->getOssUploadFileUrl($result['filename'], 'volunteer/');
+                unlink($files);
+            }
+        }
+        if (!$imgUrl) {
+            return $this->failed('system upload error!');
+        }
+        return $this->success(['imgUrl'=>$imgUrl]);
     }
 }

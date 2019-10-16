@@ -44,6 +44,7 @@ return array(
     'PhpParser\\' => array($vendorDir . '/nikic/php-parser/lib/PhpParser'),
     'Pbmedia\\LaravelFFMpeg\\' => array($vendorDir . '/pbmedia/laravel-ffmpeg/src'),
     'Opis\\Closure\\' => array($vendorDir . '/opis/closure/src'),
+    'OSS\\' => array($vendorDir . '/aliyuncs/oss-sdk-php/src/OSS'),
     'NunoMaduro\\Collision\\' => array($vendorDir . '/nunomaduro/collision/src'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
     'League\\Flysystem\\' => array($vendorDir . '/league/flysystem/src'),
