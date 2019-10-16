@@ -30,7 +30,7 @@ Class OssUploadService {
     public function uploadFileToOss($fileName,$oss_dir){
         //验证oss_dir
         if (empty($oss_dir)){
-            die('oss_dir 不允许为空');
+            return false;
         }
         $ossClient = new OssClient($this->accessId,$this->accessKey, $this->aliOssUrl);
         if (!$ossClient->doesObjectExist($this->bucket,$oss_dir)){
@@ -41,6 +41,7 @@ Class OssUploadService {
         $hashFileNameWithPath = $oss_dir.$hashFileName;
         //随机文件名防止重复
         $result = $ossClient->uploadFile($this->bucket,$hashFileNameWithPath,$fileName);
+        return $result;
         if (isset($result['info'])){
             $result['info']['filename'] = $hashFileName;
             $result['info']['cdnUrl'] = $this->getOssUploadFileUrl($hashFileName,$oss_dir);
@@ -56,8 +57,8 @@ Class OssUploadService {
      */
     public  function getOssUploadFileUrl($oss_file,$oss_dir){
         if (empty($oss_dir) || empty($oss_file)){
-            die('oss_dir oss_file 不允许为空');
+            return false;
         }
-        return env("OSS_CDN_ENDPOINT").$oss_dir.$oss_file;
+        return env("OSS_ENDPOINT").$oss_dir.$oss_file;
     }
 }

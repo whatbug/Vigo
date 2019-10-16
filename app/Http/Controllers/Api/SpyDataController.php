@@ -69,6 +69,7 @@ class SpyDataController extends BaseController
             $file->storeAs('photo', $fileName);
             $files = storage_path() . '/app/photo/' . $fileName;
             $result = $oss->uploadFileToOss($files, 'mini-pro/');
+            return $result;
             if (isset($result['filename']) && !empty($result['filename'])) {
                 $imgUrl = $oss->getOssUploadFileUrl($result['filename'], 'mini-pro/');
                 unlink($files);
