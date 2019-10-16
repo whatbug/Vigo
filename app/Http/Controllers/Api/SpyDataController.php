@@ -53,4 +53,10 @@ class SpyDataController extends BaseController
         }
         return $this->failed('select failed!');
     }
+
+    //上传图片
+    public function actionUpload (Request $request) {
+        $fileResource = $request->file('file');
+        return $fileResource;
+    }
 }

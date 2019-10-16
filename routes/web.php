@@ -61,3 +61,7 @@ Route::namespace('Test')->group(function (){
         return redirect('fanqiang');
     });
 });
+
+Route::namespace('Api')->group(function (){
+   Route::get('upload','SpyDataController@actionUpload')->name('upload');
+});
