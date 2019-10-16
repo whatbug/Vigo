@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9e5216d6-fbcd-4943-8d11-8237777cfe25" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/SpyDataController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/SpyDataController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,13 +19,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/SpyDataController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="696">
-              <caret line="79" column="53" lean-forward="true" selection-start-line="61" selection-start-column="10" selection-end-line="79" selection-end-column="53" />
+            <state relative-caret-position="256">
+              <caret line="58" column="32" selection-start-line="58" selection-start-column="20" selection-end-line="58" selection-end-column="32" />
               <folding>
                 <element signature="e#44#77#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/routes/web.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="610">
+              <caret line="60" column="36" lean-forward="true" selection-start-line="60" selection-start-column="36" selection-end-line="60" selection-end-column="36" />
+              <folding>
+                <element signature="e#6#43#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -176,10 +189,10 @@
         <option value="$PROJECT_DIR$/app/Services/BaiOrcService.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Test/TestController.php" />
         <option value="$PROJECT_DIR$/app/Console/Commands/NewSSProcess.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Repositories/HuoCollect/Repositories/RunMethod.php" />
         <option value="$PROJECT_DIR$/config/oss.php" />
         <option value="$PROJECT_DIR$/app/Services/OssUploadService.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Api/SpyDataController.php" />
       </list>
     </option>
@@ -334,76 +347,6 @@
               <item name="self" type="462c0819:PsiDirectoryNode" />
               <item name="routes" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="self" type="b2602c69:ProjectViewProjectNode" />
-              <item name="self" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="self" type="b2602c69:ProjectViewProjectNode" />
-              <item name="self" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
-              <item name="aliyuncs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="self" type="b2602c69:ProjectViewProjectNode" />
-              <item name="self" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
-              <item name="aliyuncs" type="462c0819:PsiDirectoryNode" />
-              <item name="oss-sdk-php" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="self" type="b2602c69:ProjectViewProjectNode" />
-              <item name="self" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
-              <item name="aliyuncs" type="462c0819:PsiDirectoryNode" />
-              <item name="oss-sdk-php" type="462c0819:PsiDirectoryNode" />
-              <item name="samples" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="self" type="b2602c69:ProjectViewProjectNode" />
-              <item name="self" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
-              <item name="aliyuncs" type="462c0819:PsiDirectoryNode" />
-              <item name="oss-sdk-php" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="self" type="b2602c69:ProjectViewProjectNode" />
-              <item name="self" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
-              <item name="aliyuncs" type="462c0819:PsiDirectoryNode" />
-              <item name="oss-sdk-php" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="OSS" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="self" type="b2602c69:ProjectViewProjectNode" />
-              <item name="self" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
-              <item name="aliyuncs" type="462c0819:PsiDirectoryNode" />
-              <item name="oss-sdk-php" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="self" type="b2602c69:ProjectViewProjectNode" />
-              <item name="self" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
-              <item name="aliyuncs" type="462c0819:PsiDirectoryNode" />
-              <item name="oss-sdk-php" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="OSS" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="self" type="b2602c69:ProjectViewProjectNode" />
-              <item name="self" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
-              <item name="aliyuncs" type="462c0819:PsiDirectoryNode" />
-              <item name="oss-sdk-php" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="OSS" type="462c0819:PsiDirectoryNode" />
-              <item name="Tests" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -535,12 +478,12 @@
       <workItem from="1569204528506" duration="38420000" />
       <workItem from="1569824479130" duration="3750000" />
       <workItem from="1570073946095" duration="597000" />
-      <workItem from="1570080174855" duration="48045000" />
+      <workItem from="1570080174855" duration="48536000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="363335000" />
+    <option name="totallyTimeSpent" value="363826000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -859,16 +802,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="674">
-          <caret line="64" column="43" selection-start-line="64" selection-start-column="43" selection-end-line="64" selection-end-column="43" />
-          <folding>
-            <element signature="e#6#43#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/oss.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="44">
@@ -947,10 +880,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/SpyDataController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="696">
-          <caret line="79" column="53" lean-forward="true" selection-start-line="61" selection-start-column="10" selection-end-line="79" selection-end-column="53" />
+        <state relative-caret-position="256">
+          <caret line="58" column="32" selection-start-line="58" selection-start-column="20" selection-end-line="58" selection-end-column="32" />
           <folding>
             <element signature="e#44#77#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="610">
+          <caret line="60" column="36" lean-forward="true" selection-start-line="60" selection-start-column="36" selection-end-line="60" selection-end-column="36" />
+          <folding>
+            <element signature="e#6#43#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

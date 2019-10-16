@@ -63,5 +63,5 @@ Route::namespace('Test')->group(function (){
 });
 
 Route::namespace('Api')->group(function (){
-   Route::get('upload','SpyDataController@actionUpload')->name('upload');
+   Route::post('upload','SpyDataController@actionUpload')->name('upload');
 });

@@ -57,26 +57,25 @@ class SpyDataController extends BaseController
 
     //上传图片
     public function actionUpload (Request $request) {
-        $file = $request->file();$imgUrl = '';
-        var_dump($file);
-//        if ($request->hasFile('file') && $request->file('file')->isValid()) {
-//            $oss = new OssUploadService();
-//            $extension = $file->extension();
-//            $allowedExtensions = ["png", "jpg", "gif", "jpeg"];
-//            if ($file->getClientOriginalExtension() && !in_array($file->getClientOriginalExtension(), $allowedExtensions)) {
-//                return $this->failed('图片格式错误');
-//            }
-//            $fileName = md5(time()) . '.' . $extension;
-//            $files = storage_path() . '/app/photo/' . $fileName;
-//            $result = $oss->uploadFileToOss($files, 'mini-avatar/');
-//            if (isset($result['filename']) && !empty($result['filename'])) {
-//                $imgUrl = $oss->getOssUploadFileUrl($result['filename'], 'volunteer/');
-//                unlink($files);
-//            }
-//        }
-//        if (!$imgUrl) {
-//            return $this->failed('system upload error!');
-//        }
-//        return $this->success(['imgUrl'=>$imgUrl]);
+        $file = $request->file('file');$imgUrl = '';
+        if ($request->hasFile('file') && $request->file('file')->isValid()) {
+            $oss = new OssUploadService();
+            $extension = $file->extension();
+            $allowedExtensions = ["png", "jpg", "gif", "jpeg"];
+            if ($file->getClientOriginalExtension() && !in_array($file->getClientOriginalExtension(), $allowedExtensions)) {
+                return $this->failed('图片格式错误');
+            }
+            $fileName = md5(time()) . '.' . $extension;
+            $files = storage_path() . '/app/photo/' . $fileName;
+            $result = $oss->uploadFileToOss($files, 'mini-avatar/');
+            if (isset($result['filename']) && !empty($result['filename'])) {
+                $imgUrl = $oss->getOssUploadFileUrl($result['filename'], 'volunteer/');
+                unlink($files);
+            }
+        }
+        if (!$imgUrl) {
+            return $this->failed('system upload error!');
+        }
+        return $this->success(['imgUrl'=>$imgUrl]);
     }
 }
