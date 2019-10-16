@@ -4,7 +4,9 @@
     <bookmark url="file://$PROJECT_DIR$/app/Http/Controllers/Test/TestController.php" line="59" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e5216d6-fbcd-4943-8d11-8237777cfe25" name="Default Changelist" comment="" />
+    <list default="true" id="9e5216d6-fbcd-4943-8d11-8237777cfe25" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/SpyDataController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/SpyDataController.php" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,7 +22,7 @@
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/SpyDataController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="696">
-              <caret line="78" column="48" selection-start-line="78" selection-start-column="41" selection-end-line="78" selection-end-column="48" />
+              <caret line="79" column="53" lean-forward="true" selection-start-line="61" selection-start-column="10" selection-end-line="79" selection-end-column="53" />
               <folding>
                 <element signature="e#44#77#0#PHP" expanded="true" />
               </folding>
@@ -533,12 +535,12 @@
       <workItem from="1569204528506" duration="38420000" />
       <workItem from="1569824479130" duration="3750000" />
       <workItem from="1570073946095" duration="597000" />
-      <workItem from="1570080174855" duration="47776000" />
+      <workItem from="1570080174855" duration="48045000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="363066000" />
+    <option name="totallyTimeSpent" value="363335000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -946,7 +948,7 @@
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/SpyDataController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="696">
-          <caret line="78" column="48" selection-start-line="78" selection-start-column="41" selection-end-line="78" selection-end-column="48" />
+          <caret line="79" column="53" lean-forward="true" selection-start-line="61" selection-start-column="10" selection-end-line="79" selection-end-column="53" />
           <folding>
             <element signature="e#44#77#0#PHP" expanded="true" />
           </folding>
