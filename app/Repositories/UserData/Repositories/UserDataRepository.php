@@ -29,6 +29,7 @@ Class UserDataRepository {
     //获取openId token
     public function getOpenId ($code) {
         $this->openUrl = "{$this->openUrl}?appid=".trim($this->appId)."&secret=".trim($this->secret)."&js_code={$code}&grant_type=authorization_code";
+        return $this->openUrl;
         $wxRes = $this->curlService->_url($this->openUrl,'',$this->header);
         return json_decode($wxRes);
     }
