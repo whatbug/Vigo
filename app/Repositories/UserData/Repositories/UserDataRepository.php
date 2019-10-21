@@ -2,6 +2,7 @@
 
 namespace App\Repositories\UserData\Repositories;
 
+use App\Repositories\UserData\UserData;
 use App\Services\CurlService;
 
 Class UserDataRepository {
@@ -27,7 +28,7 @@ Class UserDataRepository {
 
     //获取openId token
     public function getOpenId ($code) {
-        $this->openUrl = "{$this->openUrl}?appid={$this->appId}&secret={$this->secret}&js_code={$code}&grant_type=authorization_code";
+        $this->openUrl = "{$this->openUrl}?appid=".trim($this->appId)."&secret=".trim($this->secret)."&js_code={$code}&grant_type=authorization_code";
         $wxRes = $this->curlService->_url($this->openUrl,'',$this->header);
         return json_decode($wxRes);
     }
