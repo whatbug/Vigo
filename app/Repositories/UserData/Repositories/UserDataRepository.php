@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\UserData;
+namespace App\Repositories\UserData\Repositories;
 
 use App\Services\CurlService;
 
