@@ -37,7 +37,7 @@ Class UserDataRepository {
     }
 
     //用户登录  未注册触发注册动作
-    public function loginOrRegAction ($request)
+    public function loginOrRegAction ($request,$ip)
     {
         $backInfo = $this->getOpenId($request->code);
         if (!array_key_exists("openid",$backInfo)){
@@ -51,7 +51,7 @@ Class UserDataRepository {
                 'timestamp' => time(),
                 'user_id'   => $regRes['user_id']
             );
-            return $this->token->setToken($data,$request->ip);
+            return $this->token->setToken($data,$ip);
         } else {
             $errCode = $this->decryptData($this->appId,$backInfo['session_key'],urlencode($request->encrypt), $request->iv, $data );
             if ($errCode == 0) {
@@ -64,7 +64,7 @@ Class UserDataRepository {
                     'reg_at'  =>time()
                 ];
                 $regRes = $this->user->fill($baseData)->save();
-                return $this->token->setToken(['open_id'=>$backInfo['openid'],'timestamp'=>time(),'user_id'=>$regRes['user_id']],$request->id);
+                return $this->token->setToken(['open_id'=>$backInfo['openid'],'timestamp'=>time(),'user_id'=>$regRes['user_id']],$ip);
             }
             return false;
         }

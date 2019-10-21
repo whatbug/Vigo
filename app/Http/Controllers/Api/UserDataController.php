@@ -20,7 +20,7 @@ Class UserDataController extends Controller {
 
     //小程序用户注册
     public function UserRegister (Request $request) {
-        $GrantData = $this->repository->loginOrRegAction($request);
+        $GrantData = $this->repository->loginOrRegAction($request,$request->getClientIp());
         if ($GrantData) {
             return $this->success(['api_token'=>$GrantData]);
         }
