@@ -29,22 +29,21 @@ Class UserDataRepository {
     //获取openId token
     public function getOpenId ($code) {
         $this->openUrl = "{$this->openUrl}?appid=".trim($this->appId)."&secret=".trim($this->secret)."&js_code={$code}&grant_type=authorization_code";
-        return $this->openUrl;
         $wxRes = $this->curlService->_url($this->openUrl,'',$this->header);
-        return json_decode($wxRes);
+        return json_decode($wxRes,true);
     }
 
-    //用户登录  未登录触发注册动作
+    //用户登录  未注册触发注册动作
     public function loginOrRegAction ($code) {
         $backInfo = $this->getOpenId($code);
-        return $backInfo;
+        return $backInfo['openid'];
         $regRes   = $this->model()->where('open_id',$backInfo['openid'])->first();
         //如果存在 使用token生成token
-        if ($regRes) {
-            //TODO
-        } else {
-            //TODO
-        }
+//        if ($regRes) {
+//
+//        } else {
+//            TODO
+//        }
     }
 
 
