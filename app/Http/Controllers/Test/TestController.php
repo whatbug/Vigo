@@ -101,7 +101,6 @@ Class TestController extends BaseController {
 
 
     public function cll (){
-        return Cache::get('ssr_info');
         set_time_limit(0);$i=0;
         $content = file_get_contents(base_path()."/storage/ss.txt");
         $ssrs     = base64_decode($content);

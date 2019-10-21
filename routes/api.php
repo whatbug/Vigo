@@ -36,6 +36,8 @@ Route::Group(['prefix'=>'mini'], function() {
 
     Route::group(['prefix'=>'profile'], function() {
         //用户数据
-        Route::get('dataList.do','SpyDataController@dataList');
+        Route::get('dataList.do','UserDataController@dataList');
+        //用户登录
+        Route::post('userLogin.do','UserDataController@UserRegister');
     });
 });
