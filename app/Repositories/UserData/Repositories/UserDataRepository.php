@@ -51,6 +51,7 @@ Class UserDataRepository {
                 'timestamp' => time(),
                 'user_id'   => $regRes['user_id']
             );
+            return $data;
             return $this->token->setToken($data,$ip);
         } else {
             $baseData = [
