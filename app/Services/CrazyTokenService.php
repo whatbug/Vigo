@@ -12,8 +12,8 @@ Class CrazyTokenService
     //生成token
     public function setToken ($data,$ip) {
         $strToken = md5($data['open_id'].$ip.$data['user_id']);
-        Cache::put(strtoupper($strToken),$data['user_id'].','.($data['timestamp']+3600),3600);
-        return strtoupper($strToken);
+        return Cache::put(strtoupper($strToken),$data['user_id'].','.($data['timestamp']+3600),3600);
+//        strtoupper($strToken);
     }
 
     //检查token有效性  success 返回用户ID
