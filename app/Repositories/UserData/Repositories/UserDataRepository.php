@@ -58,10 +58,9 @@ Class UserDataRepository {
                 'nickname'=>$request->nickname,
                 'password'=>md5(123456),
                 'avatar'  =>$request->avatar,
-                'reg_at'  =>time(),
+                'reg_at'  =>date('Y-m-d H:i:s'),
                 ];
             $regRes = $this->user->fill($baseData)->save();
-            return $regRes;
             return $this->token->setToken(['open_id'=>$backInfo['openid'],'timestamp'=>time(),'user_id'=>$regRes['user_id']],$ip);
         }
     }
