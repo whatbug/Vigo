@@ -11,7 +11,7 @@ Class UserDataRepository {
     private $appId,$secret,$curlService,$header,$token,$user;
     //获取openId地址
     private $openUrl="https://api.weixin.qq.com/sns/jscode2session";
-    
+
     public function __construct(CurlService $curlService,CrazyTokenService $tokenService,UserData $user)
     {
         $this->appId = env('MINI_APP_ID');
@@ -40,7 +40,6 @@ Class UserDataRepository {
     public function loginOrRegAction ($request,$ip)
     {
         $backInfo = $this->getOpenId($request->code);
-        return $backInfo;
         if (!array_key_exists("openid",$backInfo)){
             return false;
         }
@@ -54,20 +53,15 @@ Class UserDataRepository {
             );
             return $this->token->setToken($data,$ip);
         } else {
-            $errCode = $this->decryptData($this->appId,$backInfo['session_key'],urlencode($request->encrypt), $request->iv, $data );
-            if ($errCode == 0) {
-                $baseData = [
-                    'mobile' => $data->phoneNumber,
-                    'open_id'=> $backInfo['openid'],
-                    'nickname'=>$request->nickname,
-                    'password'=>md5(123456),
-                    'avatar'  =>$request->avatar,
-                    'reg_at'  =>time()
+            $baseData = [
+                'open_id'=> $backInfo['openid'],
+                'nickname'=>$request->nickname,
+                'password'=>md5(123456),
+                'avatar'  =>$request->avatar,
+                'reg_at'  =>time(),
                 ];
-                $regRes = $this->user->fill($baseData)->save();
-                return $this->token->setToken(['open_id'=>$backInfo['openid'],'timestamp'=>time(),'user_id'=>$regRes['user_id']],$ip);
-            }
-            return false;
+            $regRes = $this->user->fill($baseData)->save();
+            return $this->token->setToken(['open_id'=>$backInfo['openid'],'timestamp'=>time(),'user_id'=>$regRes['user_id']],$ip);
         }
     }
 

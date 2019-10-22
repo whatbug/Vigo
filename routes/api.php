@@ -38,6 +38,6 @@ Route::Group(['prefix'=>'mini'], function() {
         //用户数据
         Route::get('dataList.do','UserDataController@dataList');
         //用户登录
-        Route::post('userLogin.do','UserDataController@UserRegister');
+        Route::post('userLogin.do','UserDataController@UserRegOrLogin');
     });
 });

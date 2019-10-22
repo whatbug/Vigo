@@ -19,12 +19,9 @@ Class UserDataController extends Controller {
     }
 
     //小程序用户注册
-    public function UserRegister (Request $request) {
+    public function UserRegOrLogin (Request $request) {
         $GrantData = $this->repository->loginOrRegAction($request,$request->getClientIp());
-        if ($GrantData) {
-            return $this->success(['api_token'=>$GrantData]);
-        }
-        return $this->failed('Service Error');
+        return $this->success(['api_token'=>$GrantData]);
     }
 
     //用户数据
