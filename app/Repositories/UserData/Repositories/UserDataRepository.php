@@ -11,7 +11,7 @@ Class UserDataRepository {
     private $appId,$secret,$curlService,$header,$token,$user;
     //获取openId地址
     private $openUrl="https://api.weixin.qq.com/sns/jscode2session";
-
+    
     public function __construct(CurlService $curlService,CrazyTokenService $tokenService,UserData $user)
     {
         $this->appId = env('MINI_APP_ID');
@@ -40,6 +40,7 @@ Class UserDataRepository {
     public function loginOrRegAction ($request,$ip)
     {
         $backInfo = $this->getOpenId($request->code);
+        return $backInfo;
         if (!array_key_exists("openid",$backInfo)){
             return false;
         }
