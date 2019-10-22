@@ -26,7 +26,7 @@ Class UserDataRepository {
 
     //用户表模型
     public function model () {
-        return UserData::class;
+        return $this->user;
     }
 
     //获取openId token
@@ -39,6 +39,7 @@ Class UserDataRepository {
     //用户登录  未注册触发注册动作
     public function loginOrRegAction ($request,$ip)
     {
+        return $this->model()->get();
         $backInfo = $this->getOpenId($request->code);
         if (!array_key_exists("openid",$backInfo)){
             return false;
