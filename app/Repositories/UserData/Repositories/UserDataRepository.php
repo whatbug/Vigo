@@ -43,6 +43,7 @@ Class UserDataRepository {
 //        if (!array_key_exists("openid",$backInfo)){
 //            return false;
 //        }
+        return $backInfo;
         $regRes   = $this->model()->where('open_id',$backInfo['openid'])->first();
         //如果存在 使用token生成token
         if ($regRes) {
