@@ -40,9 +40,9 @@ Class UserDataRepository {
     public function loginOrRegAction ($request,$ip)
     {
         $backInfo = $this->getOpenId($request->code);
-        if (!array_key_exists("openid",$backInfo)){
-            return false;
-        }
+//        if (!array_key_exists("openid",$backInfo)){
+//            return false;
+//        }
         $regRes   = $this->model()->where('open_id',$backInfo['openid'])->first();
         //如果存在 使用token生成token
         if ($regRes) {
