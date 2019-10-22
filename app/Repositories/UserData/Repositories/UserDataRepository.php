@@ -40,22 +40,21 @@ Class UserDataRepository {
     public function loginOrRegAction ($request,$ip)
     {
         $backInfo = $this->getOpenId($request->code);
-        return $backInfo['openid'];
-        if (!isset($backInfo->openid)){
+        if (!isset($backInfo['openid'])){
             return false;
         }
         $regRes   = $this->model()->where('open_id',$backInfo->openid)->first();
         //如果存在 使用token生成token
         if ($regRes) {
             $data = array(
-                'open_id'   => $backInfo->openid,
+                'open_id'   => $backInfo['openid'],
                 'timestamp' => time(),
                 'user_id'   => $regRes['user_id']
             );
             return $this->token->setToken($data,$ip);
         } else {
             $baseData = [
-                'open_id'=> $backInfo->openid,
+                'open_id'=> $backInfo['openid'],
                 'nickname'=>$request->nickname,
                 'password'=>md5(123456),
                 'avatar'  =>$request->avatar,
