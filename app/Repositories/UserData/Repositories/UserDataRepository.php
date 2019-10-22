@@ -39,7 +39,6 @@ Class UserDataRepository {
     //用户登录  未注册触发注册动作
     public function loginOrRegAction ($request,$ip)
     {
-        return $this->model()->get();
         $backInfo = $this->getOpenId($request->code);
         if (!array_key_exists("openid",$backInfo)){
             return false;
