@@ -40,7 +40,7 @@ Class UserDataRepository {
     public function loginOrRegAction ($request,$ip)
     {
         $backInfo = $this->getOpenId($request->code);
-        return $backInfo->openid;
+        return $backInfo['openid'];
         if (!isset($backInfo->openid)){
             return false;
         }
