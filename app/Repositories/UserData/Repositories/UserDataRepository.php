@@ -33,28 +33,28 @@ Class UserDataRepository {
     public function getOpenId ($code) {
         $this->openUrl = "{$this->openUrl}?appid=".trim($this->appId)."&secret=".trim($this->secret)."&js_code={$code}&grant_type=authorization_code";
         $wxRes = $this->curlService->_url($this->openUrl,'',$this->header);
-        return json_decode($wxRes);
+        return json_decode($wxRes,true);
     }
 
     //用户登录  未注册触发注册动作
     public function loginOrRegAction ($request,$ip)
     {
         $backInfo = $this->getOpenId($request->code);
-        if (!array_key_exists("openid",$backInfo)){
+        if (!isset($backInfo->openid)){
             return false;
         }
-        $regRes   = $this->model()->where('open_id',$backInfo['openid'])->first();
+        $regRes   = $this->model()->where('open_id',$backInfo->openid)->first();
         //如果存在 使用token生成token
         if ($regRes) {
             $data = array(
-                'open_id'   => $backInfo['openid'],
+                'open_id'   => $backInfo->openid,
                 'timestamp' => time(),
                 'user_id'   => $regRes['user_id']
             );
             return $this->token->setToken($data,$ip);
         } else {
             $baseData = [
-                'open_id'=> $backInfo['openid'],
+                'open_id'=> $backInfo->openid,
                 'nickname'=>$request->nickname,
                 'password'=>md5(123456),
                 'avatar'  =>$request->avatar,
