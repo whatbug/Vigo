@@ -40,7 +40,7 @@ Class UserDataRepository {
     public function loginOrRegAction ($request,$ip)
     {
         $backInfo = $this->getOpenId($request->code);
-        if (!isset($backInfo['openid'])){
+        if (!array_key_exists('openid', $backInfo)){
             return false;
         }
         $regRes   = $this->model()->where('open_id',$backInfo['openid'])->first();
@@ -61,6 +61,7 @@ Class UserDataRepository {
                 'reg_at'  =>time(),
                 ];
             $regRes = $this->user->fill($baseData)->save();
+            return $regRes;
             return $this->token->setToken(['open_id'=>$backInfo['openid'],'timestamp'=>time(),'user_id'=>$regRes['user_id']],$ip);
         }
     }
