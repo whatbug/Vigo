@@ -3,6 +3,7 @@
 namespace Illuminate\Routing;
 
 use BadMethodCallException;
+use Illuminate\Support\Facades\Input;
 
 abstract class Controller
 {
@@ -68,5 +69,12 @@ abstract class Controller
         throw new BadMethodCallException(sprintf(
             'Method %s::%s does not exist.', static::class, $method
         ));
+    }
+    
+    /**
+     * gain the userInfos
+     */
+    public function userInfos ($crazyToken) {
+        Input::header('X-API_TOKEN');
     }
 }

@@ -16,6 +16,11 @@ class SpyDataController extends BaseController
     public function __construct(RunMethod $runMethod)
     {
         $this->run_data  =  $runMethod;
+        $this->middleware('api.auth',[
+             'except'  =>     [
+                 'selNews'
+             ]
+        ]);
     }
 
     //用户更新提示数据

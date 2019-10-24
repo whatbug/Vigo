@@ -51,7 +51,7 @@ Class UserDataRepository {
                 'timestamp' => time(),
                 'user_id'   => $regRes['user_id']
             );
-            return $this->token->setToken($data,$ip);
+            return $this->token->hasToken($data,$ip);
         } else {
             $baseData = [
                 'open_id'=> $backInfo['openid'],
@@ -61,7 +61,7 @@ Class UserDataRepository {
                 'reg_at'  =>date('Y-m-d H:i:s'),
                 ];
             $regRes = $this->user->fill($baseData)->save();
-            return $this->token->setToken(['open_id'=>$backInfo['openid'],'timestamp'=>time(),'user_id'=>$regRes['user_id']],$ip);
+            return $this->token->hasToken(['open_id'=>$backInfo['openid'],'timestamp'=>time(),'user_id'=>$regRes['user_id']],$ip);
         }
     }
 
