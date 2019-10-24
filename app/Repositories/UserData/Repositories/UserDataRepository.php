@@ -5,6 +5,7 @@ namespace App\Repositories\UserData\Repositories;
 use App\Repositories\UserData\UserData;
 use App\Services\CrazyTokenService;
 use App\Services\CurlService;
+use Illuminate\Support\Facades\Log;
 
 Class UserDataRepository {
 
@@ -40,8 +41,8 @@ Class UserDataRepository {
     public function loginOrRegAction ($request,$ip)
     {
         $backInfo = $this->getOpenId($request->code);
-        return $backInfo;
         if (!array_key_exists('openid', $backInfo)){
+            Log::info('error is not exists openid');
             return false;
         }
         $regRes   = $this->model()->where('open_id',$backInfo['openid'])->first();
