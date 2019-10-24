@@ -30,7 +30,7 @@ Class CrazyTokenService
         if (empty($dataStr)) {
             return false;
         }
-        $splice = explode($dataStr,',');
+        $splice = explode(',',$dataStr);
         if ((time() - $splice[1] < 0)) {
             return $this->token;
         }
