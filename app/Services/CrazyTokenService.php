@@ -19,8 +19,8 @@ Class CrazyTokenService
 
     //生成token
     public function hasToken ($data,$ip) {
-        $strToken = strtoupper(md5($data['open_id'].$ip.$data['user_id']).$data['timestamp']).'-'.base64_encode(strrev($data['user_id']).rand(0,9)).rand(100,200);
-        Cache::put($strToken,$data['user_id'].','.($data['timestamp']+60*60*6),60*60*24);
+        $strToken = strtoupper(md5($data['open_id'].$ip.$data['user_id']).$data['timestamp']).'-'.base64_encode(strrev($data['user_id']).rand(0,9));
+//        Cache::put($strToken,$data['user_id'].','.($data['timestamp']+60*60*6),60*60*24);
         return $strToken;
     }
 
@@ -42,7 +42,7 @@ Class CrazyTokenService
 
     //刷新token
     public function refresh () {
-        $userKey  = substr((explode('-',substr($this->token,0,-3)))[1],0,-1);
+        $userKey  = substr((explode('-',$this->token))[1],0,-1);
         $userId   = strrev(base64_decode($userKey));
         $strToken = md5($this->token.(time() + 60*60*6)).$userKey.rand(0,9);
         Cache::put($strToken,$userId.','.(time() + 60*60*6),60*60*24);
