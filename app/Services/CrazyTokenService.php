@@ -21,7 +21,7 @@ Class CrazyTokenService
     public function hasToken ($data,$ip) {
         $strToken = strtoupper(md5($data['open_id'].$ip.$data['user_id']).$data['timestamp']).'-'.base64_encode(strrev($data['user_id']).rand(0,9)).rand(100,200);
         Cache::put($strToken,$data['user_id'].','.($data['timestamp']+60*60*6),60*60*24);
-        return strtoupper($strToken);
+        return $strToken;
     }
 
     //检查token有效性
