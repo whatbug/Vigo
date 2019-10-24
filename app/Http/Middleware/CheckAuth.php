@@ -36,6 +36,6 @@ class CheckAuth extends Middleware
             $request->headers->set('X-API_TOKEN',$verifyRes);
             return parent::handle($request, $next);
         }
-        return $this->failed('token invalid');
+        return $this->failed('token invalid',401);
     }
 }
