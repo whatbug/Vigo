@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e5216d6-fbcd-4943-8d11-8237777cfe25" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/CheckAuth.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/CheckAuth.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/UserData/Repositories/UserDataRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/UserData/Repositories/UserDataRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Services/CrazyTokenService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/CrazyTokenService.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,8 +22,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/UserDataController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="616">
-              <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+            <state relative-caret-position="462">
+              <caret line="24" column="51" selection-start-line="24" selection-start-column="51" selection-end-line="24" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -49,20 +49,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Services/CrazyTokenService.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="484">
-              <caret line="22" column="89" lean-forward="true" selection-start-line="22" selection-start-column="89" selection-end-line="22" selection-end-column="89" />
+            <state relative-caret-position="506">
+              <caret line="23" column="25" lean-forward="true" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Repositories/UserData/Repositories/UserDataRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="617">
-              <caret line="32" column="39" lean-forward="true" selection-start-line="32" selection-start-column="39" selection-end-line="32" selection-end-column="39" />
+            <state relative-caret-position="331">
+              <caret line="41" column="25" selection-start-line="41" selection-start-column="25" selection-end-line="41" selection-end-column="25" />
               <folding>
                 <element signature="e#58#97#0#PHP" expanded="true" />
               </folding>
@@ -181,13 +181,13 @@
         <option value="$PROJECT_DIR$/routes/api.php" />
         <option value="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" />
         <option value="$PROJECT_DIR$/app/Http/Kernel.php" />
-        <option value="$PROJECT_DIR$/app/Repositories/UserData/Repositories/UserDataRepository.php" />
         <option value="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Routing/Controller.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Api/SpyDataController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Api/UserDataController.php" />
         <option value="$PROJECT_DIR$/app/Repositories/ApiResponse.php" />
-        <option value="$PROJECT_DIR$/app/Services/CrazyTokenService.php" />
         <option value="$PROJECT_DIR$/app/Http/Middleware/CheckAuth.php" />
+        <option value="$PROJECT_DIR$/app/Services/CrazyTokenService.php" />
+        <option value="$PROJECT_DIR$/app/Repositories/UserData/Repositories/UserDataRepository.php" />
       </list>
     </option>
   </component>
@@ -487,12 +487,12 @@
       <workItem from="1569204528506" duration="38420000" />
       <workItem from="1569824479130" duration="3750000" />
       <workItem from="1570073946095" duration="597000" />
-      <workItem from="1570080174855" duration="104351000" />
+      <workItem from="1570080174855" duration="104640000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="419641000" />
+    <option name="totallyTimeSpent" value="419930000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="1" width="1932" height="1045" extended-state="0" />
@@ -859,13 +859,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/UserDataController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="616">
-          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Kernel.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="594">
@@ -883,20 +876,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Repositories/UserData/Repositories/UserDataRepository.php">
+    <entry file="file://$PROJECT_DIR$/app/Services/CrazyTokenService.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="617">
-          <caret line="32" column="39" lean-forward="true" selection-start-line="32" selection-start-column="39" selection-end-line="32" selection-end-column="39" />
-          <folding>
-            <element signature="e#58#97#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="506">
+          <caret line="23" column="25" lean-forward="true" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Services/CrazyTokenService.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/UserDataController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="22" column="89" lean-forward="true" selection-start-line="22" selection-start-column="89" selection-end-line="22" selection-end-column="89" />
+        <state relative-caret-position="462">
+          <caret line="24" column="51" selection-start-line="24" selection-start-column="51" selection-end-line="24" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Repositories/UserData/Repositories/UserDataRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="41" column="25" selection-start-line="41" selection-start-column="25" selection-end-line="41" selection-end-column="25" />
+          <folding>
+            <element signature="e#58#97#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

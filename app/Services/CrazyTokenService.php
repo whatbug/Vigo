@@ -20,7 +20,7 @@ Class CrazyTokenService
     //生成token
     public function hasToken ($data,$ip) {
         $strToken = strtoupper(md5($data['open_id'].$ip.$data['user_id']).$data['timestamp']).'-'.base64_encode(strrev($data['user_id']).rand(0,9));
-//        Cache::put($strToken,$data['user_id'].','.($data['timestamp']+60*60*6),60*60*24);
+        Cache::put($strToken,$data['user_id'].','.($data['timestamp']+60*60*6),60*60*24);
         return $strToken;
     }
 
