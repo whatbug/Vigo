@@ -20,7 +20,7 @@ Class UserDataController extends Controller {
 
     //小程序用户注册
     public function UserRegOrLogin (Request $request) {
-        $GrantData = $request->header('X-API_TOKEN');
+        $GrantData = $request->header('X-API-TOKEN');
         if (!$GrantData) {
             $GrantData = $this->repository->loginOrRegAction($request,$request->getClientIp());
         }
