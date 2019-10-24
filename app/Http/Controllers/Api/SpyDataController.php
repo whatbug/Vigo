@@ -17,9 +17,7 @@ class SpyDataController extends BaseController
     {
         $this->run_data  =  $runMethod;
         $this->middleware('api.auth',[
-             'except'  =>     [
-                 'selNews'
-             ]
+             'except'  =>     []
         ]);
     }
 
