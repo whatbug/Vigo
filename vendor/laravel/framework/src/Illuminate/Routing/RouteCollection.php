@@ -2,6 +2,7 @@
 
 namespace Illuminate\Routing;
 
+use App\Repositories\ApiResponse;
 use Countable;
 use ArrayIterator;
 use IteratorAggregate;
@@ -13,6 +14,7 @@ use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 
 class RouteCollection implements Countable, IteratorAggregate
 {
+    use ApiResponse;
     /**
      * An array of the routes keyed by method.
      *
@@ -253,14 +255,7 @@ class RouteCollection implements Countable, IteratorAggregate
      */
     protected function methodNotAllowed(array $others, $method)
     {
-        throw new MethodNotAllowedHttpException(
-            $others,
-            sprintf(
-                'The %s method is not supported for this route. Supported methods: %s.',
-                $method,
-                implode(', ', $others)
-            )
-        );
+        $this->failed($method.' is not supported. only '.implode(', ', $others),'405');
     }
 
     /**
