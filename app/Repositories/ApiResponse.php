@@ -1,14 +1,13 @@
 <?php namespace App\Repositories;
 
+use Illuminate\Support\Facades\Input;
 use Symfony\Component\HttpFoundation\Response as FoundationResponse;
 use Illuminate\Support\Facades\Response;
 
 Trait ApiResponse
 {
-    /**
-     * @var int
-     */
-    protected $statusCode = FoundationResponse::HTTP_OK;
+
+    protected $statusCode = FoundationResponse::HTTP_OK,$header=[];
 
     /**
      * @return mixed
@@ -26,6 +25,26 @@ Trait ApiResponse
     {
 
         $this->statusCode = $statusCode;
+        return $this;
+    }
+
+    /**
+     *
+     */
+
+    public function getResponseHeader()
+    {
+        $preArr = array('X-API-TOKEN'=>Input::header('X-API-TOKEN'));
+        return array_merge($this->header,$preArr);
+    }
+
+    /**
+     * @param $headerArr
+     * @return $this
+     */
+    public function setResponseHeader(array $headerArr)
+    {
+        $this->header = $headerArr;
         return $this;
     }
 
@@ -58,7 +77,7 @@ Trait ApiResponse
         ];
 
         $data = array_merge($sta,$data);
-        return $this->respond($data);
+        return $this->respond($data,$this->getResponseHeader());
 
     }
 
