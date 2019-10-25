@@ -12,7 +12,8 @@ Class CrazyTokenService
     }
 
     //设置token
-    public function setToken ($token) {
+    public function setToken (?string $token) : ?self
+    {
         $this->token = $token;
         return $this;
     }
@@ -20,7 +21,7 @@ Class CrazyTokenService
     //生成token
     public function hasToken ($data,$ip) {
         $strToken = strtoupper(md5($data['open_id'].$ip.$data['user_id']).$data['timestamp']).'-'.base64_encode(strrev($data['user_id']).rand(0,9));
-        Cache::put($strToken,$data['user_id'].','.($data['timestamp']+60*60*6),60*60*24);
+        $this->foreverCreate($strToken,$data['user_id'].','.($data['timestamp']+60*60*6));
         return $strToken;
     }
 
@@ -35,7 +36,7 @@ Class CrazyTokenService
             return $this->token;
         }
         if ((time() - $splice[1] > 60*2)) {
-            return $this->refresh();
+            return $this->forgetToken()->refresh();
         }
         return false;
     }
@@ -45,7 +46,18 @@ Class CrazyTokenService
         $userKey  = substr((explode('-',$this->token))[1],0,-1);
         $userId   = strrev(base64_decode($userKey));
         $strToken = md5($this->token.(time() + 60*60*6)).$userKey.rand(0,9);
-        Cache::put($strToken,$userId.','.(time() + 60*60*6),60*60*24);
+        $this->foreverCreate($strToken,$userId.','.(time() + 60*60*6));
         return $strToken;
+    }
+
+    //存入token
+    public function foreverCreate ($key,$infoStr) {
+        Cache::forever($key,$infoStr);
+    }
+
+    //删除token key
+    public function forgetToken () {
+        Cache::forget($this->token);
+        return $this;
     }
 }

@@ -1,17 +1,18 @@
 <?php namespace App\Services;
 
 use Hhxsv5\LaravelS\Swoole\WebSocketHandlerInterface;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use Swoole\Http\Request;
 use Swoole\WebSocket\Frame;
 use Swoole\WebSocket\Server;
 
-class WebSocketService implements WebSocketHandlerInterface
+class WebSocketService extends Controller implements WebSocketHandlerInterface
 {
     public function __construct()
     {
-
+        $this->middleware('api.token');
     }
 
     // 连接建立时触发
