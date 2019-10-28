@@ -18,8 +18,14 @@ Class UserDataController extends Controller {
         $this->repository = $repository;
     }
 
+    //魔术方法  导航至指定方法
+    public function __call($method, $parameters)
+    {
+       $this->$method($parameters);
+    }
+
     //小程序用户注册
-    public function UserRegOrLogin (Request $request) {
+    public function userRegOrLogin (Request $request) {
         $GrantData = $request->header('X-API-TOKEN');
         if (!$GrantData) {
             $GrantData = $this->repository->loginOrRegAction($request,$request->getClientIp());
@@ -30,5 +36,15 @@ Class UserDataController extends Controller {
     //用户数据
     public function dataList () {
 
+    }
+
+
+    //生日提醒提交
+    public function birthTransport (Request $request) {
+        $postRes = $this->repository->postBirthInfo($request);
+        if ($postRes) {
+            return $this->success('提交成功');
+        }
+        return $this->failed('提交失败');
     }
 }

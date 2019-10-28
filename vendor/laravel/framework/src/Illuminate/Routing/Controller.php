@@ -3,6 +3,7 @@
 namespace Illuminate\Routing;
 
 use BadMethodCallException;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
 abstract class Controller
@@ -69,6 +70,19 @@ abstract class Controller
         throw new BadMethodCallException(sprintf(
             'Method %s::%s does not exist.', static::class, $method
         ));
+    }
+
+    /**
+     * @param Request $request
+     * @return bool
+     */
+    public function actionDispatch (Request $request) {
+        $funClass = get_called_class();$methd = $request->get('action');
+        if (method_exists($funClass,$request->action)){
+            return $this->$methd($request);
+        } else {
+            return false;
+        }
     }
     
     /**

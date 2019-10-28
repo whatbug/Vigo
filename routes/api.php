@@ -34,10 +34,5 @@ Route::Group(['prefix'=>'mini'], function() {
         Route::get('selNews.do','SpyDataController@selNews');
     });
 
-    Route::group(['prefix'=>'profile'], function() {
-        //用户数据
-        Route::get('dataList.do','UserDataController@dataList');
-        //用户登录
-        Route::post('userLogin.do','UserDataController@UserRegOrLogin');
-    });
+    Route::post('userApi.do','UserDataController@actionDispatch');
 });

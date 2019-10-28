@@ -2,6 +2,7 @@
 
 namespace App\Repositories\UserData\Repositories;
 
+use App\Repositories\HuoCollect\RunData;
 use App\Repositories\UserData\UserData;
 use App\Services\CrazyTokenService;
 use App\Services\CurlService;
@@ -9,11 +10,11 @@ use Illuminate\Support\Facades\Log;
 
 Class UserDataRepository {
 
-    private $appId,$secret,$curlService,$header,$token,$user;
+    private $appId,$secret,$curlService,$header,$token,$user,$runMethod;
     //获取openId地址
     private $openUrl="https://api.weixin.qq.com/sns/jscode2session";
 
-    public function __construct(CurlService $curlService,CrazyTokenService $tokenService,UserData $user)
+    public function __construct(CurlService $curlService,CrazyTokenService $tokenService,UserData $user,RunData $runMethod)
     {
         $this->appId = env('MINI_APP_ID');
         $this->secret= env('MINI_APP_SECRET');
@@ -23,6 +24,7 @@ Class UserDataRepository {
         );
         $this->token = $tokenService;
         $this->user  = $user;
+        $this->runMethod = $runMethod;
     }
 
     //用户表模型
@@ -42,7 +44,7 @@ Class UserDataRepository {
     {
         $backInfo = $this->getOpenId($request->code);
         if (!array_key_exists('openid', $backInfo)){
-            Log::info('error is not exists openid');
+            Log::info($backInfo);
             return false;
         }
         $regRes   = $this->model()->where('open_id',$backInfo['openid'])->first();
@@ -67,6 +69,17 @@ Class UserDataRepository {
         }
     }
 
+    //提交生日信息
+    public function postBirthInfo ($request) {
+        $baseData = [
+            'avatar'    =>$request->avatar,
+            'nickname'  =>$request->nickname,
+            'password'  =>$request->time,
+            'date'      =>$request->date,
+            'pre_time'  =>$request->preTime,
+        ];
+        return $this->runMethod->fill($baseData)->save();
+    }
 
 /**
  * 检验数据的真实性，并且获取解密后的明文.
