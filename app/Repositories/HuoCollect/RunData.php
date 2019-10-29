@@ -10,9 +10,13 @@ Class RunData extends Model {
 
     protected $fillable = [
         'run_user',
-        'max_value',
+        'nickname',
+        'avatar',
+        'is_size',
         'run_value',
+        'pre_day',
         'mobile',
+        'run_at',
         'run_type',
         'run_time',
         'update_at',

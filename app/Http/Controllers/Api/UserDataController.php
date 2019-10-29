@@ -43,7 +43,7 @@ Class UserDataController extends Controller {
     public function birthTransport (Request $request) {
         $postRes = $this->repository->postBirthInfo($request);
         if ($postRes) {
-            return $this->success('提交成功');
+            return $this->success(['message'=>'success']);
         }
         return $this->failed('提交失败');
     }

@@ -1,6 +1,7 @@
 <?php namespace App\Services;
 
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 
 Class CrazyTokenService
 {
@@ -29,6 +30,7 @@ Class CrazyTokenService
     public function checkToken () {
         $dataStr = Cache::get($this->token);
         if (empty($dataStr)) {
+            Log::info('token not invalid');
             return false;
         }
         $splice = explode(',',$dataStr);
@@ -38,6 +40,7 @@ Class CrazyTokenService
         if ((time() - $splice[1] > 60*2)) {
             return $this->forgetToken()->refresh();
         }
+        Log::info('过期时间在60*2 之间');
         return false;
     }
 

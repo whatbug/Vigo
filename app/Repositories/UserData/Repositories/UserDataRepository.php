@@ -74,9 +74,9 @@ Class UserDataRepository {
         $baseData = [
             'avatar'    =>$request->avatar,
             'nickname'  =>$request->nickname,
-            'password'  =>$request->time,
-            'date'      =>$request->date,
-            'pre_time'  =>$request->preTime,
+            'run_at'    =>$request->time,
+            'run_value' =>$request->date,
+            'pre_day'   =>$request->preTime,
         ];
         return $this->runMethod->fill($baseData)->save();
     }
