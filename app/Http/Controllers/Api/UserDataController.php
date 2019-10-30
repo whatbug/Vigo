@@ -41,7 +41,7 @@ Class UserDataController extends Controller {
 
     //生日提醒提交
     public function birthTransport (Request $request) {
-        $postRes = $this->repository->postBirthInfo($request);
+        $postRes = $this->repository->postBirthInfo($request,$this->userId());
         if ($postRes) {
             return $this->success(['message'=>'success']);
         }

@@ -33,6 +33,7 @@ class CheckAuth extends Middleware
     {
         $verifyRes = $this->tokenService->setToken($request->header('X-API-TOKEN'))->checkToken();
         if ($verifyRes) {
+            return $verifyRes;
             return parent::handle($request, $next);
         }
         return $this->failed('token invalid',401);

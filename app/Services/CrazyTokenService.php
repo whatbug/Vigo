@@ -28,6 +28,7 @@ Class CrazyTokenService
 
     //检查token有效性
     public function checkToken () {
+        return $this->token;
         $dataStr = Cache::get($this->token);
         if (empty($dataStr)) {
             Log::info('token not invalid');

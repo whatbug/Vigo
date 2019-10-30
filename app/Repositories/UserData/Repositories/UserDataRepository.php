@@ -70,8 +70,9 @@ Class UserDataRepository {
     }
 
     //提交生日信息
-    public function postBirthInfo ($request) {
+    public function postBirthInfo ($request,$userId) {
         $baseData = [
+            'user_id'   =>$userId,
             'avatar'    =>$request->avatar,
             'nickname'  =>$request->nickname,
             'run_at'    =>$request->time,
