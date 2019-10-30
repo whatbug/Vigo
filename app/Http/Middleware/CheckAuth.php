@@ -32,7 +32,6 @@ class CheckAuth extends Middleware
     public function handle($request, Closure $next)
     {
         $verifyRes = $this->tokenService->setToken($request->header('X-API-TOKEN'))->checkToken();
-        return $verifyRes;
         if ($verifyRes) {
             return parent::handle($request, $next);
         }

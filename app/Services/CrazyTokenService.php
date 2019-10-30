@@ -28,8 +28,6 @@ Class CrazyTokenService
 
     //检查token有效性
     public function checkToken () {
-        $this->foreverCreate($this->token,"1000,1572430751");
-        return Cache::get($this->token);
         $dataStr = Cache::get($this->token);
         if (empty($dataStr)) {
             Log::info('token not invalid');
