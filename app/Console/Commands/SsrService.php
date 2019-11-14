@@ -74,7 +74,7 @@ Class SsrService extends Command {
                     'port'     => $val->ssr->port,
                     'protocol' => $val->ssr->protocol,
                     'method'   => $val->ssr->method,
-                    'obfs'     => $val->ssr->obfd,
+                    'obfs'     => $val->ssr->obfs,
                     'password' => base64_decode($val->ssr->password),
                     'ssLink'   => 'ss://' . base64_encode($val->ssr->method . ':' . base64_decode($val->ssr->password) . '@' . $val->ssr->ip . ':' . $val->ssr->port),
                     'ssrLink'  => $val->ssrLink,
