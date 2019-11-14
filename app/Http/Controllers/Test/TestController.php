@@ -129,7 +129,7 @@ Class TestController extends BaseController {
                 'obfs'     => $val->ssr->obfs,
                 'password' => base64_decode($val->ssr->password),
                 'ssLink'   => 'ss://' . base64_encode($val->ssr->method . ':' . base64_decode($val->ssr->password) . '@' . $val->ssr->ip . ':' . $val->ssr->port),
-                'ssrLink'  => $val->ssrLink,
+                'ssrLink'  => $val->ssrUrl,
                 'country'  => ($country[0]!='中国')?$country[0]:$country[0]."({$country[1]})",
                 'check_at' => date('H:i:s'),
             ];
