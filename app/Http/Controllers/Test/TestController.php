@@ -101,6 +101,20 @@ Class TestController extends BaseController {
 
 
     public function cll (){
+        $postUrl = "https://lncn.org/api/lncn";$time = time();
+        $postData= [];
+        $header  = array(
+            "user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36",
+            "referer: https://lncn.org",
+            "accept: application/json, text/plain, */*",
+            "origin: https://lncn.org",
+            "referer: https://lncn.org",
+            "cookie: _ga=GA1.2.1987760110.{$time}; _gid=GA1.2.1058273580.{$time}; _gat_gtag_UA_132719745_1=1"
+        );
+        $result = (new CurlService)->_url($postUrl,$postData,$header);
+        return $result;
+        $secretKey = '6512654323241236';
+        echo openssl_decrypt($string, 'aes-128-ecb', $secretKey, 2 );
         set_time_limit(0);$i=0;
         $content = file_get_contents(base_path()."/storage/ss.txt");
         $ssrs     = base64_decode($content);
