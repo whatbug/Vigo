@@ -101,7 +101,6 @@ Class TestController extends BaseController {
 
 
     public function cll (){
-        return utf8_decode('我111');
         $postUrl = "https://lncn.org/api/lncn";
         $time = time();$redData = [];
         $postData= ['origin'=>'https://lncn.org'];
