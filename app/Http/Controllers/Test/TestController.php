@@ -117,7 +117,8 @@ Class TestController extends BaseController {
             return false;
         }
         $secretKey = '6512654323241236';
-        $ssrData   = openssl_decrypt($resContent->ssrs, 'aes-128-ecb', $secretKey, 2 );
+        $ssrData   = explode(' ',openssl_decrypt($resContent->ssrs, 'aes-128-ecb', $secretKey, 2 ));
+        return $ssrData;
         foreach (json_decode($ssrData) as $val) {
             $country = json_decode(file_get_contents("http://freeapi.ipip.net/{$val->ssr->ip}"));
             $redData[] = [
