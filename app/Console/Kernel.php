@@ -30,6 +30,8 @@ class Kernel extends ConsoleKernel
     {
         //每天更新一次
         $schedule->command('ssr:new')->dailyAt(2);
+        //每天7点更新
+        $schedule->command('ssr:new')->dailyAt(7);
         //每1小时更新一次数据
 //         $schedule->command('ssr:array')->hourly();
         //每分钟监控一次 被秒级取代

@@ -1,5 +1,6 @@
 <?php namespace App\Console\Commands;
 
+use App\Services\CurlService;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Cache;
 
@@ -50,7 +51,8 @@ Class SsrService extends Command {
                 sleep(3);
             }
         }  else  {
-            $postUrl = "https://lncn.org/api/lncn";$time = time();$redData = [];
+            $postUrl = "https://lncn.org/api/lncn";
+            $time = time();$redData = [];
             $postData= ['origin'=>'https://lncn.org'];
             $header  = array(
                 "user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36",
