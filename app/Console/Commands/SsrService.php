@@ -84,7 +84,7 @@ Class SsrService extends Command {
                     'check_at' => date('H:i:s'),
                 ];
             }
-            $originSsr = Cache::get('ssr_info');
+            $originSsr = Cache::get('ssr_info');Cache::forget('ssr_info');
             $insertData  = array_values(array_merge($originSsr,$redData));
         }
         return Cache::put('ssr_info',$insertData,now()->addMinutes(120));
