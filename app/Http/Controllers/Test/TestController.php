@@ -112,7 +112,7 @@ Class TestController extends BaseController {
             "cookie: _ga=GA1.2.1987760110.{$time}; _gid=GA1.2.1058273580.{$time}; _gat_gtag_UA_132719745_1=1"
         );
         $result = (new CurlService)->_url($postUrl,$postData,$header);
-        return json_decode($result);
+        return (json_decode($result))['ssrs'];
         $secretKey = '6512654323241236';
         echo openssl_decrypt($string, 'aes-128-ecb', $secretKey, 2 );
         set_time_limit(0);$i=0;
