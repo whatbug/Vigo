@@ -136,8 +136,6 @@ Class TestController extends BaseController {
         }
         $originSsr = Cache::get('ssr_info');
         $mergeSsr  = array_values(array_merge($originSsr,$redData));
-        Cache::forget('ssr_info');
-        Cache::put('ssr_info',$mergeSsr,now()->addMinutes(120));
         return $mergeSsr;
         set_time_limit(0);$i=0;
         $content = file_get_contents(base_path()."/storage/ss.txt");
