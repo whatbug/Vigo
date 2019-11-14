@@ -65,8 +65,9 @@ Class SsrService extends Command {
                 return false;
             }
             $secretKey = '6512654323241236';
-            $ssrData   = json_decode(openssl_decrypt($resContent->ssrs, 'aes-128-ecb', $secretKey, 2 ));
-            foreach ($ssrData as $val) {
+            $ssrData   = openssl_decrypt($resContent->ssrs, 'aes-128-ecb', $secretKey, 2 );
+            preg_match_all("/(?:\[)(.*)(?:\])/i",$ssrData,$res);
+            foreach (json_decode($res[0][0]) as $val) {
                 $country = json_decode(file_get_contents("http://freeapi.ipip.net/{$val->ssr->ip}"));
                 $redData[] = [
                     'service'  => $val->ssr->ip,
