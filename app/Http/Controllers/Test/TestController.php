@@ -101,7 +101,7 @@ Class TestController extends BaseController {
 
 
     public function cll (){
-        $postUrl = "https://lncn.org/api/lncn";$time = time();
+        $postUrl = "https://lncn.org/api/lncn";$time = time();$redData = [];
         $postData= ['origin'=>'https://lncn.org'];
         $header  = array(
             "user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36",
@@ -111,10 +111,30 @@ Class TestController extends BaseController {
             "referer: https://lncn.org",
             "cookie: _ga=GA1.2.1987760110.{$time}; _gid=GA1.2.1058273580.{$time}; _gat_gtag_UA_132719745_1=1"
         );
-        $result = (new CurlService)->_url($postUrl,$postData,$header);
-        return (json_decode($result))->ssrs;
+        $resContent = json_decode((new CurlService)->_url($postUrl,$postData,$header));
+        if (!is_object($resContent)) {
+            return false;
+        }
         $secretKey = '6512654323241236';
-        echo openssl_decrypt($string, 'aes-128-ecb', $secretKey, 2 );
+        $ssrData   = json_decode(openssl_decrypt($resContent->ssrs, 'aes-128-ecb', $secretKey, 2 ));
+        foreach ($ssrData as $val) {
+            $country = json_decode(file_get_contents("http://freeapi.ipip.net/{$val->ssr->ip}"));
+            $redData[] = [
+                'service'  => $val->ssr->ip,
+                'port'     => $val->ssr->port,
+                'protocol' => $val->ssr->protocol,
+                'method'   => $val->ssr->method,
+                'obfs'     => $val->ssr->obfd,
+                'password' => base64_decode($val->ssr->password),
+                'ssLink'   => 'ss://' . base64_encode($val->ssr->method . ':' . base64_decode($val->ssr->password) . '@' . $val->ssr->ip . ':' . $val->ssr->port),
+                'ssrLink'  => $val->ssrLink,
+                'country'  => ($country[0]!='中国')?$country[0]:$country[0]."({$country[1]})",
+                'check_at' => date('H:i:s'),
+            ];
+        }
+        $originSsr = Cache::get('ssr_info');
+        $mergeSsr  = array_values(array_merge($originSsr,$redData));
+        return $mergeSsr;
         set_time_limit(0);$i=0;
         $content = file_get_contents(base_path()."/storage/ss.txt");
         $ssrs     = base64_decode($content);
