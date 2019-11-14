@@ -101,6 +101,7 @@ Class TestController extends BaseController {
 
 
     public function cll (){
+        return utf8_decode('我111');
         $postUrl = "https://lncn.org/api/lncn";
         $time = time();$redData = [];
         $postData= ['origin'=>'https://lncn.org'];
@@ -127,8 +128,8 @@ Class TestController extends BaseController {
                 'protocol' => $val->ssr->protocol,
                 'method'   => $val->ssr->method,
                 'obfs'     => $val->ssr->obfs,
-                'password' => base64_decode($val->ssr->password),
-//                'ssLink'   => 'ss://' . base64_encode(mb_convert_encoding($val->ssr->method . ':' . base64_decode(mb_convert_encoding($val->ssr->password,'GBK','UTF-8')) . '@' . $val->ssr->ip . ':' . $val->ssr->port,'GBK','UTF-8')),
+                'password' => $val->ssr->password,
+                'ssLink'   => 'ss://' . base64_encode($val->ssr->method . ':' . $val->ssr->password . '@' . $val->ssr->ip . ':' . $val->ssr->port),
                 'ssrLink'  => $val->ssrUrl,
                 'country'  => ($country[0]!='中国')?$country[0]:$country[0]."({$country[1]})",
                 'check_at' => date('H:i:s'),
