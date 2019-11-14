@@ -128,7 +128,7 @@ Class TestController extends BaseController {
                 'method'   => $val->ssr->method,
                 'obfs'     => $val->ssr->obfs,
                 'password' => base64_decode($val->ssr->password),
-                'ssLink'   => 'ss://' . base64_encode(mb_convert_encoding($val->ssr->method . ':' . base64_decode(mb_convert_encoding($val->ssr->password,'GBK','UTF-8')) . '@' . $val->ssr->ip . ':' . $val->ssr->port,'GBK','UTF-8')),
+//                'ssLink'   => 'ss://' . base64_encode(mb_convert_encoding($val->ssr->method . ':' . base64_decode(mb_convert_encoding($val->ssr->password,'GBK','UTF-8')) . '@' . $val->ssr->ip . ':' . $val->ssr->port,'GBK','UTF-8')),
                 'ssrLink'  => $val->ssrUrl,
                 'country'  => ($country[0]!='中国')?$country[0]:$country[0]."({$country[1]})",
                 'check_at' => date('H:i:s'),
