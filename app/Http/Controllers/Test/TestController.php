@@ -101,6 +101,8 @@ Class TestController extends BaseController {
 
 
     public function cll (){
+        $originSsr = Cache::get('ssr_info');
+        return $originSsr;
         $postUrl = "https://lncn.org/api/lncn";
         $time = time();$redData = [];
         $postData= ['origin'=>'https://lncn.org'];
