@@ -101,7 +101,8 @@ Class TestController extends BaseController {
 
 
     public function cll (){
-        $postUrl = "https://lncn.org/api/lncn";$time = time();$redData = [];
+        $postUrl = "https://lncn.org/api/lncn";
+        $time = time();$redData = [];
         $postData= ['origin'=>'https://lncn.org'];
         $header  = array(
             "user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36",
@@ -116,8 +117,7 @@ Class TestController extends BaseController {
             return false;
         }
         $secretKey = '6512654323241236';
-//        $ssrData   = json_decode(openssl_decrypt($resContent->ssrs, 'aes-128-ecb', $secretKey, 2 ));
-        return openssl_decrypt($resContent->ssrs, 'aes-128-ecb', $secretKey, 2 );
+        $ssrData   = json_decode(preg_replace(' ','',openssl_decrypt($resContent->ssrs, 'aes-128-ecb', $secretKey, 2 )));
         foreach ($ssrData as $val) {
             $country = json_decode(file_get_contents("http://freeapi.ipip.net/{$val->ssr->ip}"));
             $redData[] = [
