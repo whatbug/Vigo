@@ -86,8 +86,9 @@ Class SsrService extends Command {
             }
             $originSsr = Cache::get('ssr_info');Cache::forget('ssr_info');
             $insertData  = array_values(array_merge($originSsr,$redData));
+            sleep(3);
         }
-        return Cache::put('ssr_info',$insertData,now()->addMinutes(120));
+        return Cache::put('ssr_info',$insertData,60*60*24);
     }
 
 }
