@@ -50,7 +50,7 @@ Class SsrService extends Command {
                 ];
                 sleep(3);
             }
-            Cache::put('ssr_info',$insertData,now()->addMinutes(120));
+            Cache::put('ssr_info',$insertData,60*60*6);
         }  else  {
             $postUrl = "https://lncn.org/api/lncn";
             $time = time();$redData = [];
@@ -87,8 +87,7 @@ Class SsrService extends Command {
             }
             $originSsr = Cache::get('ssr_info');
             $insertData  = array_values(array_merge($originSsr,$redData));
-            Cache::forget('ssr_info');
-            Cache::put('ssr_info',$insertData,now()->addMinutes(120));
+            Cache::put('ssr_info',$insertData,60*60*20);
         }
         return true;
     }
