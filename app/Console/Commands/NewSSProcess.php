@@ -1,6 +1,7 @@
 <?php namespace App\Console\Commands;
 
 use App\Services\BaiOrcService;
+use App\Services\CurlService;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Cache;
 
@@ -67,7 +68,7 @@ Class NewSSProcess extends Command {
                 "referer: https://lncn.org",
                 "cookie: _ga=GA1.2.1987760110.{$time}; _gid=GA1.2.1058273580.{$time}; _gat_gtag_UA_132719745_1=1"
             );
-            $resContent = json_decode((new CurlService)->_url($postUrl,$postData,$header));
+            $resContent = json_decode((new CurlService())->_url($postUrl,$postData,$header));
             if (!is_object($resContent)) {
                 return false;
             }
