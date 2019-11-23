@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Repositories\ApiResponse;
 use App\Repositories\UserData\Repositories\UserDataRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 Class UserDataController extends Controller {
 
@@ -27,7 +28,8 @@ Class UserDataController extends Controller {
     //小程序用户注册
     public function userRegOrLogin (Request $request) {
         $GrantData = $request->header('X-API-TOKEN');
-        if (!$GrantData) {
+        $GrantKey  = Cache::get($GrantData);
+        if (!$GrantKey) {
             $GrantData = $this->repository->loginOrRegAction($request,$request->getClientIp());
         }
         return $this->success(['api_token'=>$GrantData]);
