@@ -43,6 +43,7 @@ Class UserDataRepository {
     public function loginOrRegAction ($request,$ip)
     {
         $backInfo = $this->getOpenId($request->code);
+        return $backInfo;
         if (!array_key_exists('openid', $backInfo)){
             Log::info($backInfo);
             return false;

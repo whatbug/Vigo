@@ -10,7 +10,7 @@ Class SpyNotify extends CronJob
    //运行间隔 秒
    public function interval()
    {
-       return 7000;
+       return 10000;
    }
 
    //是否等待第一次执行时间间隔  false即等待

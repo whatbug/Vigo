@@ -89,7 +89,7 @@ abstract class Controller
      * gain the userInfos
      */
     public function userId () {
-        $userKey  = substr((explode('-',Input::header('X-API_TOKEN')))[1],0,-1);
+        $userKey  = substr((explode('-',Input::header('X-API-TOKEN')))[1],0,-1);
         return strrev(base64_decode($userKey));
     }
 }
