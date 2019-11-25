@@ -12,6 +12,7 @@ Class RunMethod implements RecordData
 
     const BTC = 'btc_record';
     const EHT = 'eht_record';
+    const EOS = 'eos_record';
 
     public function __construct()
     {
@@ -99,8 +100,9 @@ Class RunMethod implements RecordData
     public function selNews () {
         if (!sizeof(Cache::get(self::BTC))) return array();
         return [
-           'BTC' => Cache::get(self::BTC)[0]['values'],
-           'EHT' => Cache::get(self::EHT)[0]['values']
+           'BTC' => [ 'value'=>Cache::get(self::BTC)[0]['values'],'rmb'=> Cache::get(self::BTC)[0]['rmb']],
+           'EHT' => [ 'value'=>Cache::get(self::EHT)[0]['values'],'rmb'=> Cache::get(self::EHT)[0]['rmb']],
+           'EOS' => [ 'value'=>Cache::get(self::EOS)[0]['values'],'rmb'=> Cache::get(self::EOS)[0]['rmb']]
         ];
     }
 }

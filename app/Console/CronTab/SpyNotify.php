@@ -29,9 +29,15 @@ Class SpyNotify extends CronJob
                    $array = [[
                        'values' => round($dataNum[0],2),
                        'type'   => 'BTC',
+                       'rmb'    => $dataNum[1]
                    ],[
-                       'values' => round($dataNum[1],2),
+                       'values' => round($dataNum[3],2),
                        'type'   => 'EHT',
+                       'rmb'    => $dataNum[4]
+                   ],[
+                       'values' => round($dataNum[6],2),
+                       'type'   => 'EOS',
+                       'rmb'    => $dataNum[7]
                    ]];
                    dispatch(new ProcessSpy($array));
                }
