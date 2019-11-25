@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9e5216d6-fbcd-4943-8d11-8237777cfe25" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Console/CronTab/SpyNotify.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/CronTab/SpyNotify.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Jobs/ProcessSpy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/ProcessSpy.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/HuoCollect/Repositories/RunMethod.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/HuoCollect/Repositories/RunMethod.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

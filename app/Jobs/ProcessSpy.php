@@ -15,6 +15,10 @@ class ProcessSpy implements ShouldQueue
 
     public $array;
 
+    const BTC = 'btc_record';
+    const EHT = 'eht_record';
+    const EOS = 'eos_record';
+
     public $timeout = 2;
 
     /**
