@@ -35,7 +35,6 @@ Class UserDataRepository {
     //获取openId token
     public function getOpenId ($code) {
         $requestUrl = "{$this->openUrl}?appid=".trim($this->appId)."&secret=".trim($this->secret)."&js_code={$code}&grant_type=authorization_code";
-        Log::info($requestUrl);
         $wxRes = $this->curlService->_url($requestUrl,'',$this->header);
         return json_decode($wxRes,true);
     }
@@ -44,7 +43,6 @@ Class UserDataRepository {
     public function loginOrRegAction ($request,$ip)
     {
         $backInfo = $this->getOpenId($request->code);
-        return $backInfo;
         if (!array_key_exists('openid', $backInfo)){
             Log::info($backInfo);
             return false;
