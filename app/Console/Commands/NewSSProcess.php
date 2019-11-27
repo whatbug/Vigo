@@ -57,7 +57,7 @@ Class NewSSProcess extends Command {
                 if ($i == 2) break;
             }
         } else {
-            $postUrl = "https://lncn.org/api/lncn";
+            $postUrl = "https://lncn.org/api/lncnG";
             $time = time();$redData = [];
             $postData= ['origin'=>'https://lncn.org'];
             $header  = array(
