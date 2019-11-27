@@ -66,13 +66,13 @@ Class NewSSProcess extends Command {
                 "accept: application/json, text/plain, */*",
                 "origin: https://lncn.org",
                 "referer: https://lncn.org",
-                "cookie: _ga=GA1.2.1987760110.{$time}; _gid=GA1.2.1058273580.{$time}; _gat_gtag_UA_132719745_1=1"
+                "cookie: _ga=GA1.2.1987760110.{$time}; _gid=GA1.2.195119797.{$time}; _gat_gtag_UA_132719745_1=1"
             );
             $resContent = json_decode((new CurlService())->_url($postUrl,$postData,$header));
             if (!is_object($resContent)) {
                 return false;
             }
-            $secretKey = '6512654323241236';
+            $secretKey = '6512654323254321';
             $ssrData   = openssl_decrypt($resContent->ssrs, 'aes-128-ecb', $secretKey, 2 );
             preg_match_all("/(?:\[)(.*)(?:\])/i",$ssrData,$res);
             foreach (json_decode($res[0][0]) as $val) {
