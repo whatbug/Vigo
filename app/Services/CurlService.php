@@ -35,9 +35,12 @@ Class CurlService {
     //模拟终端抓取数据 curl
     function _url($postUrl, $curlPost,$header) {
         $curl = curl_init();
-        curl_setopt($curl, CURLOPT_HTTPHEADER,$header);
+        curl_setopt($curl, CURLOPT_HTTPHEADER,array(
+                'Content-Type: application/json; charset=utf-8',
+                'Content-Length: ' . strlen($curlPost))
+        );
         curl_setopt($curl,CURLOPT_HEADER,0); //将头文件的信息作为数据流输出
-        curl_setopt($curl,CURLOPT_RETURNTRANSFER,0); //返回获取的输出文本流
+        curl_setopt($curl,CURLOPT_RETURNTRANSFER,1); //返回获取的输出文本流
         curl_setopt($curl, CURLOPT_URL, $postUrl);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, FALSE);

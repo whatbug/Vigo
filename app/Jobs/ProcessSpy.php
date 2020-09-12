@@ -23,7 +23,7 @@ class ProcessSpy implements ShouldQueue
 
     /**
      * Create a new job instance.
-     *
+     * @param  $array array
      * @return void
      */
     public function __construct($array)

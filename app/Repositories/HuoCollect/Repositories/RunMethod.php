@@ -28,12 +28,12 @@ Class RunMethod implements RecordData
             foreach ($reNotifiers as $notify) {
                 if ($notify->is_size) {
                     if ($values <= $notify->run_value + $notify->max_value) {
-                        MessageNotifier::sendMsg($notify->mobile, $values);
+                        MessageNotifier::sendPhone($notify->mobile, $values);
                         $this->model->whereId($notify->id)->update(['run_time' => time()]);
                     }
                 } else {
                     if ($values >= $notify->run_value + $notify->max_value) {
-                        MessageNotifier::sendMsg($notify->mobile, $values);
+                        MessageNotifier::sendPhone($notify->mobile, $values);
                         $this->model->whereId($notify->id)->update(['run_time' => time()]);
                     }
                 }
@@ -71,7 +71,7 @@ Class RunMethod implements RecordData
      */
     public function insertRedis($array,$key_name) {
         $getData = Cache::get($key_name)?:[];
-        if (sizeof($getData) > 60) $getData=array_values(array_slice($getData,0,sizeof($getData)-40));
+        if (sizeof($getData) > 60) $getData = array_values(array_slice($getData,0,sizeof($getData)-40));
         array_unshift($getData,$array);
         return Cache::put($key_name,$getData,10*60);
     }

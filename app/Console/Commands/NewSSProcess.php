@@ -4,6 +4,7 @@ use App\Services\BaiOrcService;
 use App\Services\CurlService;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Cache;
+use App\Services\MessageNotifier;
 
 Class NewSSProcess extends Command {
 
@@ -75,6 +76,9 @@ Class NewSSProcess extends Command {
             $secretKey = '6512654323254321';
             $ssrData   = openssl_decrypt($resContent->ssrs, 'aes-128-ecb', $secretKey, 2 );
             preg_match_all("/(?:\[)(.*)(?:\])/i",$ssrData,$res);
+            if (!sizeof($redData)) {
+                return MessageNotifier::sendMsg('18587388678','代理采集');
+            }
             foreach (json_decode($res[0][0]) as $val) {
                 $country = json_decode(file_get_contents("http://freeapi.ipip.net/{$val->ssr->ip}"));
                 $redData[] = [
@@ -89,6 +93,7 @@ Class NewSSProcess extends Command {
                     'country'  => ($country[0]!='中国')?$country[0]:$country[0]."({$country[1]})",
                     'check_at' => date('H:i:s'),
                 ];
+                sleep(2);
             }
             $originSsr = Cache::get('ssr_info');
             $insertData  = array_values(array_merge($originSsr,$redData));

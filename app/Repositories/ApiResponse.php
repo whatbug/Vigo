@@ -23,18 +23,17 @@ Trait ApiResponse
      */
     public function setStatusCode($statusCode)
     {
-
         $this->statusCode = $statusCode;
         return $this;
     }
 
     /**
-     *
+     * 设置响应头部
      */
 
     public function getResponseHeader()
     {
-        $preArr = array('X-API-TOKEN'=>Input::header('X-API-TOKEN'));
+        $preArr = array('X-API-TOKEN' => Input::header('X-API-TOKEN'));
         return array_merge($this->header,$preArr);
     }
 
@@ -55,7 +54,6 @@ Trait ApiResponse
      */
     public function respond($data, $header = [])
     {
-
         return Response::json($data,$this->getStatusCode(),$header);
     }
 
@@ -66,19 +64,15 @@ Trait ApiResponse
      * @return mixed
      */
     public function status($status, array $data, $code = null){
-
-        if ($code){
+        if ($code) {
             $this->setStatusCode($code);
         }
-
-        $sta = [
+        $sta =  array (
             'success' => $status,
-            'code'    => $this->statusCode,
-        ];
-
+            'code'    => $this->statusCode
+        );
         $data = array_merge($sta,$data);
         return $this->respond($data,$this->getResponseHeader());
-
     }
 
     /**
@@ -87,9 +81,9 @@ Trait ApiResponse
      * @param string $status
      * @return mixed
      */
-    public function failed($message, $code = FoundationResponse::HTTP_BAD_REQUEST, $status = false){
-
-        return $this->setStatusCode($code)->message($message,$status);
+    public function failed($message, $code = FoundationResponse::HTTP_BAD_REQUEST, $status = false) {
+        return $this->setStatusCode($code)
+            ->message($message,$status);
     }
 
     /**
@@ -97,8 +91,7 @@ Trait ApiResponse
      * @param string $status
      * @return mixed
      */
-    public function message($message, $status = true){
-
+    public function message($message, $status = true) {
         return $this->status($status,[
             'message' => $message,
         ]);
@@ -112,7 +105,6 @@ Trait ApiResponse
     {
         return $this->setStatusCode(FoundationResponse::HTTP_CREATED)
             ->message($message);
-
     }
 
     /**
@@ -120,8 +112,7 @@ Trait ApiResponse
      * @param string $status
      * @return mixed
      */
-    public function success($data, $status = true){
-
+    public function success($data, $status = true) {
         return $this->status($status,compact('data'),FoundationResponse::HTTP_OK);
     }
 }

@@ -12,11 +12,11 @@ Class UserDataController extends Controller {
 
     use ApiResponse;
 
-    private $repository;
+    private $userRepository;
 
-    public function __construct(UserDataRepository $repository)
+    public function __construct(UserDataRepository $userRepository)
     {
-        $this->repository = $repository;
+        $this->userRepository = $userRepository;
     }
 
     //魔术方法  导航至指定方法
@@ -30,7 +30,7 @@ Class UserDataController extends Controller {
         $GrantData = $request->header('X-API-TOKEN');
         $GrantKey  = Cache::get($GrantData);
         if (!$GrantKey) {
-            $GrantData = $this->repository->loginOrRegAction($request,$request->getClientIp());
+            $GrantData = $this->userRepository->loginOrRegAction($request,$request->getClientIp());
         }
         return $this->success(['api_token'=>$GrantData]);
     }
@@ -43,7 +43,7 @@ Class UserDataController extends Controller {
 
     //生日提醒提交
     public function birthTransport (Request $request) {
-        $postRes = $this->repository->postBirthInfo($request,$this->userId());
+        $postRes = $this->userRepository->postBirthInfo($request,$this->userId());
         if ($postRes) {
             return $this->success(['message'=>'success']);
         }

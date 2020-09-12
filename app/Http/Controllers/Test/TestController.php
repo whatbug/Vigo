@@ -29,7 +29,7 @@ Class TestController extends BaseController {
     }
 
     public function postTest () {
-        MessageNotifier::sendMsg('18587388678',9000);
+        MessageNotifier::sendPhone('18587388678',9000);
     }
 
     public function pushTest () {
@@ -101,6 +101,21 @@ Class TestController extends BaseController {
 
 
     public function cll (){
+        if (is_file('../.env')) {
+            $env = parse_ini_file('../.env', true);   //解析env文件,name = PHP_KEY
+            foreach ($env as $key => $val) {
+                $name = strtoupper($key);
+                if (is_array($val)) {
+                    foreach ($val as $k => $v) {    //如果是二维数组 item = PHP_KEY_KEY
+                        $item = $name . '_' . strtoupper($k);
+                        putenv("$item=$v");
+                    }
+                } else {
+                    putenv("$name=$val");
+                }
+            }
+        }
+        return getenv('APP_NAME');
         $postUrl = "https://lncn.org/api/lncn";
         $time = time();$redData = [];
         $postData= ['origin'=>'https://lncn.org'];

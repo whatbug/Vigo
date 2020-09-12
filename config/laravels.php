@@ -37,8 +37,8 @@ return [
                 // Enable LaravelScheduleJob to run `php artisan schedule:run` every 1 minute, replace Linux Crontab
 //                \Hhxsv5\LaravelS\Illuminate\LaravelScheduleJob::class,
                 // Two ways to configure parameters:
-                 [\App\Console\CronTab\SpyNotify::class, [7000, true]], // Pass in parameters when registering
-//                  \App\Console\CronTab\SpyNotify::class, //每7秒同步一次数据
+//                 [\App\Console\CronTab\SpyNotify::class, [7000, true]], // Pass in parameters when registering
+                  \App\Console\CronTab\SpyNotify::class, //每10秒同步一次数据
             ],
             'max_wait_time' => 5,
     ],

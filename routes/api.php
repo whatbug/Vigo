@@ -33,6 +33,8 @@ Route::Group(['prefix'=>'mini'], function() {
         //查询最新值
         Route::get('selNews.do','SpyDataController@selNews');
     });
-
+    //用户侧
     Route::post('userApi.do','UserDataController@actionDispatch');
+    //产品测
+    Route::post('productApi.do','ProductDataController@actionDispatch');
 });
